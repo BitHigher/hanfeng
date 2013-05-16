@@ -5,8 +5,8 @@
  * Created on 2013年5月16日, 下午9:58
  */
 
-#ifndef MATH_H
-#define	MATH_H
+#ifndef MATH_MATH_H
+#define	MATH_MATH_H
 
 #include <cstdlib>
 #include <stdint.h>
@@ -33,28 +33,32 @@ public:
     
     static inline uint64_t random(uint64_t min_value, uint64_t max_value)
     {
-        uint64_t ret = min_value + (uint64_t)((max_value - min_value+1) * (random()/(RAND_MAX+1.0)));
+        uint64_t ret = min_value + (
+                uint64_t)((max_value - min_value+1)*(random()/(RAND_MAX+1.0)));
         // TODO ASSERT(ret >= min_value && ret <= max_value);
         return ret;
     }
     
     static inline int64_t random(int64_t min_value, int64_t max_value)
     {
-        int64_t ret = min_value + (int64_t)((max_value - min_value+1) * (random()/(RAND_MAX+1.0)));
+        int64_t ret = min_value + 
+                (int64_t)((max_value - min_value+1)*(random()/(RAND_MAX+1.0)));
         // TODO ASSERT(ret >= min_value && ret <= max_value);
         return ret;
     }
     
     static inline uint32_t random(uint32_t min_value, uint32_t max_value)
     {
-        uint32_t ret = min_value + (uint32_t)((max_value - min_value+1) * (random()/(RAND_MAX+1.0)));
+        uint32_t ret = min_value + 
+                (uint32_t)((max_value - min_value+1)*(random()/(RAND_MAX+1.0)));
         // TODO ASSERT(ret >= min_value && ret <= max_value);
         return ret;
     }
     
     static inline int32_t random(int32_t min_value, int32_t max_value)
     {
-        int32_t ret = min_value + (int32_t)((max_value - min_value+1) * (random()/(RAND_MAX+1.0)));
+        int32_t ret = min_value + 
+                (int32_t)((max_value - min_value+1)*(random()/(RAND_MAX+1.0)));
         // TODO ASSERT(ret >= min_value && ret <= max_value);
         return ret;
     }
@@ -65,5 +69,5 @@ private:
 
 }
 
-#endif	/* MATH_H */
+#endif	/* MATH_MATH_H */
 

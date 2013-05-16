@@ -12,14 +12,15 @@
 using namespace hanfeng;
 
 template<class T>
-HFVector<T>::HFVector() 
+HFVector<T>::HFVector(): HFReferenceData()
 {
     init_data();
 }
 
 template<class T>
-HFVector<T>::HFVector(const HFVector &orig) 
+HFVector<T>::HFVector(const HFVector &orig): HFReferenceData(orig) 
 {
+    copy_data(orig);
 }
 
 template<class T>

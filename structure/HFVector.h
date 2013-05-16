@@ -15,7 +15,6 @@ namespace hanfeng
 {
 
 template<class T> class HFSparseVector;
-class CFile;
     
 template<class T> class HFVector : public HFReferenceData
 {
@@ -31,6 +30,7 @@ public:
     void free_data();
     void copy_data(const HFReferenceData &orig);
     
+    /** base operations **/
     inline int32_t size() const {return vlen;}
     operator T*(){return vector;}
     void set_const(const T &const_elem);
@@ -38,6 +38,26 @@ public:
     void random(T min_value, T max_value);
     
     void display_vector();
+    
+    /** calculations **/
+    static inline T sum(T *vec, int32_t len)
+    {
+        T result = 0;
+        for(int32_t i = 0; i < len; ++i)
+            result += vec[i];
+        
+        return result;
+    }
+    
+    static inline T sum(HFVector<T> vec)
+    {
+        return sum(vec.vector, vec.vlen);
+    }
+    
+    inline T sum()
+    {
+        return sum(this->vector, this->vlen);
+    }
     
     /** static functions **/
     static void random_vector(T *vec, int32_t len, T min_value, T max_value);

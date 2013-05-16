@@ -9,12 +9,15 @@
 
 using namespace hanfeng;
 
-CMath::CMath() {
+CMath::CMath() 
+{
 }
 
-CMath::CMath(const CMath &orig) {
+CMath::CMath(const CMath &orig) 
+{
 }
 
-CMath::~CMath() {
+CMath::~CMath() 
+{
 }
 

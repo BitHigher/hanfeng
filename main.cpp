@@ -12,16 +12,18 @@ void test_vector()
 {
     std::cout << "Testing HFVector...\n";
     
-    int *a = new int[3];
+    int *a = new int[50];
     for(int i = 0; i < 3; ++i)
         a[i] = i;
     
     hanfeng::HFVector<int32_t> v(a, 3);
     v.display_vector();
     
-    v.random(10, 100);
+//    v.random(0, 1);
     
-    v.display_vector();
+//    v.display_vector();
+    
+    std::cout << v.sum() << '\n';
 }
 
 int main(int argc, char** argv) 

@@ -6,7 +6,7 @@
  */
 
 #ifndef MATH_MATH_H
-#define	MATH_MATH_H
+#define MATH_MATH_H
 
 #include <cstdlib>
 #include <stdint.h>

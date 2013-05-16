@@ -6,7 +6,7 @@
  */
 
 #ifndef STRUCTURE_HFVECTOR_H
-#define	STRUCTURE_HFVECTOR_H
+#define STRUCTURE_HFVECTOR_H
 
 #include "HFReferenceData.h"
 #include <cstdlib>

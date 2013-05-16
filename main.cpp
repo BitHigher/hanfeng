@@ -16,11 +16,8 @@ void test_vector()
     for(int i = 0; i < 3; ++i)
         a[i] = i;
     
-    bool *b = new bool[3];
-    for(int i = 0; i < 3; ++i)
-        b[i] = i%2;
-    
-    hanfeng::HFVector<bool> v(b, 3);
+    hanfeng::HFVector<int32_t> v(a, 3);
+    v.random(10, 100);
     std::cout << v.size();
 }
 

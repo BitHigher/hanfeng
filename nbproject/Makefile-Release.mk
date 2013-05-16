@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/math/Math.o \
 	${OBJECTDIR}/structure/HFReferenceData.o \
 	${OBJECTDIR}/structure/HFVector.o
 
@@ -68,6 +69,11 @@ ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/math/Math.o: math/Math.cpp 
+	${MKDIR} -p ${OBJECTDIR}/math
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/math/Math.o math/Math.cpp
 
 ${OBJECTDIR}/structure/HFReferenceData.o: structure/HFReferenceData.cpp 
 	${MKDIR} -p ${OBJECTDIR}/structure

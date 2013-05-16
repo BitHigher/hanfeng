@@ -4,10 +4,12 @@
     <logicalFolder name="HeaderFiles" displayName="头文件" projectFiles="true">
       <itemPath>structure/HFReferenceData.h</itemPath>
       <itemPath>structure/HFVector.h</itemPath>
+      <itemPath>math/Math.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles" displayName="源文件" projectFiles="true">
       <itemPath>structure/HFReferenceData.cpp</itemPath>
       <itemPath>structure/HFVector.cpp</itemPath>
+      <itemPath>math/Math.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles" displayName="资源文件" projectFiles="true">
@@ -34,6 +36,10 @@
       <compileType>
       </compileType>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="math/Math.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="math/Math.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="structure/HFReferenceData.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -64,6 +70,10 @@
         </asmTool>
       </compileType>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="math/Math.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="math/Math.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="structure/HFReferenceData.cpp" ex="false" tool="1" flavor2="0">
       </item>

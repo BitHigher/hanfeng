@@ -7,6 +7,7 @@
 
 #include "HFVector.h"
 #include "../math/Math.h"
+#include <iostream>
 
 using namespace hanfeng;
 
@@ -80,6 +81,19 @@ void HFVector<T>::random_vector(T* vec, int32_t len, T min_value, T max_value)
 {
     for(int32_t i = 0; i < len; ++i)
         vec[i] = CMath::random(min_value, max_value);
+}
+
+template<class T>
+void HFVector<T>::display_vector()
+{
+    std::cout << '[';
+    for(int32_t i = 0; i < vlen-1; ++i)
+        std::cout << vector[i] << ',';
+    
+    if(vlen > 0)
+        std::cout << vector[vlen-1];
+    
+    std::cout << ']' << '\n';
 }
 
 template class HFVector<int32_t>;

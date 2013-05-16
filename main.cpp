@@ -17,8 +17,11 @@ void test_vector()
         a[i] = i;
     
     hanfeng::HFVector<int32_t> v(a, 3);
+    v.display_vector();
+    
     v.random(10, 100);
-    std::cout << v.size();
+    
+    v.display_vector();
 }
 
 int main(int argc, char** argv) 
@@ -28,4 +31,3 @@ int main(int argc, char** argv)
     test_vector();
     return 0;
 }
-

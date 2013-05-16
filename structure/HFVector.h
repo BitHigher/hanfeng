@@ -37,6 +37,7 @@ public:
     void zero();
     void random(T min_value, T max_value);
     
+    void display_vector();
     
     /** static functions **/
     static void random_vector(T *vec, int32_t len, T min_value, T max_value);

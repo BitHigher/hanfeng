@@ -27,7 +27,7 @@ public:
 #if defined(CYGWIN) || defined(__INTERIX)
         return rand();
 #else
-        return random();
+        return ::random();
 #endif
     }
     

@@ -1,5 +1,5 @@
-#include "base/memory.h"
-#include "base/common.h"
+#include "memory.h"
+#include "common.h"
 
 void* hf_malloc(size_t size)
 {

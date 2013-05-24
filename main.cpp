@@ -8,6 +8,7 @@
 #include <iostream>
 #include <float.h>
 #include "structure/HFVector.h"
+#include "structure/HFMatrix.h"
 
 void test_vector()
 {
@@ -39,10 +40,24 @@ void test_vector()
     v2.display_vector();
 }
 
+void test_matrix()
+{
+    int32_t *a = new int32_t[50];
+    for(int i = 0; i < 15; ++i)
+    {
+        a[i] = i+1;
+    }
+    
+    hanfeng::HFMatrix<int32_t> m(3, 5);
+    m.display_matrix();
+}
+
 int main(int argc, char** argv) 
 {
     std::cout << "hanfeng, a toy for Machine Learning\n";
     
-    test_vector();
+    //test_vector();
+    
+    test_matrix();
     return 0;
 }

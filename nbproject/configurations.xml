@@ -2,6 +2,7 @@
 <configurationDescriptor version="88">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles" displayName="头文件" projectFiles="true">
+      <itemPath>structure/HFMatrix.h</itemPath>
       <itemPath>structure/HFReferenceData.h</itemPath>
       <itemPath>structure/HFVector.h</itemPath>
       <itemPath>math/Math.h</itemPath>
@@ -9,11 +10,12 @@
       <itemPath>base/memory.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles" displayName="源文件" projectFiles="true">
+      <itemPath>structure/HFMatrix.cpp</itemPath>
       <itemPath>structure/HFReferenceData.cpp</itemPath>
       <itemPath>structure/HFVector.cpp</itemPath>
       <itemPath>math/Math.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
-      <itemPath>memory.cpp</itemPath>
+      <itemPath>base/memory.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles" displayName="资源文件" projectFiles="true">
     </logicalFolder>
@@ -42,6 +44,8 @@
       </compileType>
       <item path="base/common.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="base/memory.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="base/memory.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
@@ -50,7 +54,9 @@
       </item>
       <item path="math/Math.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="memory.cpp" ex="false" tool="1" flavor2="0">
+      <item path="structure/HFMatrix.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="structure/HFMatrix.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="structure/HFReferenceData.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -84,6 +90,8 @@
       </compileType>
       <item path="base/common.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="base/memory.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="base/memory.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
@@ -92,7 +100,9 @@
       </item>
       <item path="math/Math.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="memory.cpp" ex="false" tool="1" flavor2="0">
+      <item path="structure/HFMatrix.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="structure/HFMatrix.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="structure/HFReferenceData.cpp" ex="false" tool="1" flavor2="0">
       </item>

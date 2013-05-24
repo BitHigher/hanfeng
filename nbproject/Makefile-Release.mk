@@ -35,9 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/base/memory.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/math/Math.o \
-	${OBJECTDIR}/memory.o \
+	${OBJECTDIR}/structure/HFMatrix.o \
 	${OBJECTDIR}/structure/HFReferenceData.o \
 	${OBJECTDIR}/structure/HFVector.o
 
@@ -66,6 +67,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hanfeng: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hanfeng ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/base/memory.o: base/memory.cpp 
+	${MKDIR} -p ${OBJECTDIR}/base
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/base/memory.o base/memory.cpp
+
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -76,10 +82,10 @@ ${OBJECTDIR}/math/Math.o: math/Math.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/math/Math.o math/Math.cpp
 
-${OBJECTDIR}/memory.o: memory.cpp 
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/structure/HFMatrix.o: structure/HFMatrix.cpp 
+	${MKDIR} -p ${OBJECTDIR}/structure
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/memory.o memory.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/structure/HFMatrix.o structure/HFMatrix.cpp
 
 ${OBJECTDIR}/structure/HFReferenceData.o: structure/HFReferenceData.cpp 
 	${MKDIR} -p ${OBJECTDIR}/structure

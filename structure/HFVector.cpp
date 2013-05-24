@@ -45,7 +45,7 @@ void HFVector<T>::init_data()
 template<class T>
 void HFVector<T>::free_data()
 {
-    // TODO free
+    HF_FREE(vector);
     vector = NULL;
     vlen = 0;
 }
@@ -97,5 +97,19 @@ void HFVector<T>::display_vector()
     std::cout << ']' << '\n';
 }
 
-template class HFVector<int32_t>;
+/** supported types **/
 template class HFVector<bool>;
+template class HFVector<char>;
+
+template class HFVector<int8_t>;
+template class HFVector<uint8_t>;
+template class HFVector<int16_t>;
+template class HFVector<uint16_t>;
+template class HFVector<int32_t>;
+template class HFVector<uint32_t>;
+template class HFVector<int64_t>;
+template class HFVector<uint64_t>;
+
+template class HFVector<float32_t>;
+template class HFVector<float64_t>;
+template class HFVector<floatmax_t>; 

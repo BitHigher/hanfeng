@@ -8,8 +8,7 @@
 #ifndef MATH_MATH_H
 #define MATH_MATH_H
 
-#include <cstdlib>
-#include <stdint.h>
+#include "../base/common.h"
 
 namespace hanfeng
 {
@@ -59,6 +58,30 @@ public:
     {
         int32_t ret = min_value + 
                 (int32_t)((max_value - min_value+1)*(random()/(RAND_MAX+1.0)));
+        // TODO ASSERT(ret >= min_value && ret <= max_value);
+        return ret;
+    }
+    
+    static inline float32_t random(float32_t min_value, float32_t max_value)
+    {
+        float32_t ret = min_value + 
+                (float32_t)((max_value - min_value+1)*(random()/(RAND_MAX+1.0)));
+        // TODO ASSERT(ret >= min_value && ret <= max_value);
+        return ret;
+    }
+    
+    static inline float64_t random(float64_t min_value, float64_t max_value)
+    {
+        float64_t ret = min_value + 
+                (float64_t)((max_value - min_value+1)*(random()/(RAND_MAX+1.0)));
+        // TODO ASSERT(ret >= min_value && ret <= max_value);
+        return ret;
+    }
+    
+    static inline floatmax_t random(floatmax_t min_value, floatmax_t max_value)
+    {
+        floatmax_t ret = min_value + 
+                (floatmax_t)((max_value - min_value+1)*(random()/(RAND_MAX+1.0)));
         // TODO ASSERT(ret >= min_value && ret <= max_value);
         return ret;
     }

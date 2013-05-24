@@ -17,7 +17,7 @@ HFReferenceData::HFReferenceData(bool ref_counting):refcount_(NULL)
 {
     if(ref_counting)
     {
-        refcount_ = new refcount_t;
+        refcount_ = HF_CALLOC(refcount_t, 1);
         refcount_->rc = 0;
     }
     
@@ -101,15 +101,14 @@ int32_t HFReferenceData::unref()
     // TODO release lock
 #endif
     
-    if(c < 0)
+    if(c <= 0)
     {
         free_data();
         
 #ifdef HAVE_PTHREAD
         // TODO desctroy lock
 #endif
-        // free refcount_
-        
+        HF_FREE(this->refcount_);
         this->refcount_ = NULL;
         return 0;
     }

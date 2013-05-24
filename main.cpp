@@ -6,24 +6,30 @@
  */
 
 #include <iostream>
+#include <float.h>
 #include "structure/HFVector.h"
 
 void test_vector()
 {
     std::cout << "Testing HFVector...\n";
     
-    int *a = new int[50];
+    float64_t *a = new float64_t[50];
     for(int i = 0; i < 3; ++i)
         a[i] = i;
     
-    hanfeng::HFVector<int32_t> v(a, 3);
+    hanfeng::HFVector<float64_t> v(a, 3);
     v.display_vector();
     
-//    v.random(0, 1);
+    v.random(0, 1);
     
-//    v.display_vector();
+    v.display_vector();
     
-    std::cout << v.sum() << '\n';
+    hanfeng::HFVector<float64_t> v1 = v;
+    
+    v1.display_vector();
+    
+    v1.vector[0] = 13;
+    v.display_vector();
 }
 
 int main(int argc, char** argv) 

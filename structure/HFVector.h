@@ -9,7 +9,7 @@
 #define STRUCTURE_HFVECTOR_H
 
 #include "HFReferenceData.h"
-#include <cstdlib>
+#include "../base/common.h"
 
 namespace hanfeng
 {
@@ -49,7 +49,7 @@ public:
         return result;
     }
     
-    static inline T sum(HFVector<T> vec)
+    static inline T sum(HFVector<T> &vec)
     {
         return sum(vec.vector, vec.vlen);
     }

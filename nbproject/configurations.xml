@@ -5,12 +5,15 @@
       <itemPath>structure/HFReferenceData.h</itemPath>
       <itemPath>structure/HFVector.h</itemPath>
       <itemPath>math/Math.h</itemPath>
+      <itemPath>base/common.h</itemPath>
+      <itemPath>base/memory.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles" displayName="源文件" projectFiles="true">
       <itemPath>structure/HFReferenceData.cpp</itemPath>
       <itemPath>structure/HFVector.cpp</itemPath>
       <itemPath>math/Math.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
+      <itemPath>memory.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles" displayName="资源文件" projectFiles="true">
     </logicalFolder>
@@ -37,11 +40,17 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="base/common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="base/memory.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="math/Math.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="math/Math.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="memory.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="structure/HFReferenceData.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -73,11 +82,17 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="base/common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="base/memory.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="math/Math.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="math/Math.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="memory.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="structure/HFReferenceData.cpp" ex="false" tool="1" flavor2="0">
       </item>

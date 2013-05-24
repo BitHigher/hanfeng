@@ -8,7 +8,7 @@
 #ifndef STRUCTURE_HFREFERENCEDATA_H
 #define STRUCTURE_HFREFERENCEDATA_H
 
-#include <cstdlib>
+#include "../base/common.h"
 
 namespace hanfeng{
 

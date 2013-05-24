@@ -10,7 +10,7 @@
 
 #include "common.h"
 
-
+#define HF_MALLOC(type, len) hf_generic_malloc<type>(size_t(len))
 #define HF_CALLOC(type, len) hf_generic_calloc<type>(size_t(len))
 #define HF_FREE(ptr) hf_generic_free(ptr)
 
@@ -18,6 +18,14 @@
 
 
 /** functions **/
+void* hf_malloc(size_t size);
+template<class T>
+T* hf_generic_malloc(size_t len)
+{
+    return (T*)hf_malloc(sizeof(T)*len);
+}
+
+
 void* hf_calloc(size_t num, size_t size);
 template<class T>
 T* hf_generic_calloc(size_t len)

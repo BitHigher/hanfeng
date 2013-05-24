@@ -14,10 +14,10 @@ void test_vector()
     std::cout << "Testing HFVector...\n";
     
     float64_t *a = new float64_t[50];
-    for(int i = 0; i < 3; ++i)
+    for(int i = 0; i < 13; ++i)
         a[i] = i;
     
-    hanfeng::HFVector<float64_t> v(a, 3);
+    hanfeng::HFVector<float64_t> v(a, 13);
     v.display_vector();
     
     v.random(0, 1);
@@ -29,7 +29,14 @@ void test_vector()
     v1.display_vector();
     
     v1.vector[0] = 13;
-    v.display_vector();
+    
+    v1.qsort();
+    
+    
+    hanfeng::HFVector<float64_t> v2 = v1.clone();
+    
+    v2 += v1;
+    v2.display_vector();
 }
 
 int main(int argc, char** argv) 

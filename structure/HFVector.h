@@ -62,6 +62,29 @@ public:
     /** static functions **/
     static void random_vector(T *vec, int32_t len, T min_value, T max_value);
     
+    HFVector<T> clone() const;
+    static T* clone_vector(const T *vec, int32_t len);
+    
+    void qsort();
+    void add(const HFVector<T> &x);
+    HFVector<T> operator+ (HFVector<T> &that);
+    HFVector<T> operator+= (HFVector<T> &that);
+    
+    static inline T product(T *vec, int32_t len)
+    {
+        T result = 1;
+        for(int32_t i = 0; i < len; ++i)
+        {
+            result *= vec[i];
+        }
+        return result;
+    }
+    
+    inline T product()
+    {
+        return product(vector, vlen);
+    }
+    
 public:
     T *vector;
     int32_t vlen;

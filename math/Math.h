@@ -86,6 +86,53 @@ public:
         return ret;
     }
     
+    
+    template<class T>
+    static inline void swap(T &a, T &b)
+    {
+        register T c = a;
+        a = b;
+        b = c;
+    }
+    
+    template<class T>
+    static void qsort(T *output, int32_t size)
+    {    
+        if(size == 1)
+            return;
+        
+        if(size == 2)
+        {
+            if(output[0] > output[1])
+                CMath::swap(output[0], output[1]);
+            return;
+        }
+        // TODO
+        T split = output[size/2];
+        int32_t left = 0;
+        int32_t right = size-1;
+        while(left <= right)
+        {
+            while(output[left] < split)
+                left++;
+            while(output[right] > split)
+                right--;
+            
+            if(left <= right)
+            {
+                CMath::swap(output[left], output[right]);
+                left++;
+                right--;
+            }
+            
+            if(right > 0)
+                qsort(output, right+1);
+            
+            if(left < size-1)
+                qsort(output+left, size-left);
+        }
+    }
+    
 private:
 
 };

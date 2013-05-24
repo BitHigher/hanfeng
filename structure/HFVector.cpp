@@ -97,6 +97,54 @@ void HFVector<T>::display_vector()
     std::cout << ']' << '\n';
 }
 
+template<class T>
+T* HFVector<T>::clone_vector(const T* vec, int32_t len)
+{
+    T *result = HF_MALLOC(T, len);
+    memcpy(result, vec, sizeof(T)*len);
+    return result;
+}
+
+template<class T>
+HFVector<T> HFVector<T>::clone() const
+{
+    return HFVector<T>(clone_vector(vector, vlen), vlen);
+}
+
+template<class T>
+void HFVector<T>::qsort()
+{
+    CMath::qsort<T>(vector, vlen);
+}
+
+template<class T>
+void HFVector<T>::add(const HFVector<T>& x)
+{
+    // TODO ASSERT(vecotr && x.vector)
+    // TODO ASSERT(vlen == x.vlen)
+    
+    for(int32_t i = 0; i < vlen; ++i)
+        vector[i] += x.vector[i];
+}
+
+template<class T>
+HFVector<T> HFVector<T>::operator +(HFVector<T>& that)
+{
+    // TODO ASSERT(vecotr && x.vector)
+    // TODO ASSERT(vlen == x.vlen)
+    
+    HFVector<T> result = clone();
+    result.add(that);
+    return result;
+}
+
+template<class T>
+HFVector<T> HFVector<T>::operator +=(HFVector<T>& that)
+{
+    add(that);
+    return *this;
+}
+
 /** supported types **/
 template class HFVector<bool>;
 template class HFVector<char>;

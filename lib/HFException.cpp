@@ -12,10 +12,16 @@ using namespace hanfeng;
 
 HFException::HFException(const char *str) 
 {
+#ifndef WIN32
+    // TODO
+#endif
+    
     init(str);
 }
 
-HFException::HFException(const HFException &orig) {
+HFException::HFException(const HFException &orig)
+{
+    init(orig.val);
 }
 
 HFException::~HFException()

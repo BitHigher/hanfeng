@@ -65,6 +65,44 @@ public:
                  const char *fmt, ...) const;
     
     
+    inline void enable_syntax_highlighting()
+    {
+        syntax_highlight = true;
+        
+        if(hf_io != this)
+            hf_io->enable_syntax_highlighting();
+    }
+    
+    inline void disable_syntax_highlighting()
+    {
+        syntax_highlight = false;
+        
+        if(hf_io != this)
+            hf_io->disable_syntax_highlighting();
+    }
+    
+    inline void enable_file_and_line()
+    {
+        show_file_and_line = true;
+        
+        if(hf_io != this)
+            hf_io->enable_file_and_line();
+    }
+    
+    inline void disable_file_and_line()
+    {
+        show_file_and_line = false;
+        
+        if(hf_io != this)
+            hf_io->disable_file_and_line();
+    }
+    
+    inline FILE* get_target()
+    {
+        return target;
+    }
+    
+    void set_target(FILE *target);
 protected:
     const char* get_msg_intro(EMessageType prio) const;
     

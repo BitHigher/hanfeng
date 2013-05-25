@@ -27,11 +27,14 @@ const char *HFIO::message_strings[NUM_LOG_LEVELS] = {
 const char *HFIO::message_strings_highlight[NUM_LOG_LEVELS] = {
     "[GCDEBUG] \0", "[DEBUG] \0", "[INFO] \0",
     "[NOTICE] \0", "\033[1;34m[WARNING]\033[0m \0", 
-    "\033[1;34m[ERROR]\033[0m \0",
-    "[CRITICAL] \0", "[EMERGENCY] \0", "\0"
+    "\033[1;31m[ERROR]\033[0m \0",
+    "\033[1;31m[CRITICAL]\033[0m \0",
+    "\033[1;31m[EMERGENCY]\033[0m \0", "\0"
 };
 
-HFIO::HFIO() 
+HFIO::HFIO()
+:target(stdout), syntax_highlight(true),
+ show_file_and_line(true), loglevel(MSG_WARNING)
 {
 }
 
@@ -124,4 +127,9 @@ void HFIO::message(EMessageType prio, const char* file, int32_t line,
         
         fflush(target);
     }
+}
+
+void HFIO::set_target(FILE *target)
+{
+    this->target = target;
 }

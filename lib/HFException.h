@@ -16,10 +16,10 @@ namespace hanfeng
 class HFException {
 public:
     HFException(const char *str);
-    HFException(const HFException& orig);
+    HFException(const HFException &orig);
     virtual ~HFException();
     
-    
+    inline const char* get_exception_string(){return val;}
     
 private:
     void init(const char *str);

@@ -11,9 +11,12 @@
 #include "structure/HFVector.h"
 #include "structure/HFMatrix.h"
 
+using namespace hanfeng;
+
 void print_error(FILE *target, const char *str)
 {
-    std::cout << str << '\n';
+    //std::cout << str << '\n';
+    fputs(str, target);
 }
 
 
@@ -25,14 +28,14 @@ void test_vector()
     for(int i = 0; i < 13; ++i)
         a[i] = i;
     
-    hanfeng::HFVector<float64_t> v(a, 13);
+    HFVector<float64_t> v(a, 13);
     v.display_vector();
     
     v.random(0, 1);
     
     v.display_vector();
     
-    hanfeng::HFVector<float64_t> v1 = v;
+    HFVector<float64_t> v1 = v;
     
     v1.display_vector();
     
@@ -41,10 +44,10 @@ void test_vector()
     v1.qsort();
     
     
-    hanfeng::HFVector<float64_t> v2 = v1.clone();
+    HFVector<float64_t> v2 = v1.clone();
     
     float64_t *b = new float64_t[11];
-    hanfeng::HFVector<float64_t> v3(b, 2);
+    HFVector<float64_t> v3(b, 2);
     
     v2 += v3;
     
@@ -60,10 +63,10 @@ void test_matrix()
         a[i] = i+1;
     }
     
-    hanfeng::HFMatrix<int32_t> m(3, 5);
+    HFMatrix<int32_t> m(3, 5);
     m.display_matrix();
     
-    hanfeng::HFMatrix<int32_t>::transpose_matrix(m.matrix, m.num_rows, m.num_cols);
+    HFMatrix<int32_t>::transpose_matrix(m.matrix, m.num_rows, m.num_cols);
     m.display_matrix();
 }
 
@@ -71,7 +74,7 @@ int main(int argc, char** argv)
 {
     std::cout << "hanfeng, a toy for Machine Learning\n";
   
-    hanfeng::init_hanfeng(print_error, print_error, print_error);
+    init_hanfeng(print_error, print_error, print_error);    
     
     test_vector();
     

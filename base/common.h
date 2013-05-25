@@ -10,7 +10,7 @@
 
 #include <stdlib.h>
 #include <stdint.h>
-#include <iostream>
+#include <stdio.h>
 
 typedef float float32_t;
 typedef double float64_t;

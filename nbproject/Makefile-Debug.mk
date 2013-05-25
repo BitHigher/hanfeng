@@ -35,7 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/base/init.o \
 	${OBJECTDIR}/base/memory.o \
+	${OBJECTDIR}/io/HFIO.o \
+	${OBJECTDIR}/lib/HFException.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/math/Math.o \
 	${OBJECTDIR}/structure/HFMatrix.o \
@@ -67,10 +70,25 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hanfeng: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hanfeng ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/base/init.o: base/init.cpp 
+	${MKDIR} -p ${OBJECTDIR}/base
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/base/init.o base/init.cpp
+
 ${OBJECTDIR}/base/memory.o: base/memory.cpp 
 	${MKDIR} -p ${OBJECTDIR}/base
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/base/memory.o base/memory.cpp
+
+${OBJECTDIR}/io/HFIO.o: io/HFIO.cpp 
+	${MKDIR} -p ${OBJECTDIR}/io
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/io/HFIO.o io/HFIO.cpp
+
+${OBJECTDIR}/lib/HFException.o: lib/HFException.cpp 
+	${MKDIR} -p ${OBJECTDIR}/lib
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/lib/HFException.o lib/HFException.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

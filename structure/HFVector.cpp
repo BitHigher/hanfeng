@@ -7,6 +7,7 @@
 
 #include "HFVector.h"
 #include "../math/Math.h"
+#include "../io/HFIO.h"
 #include <iostream>
 
 using namespace hanfeng;
@@ -120,8 +121,8 @@ void HFVector<T>::qsort()
 template<class T>
 void HFVector<T>::add(const HFVector<T>& x)
 {
-    // TODO ASSERT(vecotr && x.vector)
-    // TODO ASSERT(vlen == x.vlen)
+    ASSERT(vector && x.vector);
+    ASSERT(vlen == x.vlen);
     
     for(int32_t i = 0; i < vlen; ++i)
         vector[i] += x.vector[i];
@@ -130,8 +131,8 @@ void HFVector<T>::add(const HFVector<T>& x)
 template<class T>
 HFVector<T> HFVector<T>::operator +(HFVector<T>& that)
 {
-    // TODO ASSERT(vecotr && x.vector)
-    // TODO ASSERT(vlen == x.vlen)
+    ASSERT(vector && that.vector);
+    ASSERT(vlen == that.vlen);
     
     HFVector<T> result = clone();
     result.add(that);

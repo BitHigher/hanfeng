@@ -7,8 +7,15 @@
 
 #include <iostream>
 #include <float.h>
+#include "io/HFIO.h"
 #include "structure/HFVector.h"
 #include "structure/HFMatrix.h"
+
+void print_error(FILE *target, const char *str)
+{
+    std::cout << str << '\n';
+}
+
 
 void test_vector()
 {
@@ -36,7 +43,12 @@ void test_vector()
     
     hanfeng::HFVector<float64_t> v2 = v1.clone();
     
-    v2 += v1;
+    float64_t *b = new float64_t[11];
+    hanfeng::HFVector<float64_t> v3(b, 2);
+    
+    v2 += v3;
+    
+    
     v2.display_vector();
 }
 
@@ -50,14 +62,19 @@ void test_matrix()
     
     hanfeng::HFMatrix<int32_t> m(3, 5);
     m.display_matrix();
+    
+    hanfeng::HFMatrix<int32_t>::transpose_matrix(m.matrix, m.num_rows, m.num_cols);
+    m.display_matrix();
 }
 
 int main(int argc, char** argv) 
 {
     std::cout << "hanfeng, a toy for Machine Learning\n";
+  
+    hanfeng::init_hanfeng(print_error, print_error, print_error);
     
-    //test_vector();
+    test_vector();
     
-    test_matrix();
+    //test_matrix();
     return 0;
 }

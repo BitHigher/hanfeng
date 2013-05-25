@@ -26,6 +26,19 @@ public:
     void display_matrix();
     
     
+    /** clone **/
+    HFMatrix<T> clone();
+    static T* clone_matrix(const T *matrix, int32_t nrows, int32_t ncols);
+    
+    static void transpose_matrix(T *&matrix, int32_t &nrows, int32_t &ncols);
+    
+#ifdef HAVE_LAPACK
+    static void inverse(HFMatrix<float64_t> &matrix);
+    
+#endif
+
+    static float64_t trace(float64_t *mat, int32_t nrows, int32_t ncols);
+    
 protected:
     virtual void init_data();
     virtual void copy_data(const HFReferenceData &that);

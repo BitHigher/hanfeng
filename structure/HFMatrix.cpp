@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "HFMatrix.h"
+#include "../math/Math.h"
 
 using namespace hanfeng;
 
@@ -80,6 +81,63 @@ void HFMatrix<T>::display_matrix()
         std::cout << '\n';
     }
 }
+
+template<class T>
+T* HFMatrix<T>::clone_matrix(const T* matrix, int32_t nrows, int32_t ncols)
+{
+    T *result = HF_MALLOC(T, int64_t(nrows)*ncols);
+    for(int64_t i = 0; i < int64_t(nrows)*ncols; ++i)
+        result[i] = matrix[i];
+    
+    return result;
+}
+
+template<class T>
+HFMatrix<T> HFMatrix<T>::clone()
+{
+    return HFMatrix<T>(clone_matrix(matrix, num_rows, num_cols), 
+                        num_rows, num_cols);
+}
+
+template<class T>
+void HFMatrix<T>::transpose_matrix(
+        T*& matrix, int32_t& nrows, int32_t& ncols)
+{
+    T *transposed = HF_MALLOC(T, int64_t(nrows)*ncols);
+    for(int32_t i = 0; i < ncols; ++i)
+    {
+        for(int32_t j = 0; j < nrows; ++j)
+            transposed[i+j*nrows] = matrix[i*nrows+j];
+    }
+    
+    HF_FREE(matrix);
+    matrix = transposed;
+    
+    CMath::swap(nrows, ncols);
+}
+
+#ifdef HAVE_LAPACK
+
+template<class T>
+void HFMatrix<T>::inverse(HFMatrix<float64_t> &matrix)
+{
+    // ASSERT(matrix.num_rows == matrix.num_cols)
+    // TODO
+}
+
+#endif
+
+template<class T>
+float64_t HFMatrix<T>::trace(float64_t* mat, int32_t nrows, int32_t ncols)
+{
+    // TODO ASSERT(nrows == ncols);
+    float64_t trace = 0;
+    for(int32_t i = 0; i < nrows; ++i)
+        trace += mat[i*ncols + i];
+    
+    return trace;
+}
+
 
 /** supported types **/
 template class HFMatrix<bool>;

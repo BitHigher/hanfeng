@@ -2,18 +2,24 @@
 <configurationDescriptor version="88">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles" displayName="头文件" projectFiles="true">
+      <itemPath>lib/HFException.h</itemPath>
+      <itemPath>io/HFIO.h</itemPath>
       <itemPath>structure/HFMatrix.h</itemPath>
       <itemPath>structure/HFReferenceData.h</itemPath>
       <itemPath>structure/HFVector.h</itemPath>
       <itemPath>math/Math.h</itemPath>
       <itemPath>base/common.h</itemPath>
+      <itemPath>base/init.h</itemPath>
       <itemPath>base/memory.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles" displayName="源文件" projectFiles="true">
+      <itemPath>lib/HFException.cpp</itemPath>
+      <itemPath>io/HFIO.cpp</itemPath>
       <itemPath>structure/HFMatrix.cpp</itemPath>
       <itemPath>structure/HFReferenceData.cpp</itemPath>
       <itemPath>structure/HFVector.cpp</itemPath>
       <itemPath>math/Math.cpp</itemPath>
+      <itemPath>base/init.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
       <itemPath>base/memory.cpp</itemPath>
     </logicalFolder>
@@ -31,6 +37,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
@@ -44,9 +53,21 @@
       </compileType>
       <item path="base/common.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="base/init.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="base/init.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="base/memory.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="base/memory.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="io/HFIO.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="io/HFIO.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="lib/HFException.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="lib/HFException.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -90,9 +111,21 @@
       </compileType>
       <item path="base/common.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="base/init.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="base/init.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="base/memory.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="base/memory.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="io/HFIO.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="io/HFIO.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="lib/HFException.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="lib/HFException.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

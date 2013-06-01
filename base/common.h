@@ -20,5 +20,7 @@ typedef int32_t index_t;
 
 #include "memory.h"
 
+#include "../lib/config.h"
+
 #endif	/* BASE_COMMON_H */
 

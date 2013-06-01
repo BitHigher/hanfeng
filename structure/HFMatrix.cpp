@@ -8,6 +8,8 @@
 #include <iostream>
 #include "HFMatrix.h"
 #include "../math/Math.h"
+#include "../io/HFIO.h"
+#include "HFVector.h"
 
 using namespace hanfeng;
 
@@ -76,7 +78,7 @@ void HFMatrix<T>::display_matrix()
     {
         for(uint32_t j = 0; j < num_cols; ++j)
         {
-            std::cout << matrix[i*num_cols + j] << ' ';
+            std::cout << matrix[int64_t(j)*num_rows + i] << ' ';
         }
         std::cout << '\n';
     }
@@ -138,7 +140,216 @@ float64_t HFMatrix<T>::trace(float64_t* mat, int32_t nrows, int32_t ncols)
     return trace;
 }
 
+template<class T>
+bool HFMatrix<T>::operator ==(HFMatrix<T>& that)
+{
+    if(num_rows != that.num_rows || num_cols != that.num_cols)
+        return false;
+    
+    if(matrix != that.matrix)
+        return false;
+    
+    return true;
+}
 
+
+template<class T>
+bool HFMatrix<T>::equals(HFMatrix<T>& that)
+{
+    if(num_rows != that.num_rows || num_cols != that.num_cols)
+        return false;
+    
+    for(index_t i = 0; i < num_rows*num_cols; ++i)
+    {
+        if(matrix[i] != that.matrix[i])
+            return false;
+    }
+    
+    return true;
+}
+
+template<class T>
+void HFMatrix<T>::set_const(T const_elem)
+{
+    for(index_t i = 0; i < num_rows*num_cols; ++i)
+        matrix[i] = const_elem;
+}
+
+template<class T>
+void HFMatrix<T>::zero()
+{
+    set_const(0);
+}
+
+template<class T>
+T HFMatrix<T>::max_single()
+{
+    T max = matrix[0];
+    for(index_t i = 0; i < num_rows*num_cols; ++i)
+    {
+        if(matrix[i] > max)
+            max = matrix[i];
+    }
+    return max;
+}
+
+template<class T>
+void HFMatrix<T>::create_diaonal_matrix(T* matrix, T* v, int32_t size)
+{
+    for(index_t i = 0; i < size; ++i)
+    {
+        for(index_t j = 0; j < size; ++j)
+        {
+            if(i == j)
+                matrix[j*size+i] = v[i];
+            else
+                matrix[j*size+i] = 0;
+        }
+    }
+}
+
+template<class T>
+HFMatrix<T> HFMatrix<T>::create_identity_matrix(int32_t size, T scale)
+{
+    HFMatrix<T> I(size, size);
+    for(index_t i = 0; i < size; ++i)
+    {
+        for(index_t j = 0; j < size; ++j)
+        {
+            I(i,j) = (i==j)?scale:0;
+        }
+    }
+    
+    return I;
+}
+
+template<class T>
+HFMatrix<float64_t> HFMatrix<T>::create_centering_matrix(int32_t size)
+{
+    HFMatrix<float64_t> H = HFMatrix<float64_t>::
+            create_identity_matrix(size, 1.0);
+    
+    float64_t subtract = 1.0/size;
+    for(index_t i = 0; i < size; ++i)
+    {
+        for(index_t j = 0; j < size; ++j)
+            H(i,j) -= subtract;
+    }
+    
+    return H;
+}
+
+template<class T>
+HFMatrix<float64_t> HFMatrix<T>::matrix_multiply(
+                            HFMatrix<float64_t> A, HFMatrix<float64_t> B, 
+                            bool transpose_A, bool transpose_B, 
+                            float64_t scale)
+{
+    index_t cols_A = transpose_A ? A.num_rows : A.num_cols;
+    index_t rows_A = transpose_A ? A.num_cols : A.num_rows;
+    index_t cols_B = transpose_B ? B.num_rows : B.num_cols;
+    index_t rows_B = transpose_A ? B.num_cols : B.num_rows;
+
+    /* check dimension */
+    if(cols_A != rows_B)
+    {
+        HF_ERROR("HFMatirx::matrix_multiply(): dimension mismatch: "
+                "A(%dx%d)*B(%dx%d)\n", rows_A, cols_A, rows_B, cols_B);
+    }
+    
+    HFMatrix<float64_t> C(rows_A, cols_B);
+    C.zero();
+    
+#ifdef HAVE_LAPACK
+    cblas_dgem();
+    // TODO
+#else
+    for(index_t i = 0; i < rows_A; ++i)
+    {
+        for(index_t j = 0; j < cols_B; ++j)
+        {
+            for(index_t k = 0; k < cols_A; ++k)
+                C(i, j) += A(i, k) * B(k, j);
+        }
+    }    
+#endif
+    
+    return C;
+}
+
+template<class T>
+T* HFMatrix<T>::get_row_sum(T* matrix, int32_t m, int32_t n)
+{
+    T *rowsums = HF_CALLOC(T, n);
+    
+    for(index_t i = 0; i < n; ++i)
+    {
+        for(index_t j = 0; j < m; ++j)
+            rowsums[i] += matrix[j + int64_t(i)*m];
+    }
+    
+    return rowsums;
+}
+
+template<class T>
+T* HFMatrix<T>::get_col_sum(T* matrix, int32_t m, int32_t n)
+{
+    T *colsums = HF_CALLOC(T, m);
+    
+    for(index_t i = 0; i < m; ++i)
+    {
+        for(index_t j = 0; j < n; ++j)
+            colsums[i] += matrix[i + int64_t(j)*m];
+    }
+    
+    return colsums;
+}
+
+template<class T>
+void HFMatrix<T>::center_matrix(T* matrix, int32_t m, int32_t n)
+{
+    float64_t num_data = n;
+    
+    T *colsums = get_col_sum(matrix, m, n);
+    T *rowsums = get_row_sum(matrix, m, n);
+    
+    for(index_t i = 0; i < m; ++i)
+        colsums[i] /= num_data;
+    for(index_t i = 0; i < n; ++i)
+        rowsums[i] /= num_data;
+    
+    T s = HFVector<T>::sum(rowsums, n)/num_data;
+    
+    for(index_t i = 0; i < n; ++i)
+    {
+        for(index_t j = 0; j < m; ++j)
+            matrix[int64_t(i)*m + j] += s - colsums[j] - rowsums[i];
+    }
+    
+    HF_FREE(colsums);
+    HF_FREE(rowsums);
+}
+
+template<class T>
+void HFMatrix<T>::center()
+{
+    center_matrix(matrix, num_rows, num_cols);
+}
+
+template<class T>
+void HFMatrix<T>::remove_column_mean()
+{
+    T *means = get_row_sum(matrix, num_rows, num_cols);
+    
+    for(index_t i = 0; i < num_cols; ++i)
+    {
+        means[i] /= num_rows;
+        for(index_t j = 0; j < num_rows; ++j)
+            matrix[int64_t(i)*num_rows+j] -= means[i];
+    }
+    
+    HF_FREE(means);
+}
 /** supported types **/
 template class HFMatrix<bool>;
 template class HFMatrix<char>;

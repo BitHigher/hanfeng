@@ -8,6 +8,7 @@
 #include "HFVector.h"
 #include "../math/Math.h"
 #include "../io/HFIO.h"
+#include "../base/common.h"
 #include <iostream>
 
 using namespace hanfeng;

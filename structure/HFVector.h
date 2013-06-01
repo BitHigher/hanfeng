@@ -33,6 +33,18 @@ public:
     /** base operations **/
     inline int32_t size() const {return vlen;}
     operator T*(){return vector;}
+    HFVector<T> get(){return *this;}
+    
+    inline const T& operator[](index_t index) const
+    {
+        return vector[index];
+    }
+    
+    inline T& operator[](index_t index)
+    {
+        return vector[index];
+    }
+    
     void set_const(const T &const_elem);
     void zero();
     void random(T min_value, T max_value);

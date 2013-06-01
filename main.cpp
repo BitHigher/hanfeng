@@ -76,8 +76,8 @@ int main(int argc, char** argv)
   
     init_hanfeng(print_error, print_error, print_error);    
     
-    test_vector();
+    // test_vector();
     
-    //test_matrix();
+    test_matrix();
     return 0;
 }

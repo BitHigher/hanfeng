@@ -85,10 +85,12 @@ public:
     static HFMatrix<float64_t> matrix_multiply(
             HFMatrix<float64_t> A, HFMatrix<float64_t> B,
             bool transpose_A = false, bool transpose_B = false,
-            float64_t scale = 0);
+            float64_t scale = 1.0);
     
 #ifdef HAVE_LAPACK
     static void inverse(HFMatrix<float64_t> &matrix);
+    static float64_t* pinv(float64_t *matrix, int32_t rows, int32_t cols,
+                                float64_t *target = NULL);
     
 #endif
 

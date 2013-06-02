@@ -20,8 +20,11 @@ public:
     CHFObject();
     CHFObject(const CHFObject& orig);
     virtual ~CHFObject();
+    
+    virtual const char* get_name() const = 0;
+    
 private:
-
+    void init();
 };
 
 }

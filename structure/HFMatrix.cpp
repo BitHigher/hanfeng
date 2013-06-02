@@ -8,6 +8,8 @@
 #include <iostream>
 #include "HFMatrix.h"
 #include "../math/Math.h"
+#include "../math/lapack.h"
+
 #include "../io/HFIO.h"
 #include "HFVector.h"
 
@@ -119,11 +121,26 @@ void HFMatrix<T>::transpose_matrix(
 }
 
 #ifdef HAVE_LAPACK
-
 template<class T>
 void HFMatrix<T>::inverse(HFMatrix<float64_t> &matrix)
 {
-    // ASSERT(matrix.num_rows == matrix.num_cols)
+    ASSERT(matrix.num_rows == matrix.num_cols);
+    int32_t *ipiv = HF_MALLOC(int32_t, matrix.num_cols);
+    
+    clapack_dgetrf(CblasColMajor,matrix.num_cols,
+                   matrix.num_cols,matrix.matrix,
+                   matrix.num_cols,ipiv);
+    
+    clapack_dgetri(CblasColMajor,matrix.num_cols,
+                   matrix.matrix,matrix.num_cols,ipiv);
+    
+    HF_FREE(ipiv);
+}
+
+template<class T>
+float64_t* HFMatrix<T>::pinv(float64_t* matrix, int32_t rows, 
+                                int32_t cols, float64_t *target)
+{
     // TODO
 }
 
@@ -261,8 +278,12 @@ HFMatrix<float64_t> HFMatrix<T>::matrix_multiply(
     C.zero();
     
 #ifdef HAVE_LAPACK
-    cblas_dgem();
-    // TODO
+    cblas_dgemm(CblasColMajor,
+             transpose_A ? CblasTrans : CblasNoTrans,
+             transpose_B ? CblasTrans : CblasNoTrans,
+             rows_A, cols_B, cols_A, scale, 
+             A.matrix, A.num_rows, B.matrix, B.num_rows,
+             0.0, C.matrix, C.num_rows); 
 #else
     for(index_t i = 0; i < rows_A; ++i)
     {

@@ -12,12 +12,17 @@
 #include "../base/common.h"
 #include "../io/HFIO.h"
 
+#include "../labels/Labels.h"
+#include "../labels/BinaryLabels.h"
+#include "../labels/RegressionLabels.h"
+#include "../labels/MultiClassLabels.h"
+#include "../labels/StructuredLabels.h"
+#include "../labels/LatentLabels.h"
 
 namespace hanfeng
 {
     
 class CFeatures;
-class CLabels;
 class CMath;
 
 enum EMachineType
@@ -53,7 +58,14 @@ public:
     virtual ~CMachine();
     
     virtual bool train(CFeatures *data = NULL);
+    
     virtual CLabels* apply(CFeatures *data = NULL);
+    virtual CBinaryLabels* apply_binary(CFeatures *data = NULL);
+    virtual CRegressionLabels* apply_regression(CFeatures *data = NULL);
+    virtual CMultiClassLabels* apply_multiclass(CFeatures *data = NULL);
+    virtual CStructuredLabels* apply_structured(CFeatures *data = NULL);
+    virtual CLatentLabels* apply_latent(CFeatures *data = NULL);
+    
     
     virtual void set_labels(CLabels *labels);
     virtual CLabels* get_labels();

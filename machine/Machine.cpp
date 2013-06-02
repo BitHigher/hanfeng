@@ -42,30 +42,6 @@ CLabels* CMachine::get_labels()
     return labels_;
 }
 
-CLabels* CMachine::apply(CFeatures* data)
-{
-    CLabels *result = NULL;
-    
-    switch(get_machine_problem_type())
-    {
-        case PT_BINARY:
-            break;
-        case PT_REGRESSION:
-            break;
-        case PT_MULTICLASS:
-            break;
-        case PT_STRUCTURED:
-            break;
-        case PT_LATENT:
-            break;
-        default:
-            HF_ERROR("Unknown problem type");
-            break;
-    }
-    
-    return result;
-}
-
 bool CMachine::train(CFeatures *data)
 {
     if(data_locked_)
@@ -80,8 +56,7 @@ bool CMachine::train(CFeatures *data)
         if(labels_ == NULL)
             HF_ERROR("%s@%p: No labels given", get_name(), this);
     
-        // TODO
-        // labels_->ensure_valid(get_name());
+        labels_->ensure_valid(get_name());
     }
     
     bool result = train_machine(data);
@@ -90,4 +65,63 @@ bool CMachine::train(CFeatures *data)
         store_model_features();
     
     return result;
+}
+
+CLabels* CMachine::apply(CFeatures* data)
+{
+    CLabels *result = NULL;
+    
+    switch(get_machine_problem_type())
+    {
+        case PT_BINARY:
+            result = apply_binary(data);
+            break;
+        case PT_REGRESSION:
+            result = apply_regression(data);
+            break;
+        case PT_MULTICLASS:
+            result = apply_multiclass(data);
+            break;
+        case PT_STRUCTURED:
+            result = apply_structured(data);
+            break;
+        case PT_LATENT:
+            result = apply_latent(data);
+            break;
+        default:
+            HF_ERROR("Unknown problem type");
+            break;
+    }
+    
+    return result;
+}
+
+CBinaryLabels* CMachine::apply_binary(CFeatures* data)
+{
+    HF_ERROR("%s does not support apply_binary()", get_name());
+    return NULL;
+}
+
+CRegressionLabels* CMachine::apply_regression(CFeatures* data)
+{
+    HF_ERROR("%s does not support apply_regression()", get_name());
+    return NULL;
+}
+
+CMultiClassLabels* CMachine::apply_multiclass(CFeatures* data)
+{
+    HF_ERROR("%s does not support apply_multiclass()", get_name());
+    return NULL;
+}
+
+CStructuredLabels* CMachine::apply_structured(CFeatures* data)
+{
+    HF_ERROR("%s does not support apply_structured()", get_name());
+    return NULL;
+}
+
+CLatentLabels* CMachine::apply_latent(CFeatures* data)
+{
+    HF_ERROR("%s does not support apply_latent()", get_name());
+    return NULL;
 }

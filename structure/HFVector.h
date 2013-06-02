@@ -10,6 +10,7 @@
 
 #include "HFReferenceData.h"
 #include "../base/common.h"
+#include "../io/File.h"
 
 namespace hanfeng
 {
@@ -22,7 +23,8 @@ public:
     HFVector();
     HFVector(const HFVector &orig);  
     HFVector(T *v, int32_t len, bool ref_counting=true);
-  
+    HFVector(int32_t len, bool ref_counting=true);
+    
     virtual ~HFVector();
     
     /** override virtual functions **/
@@ -97,6 +99,8 @@ public:
         return product(vector, vlen);
     }
     
+    void load(CFile *loader);
+    void save(CFile *saver);
 public:
     T *vector;
     int32_t vlen;

@@ -32,6 +32,13 @@ HFVector<T>::HFVector(T* v, int32_t len, bool ref_counting)
 }
 
 template<class T>
+HFVector<T>::HFVector(int32_t len, bool ref_counting)
+: HFReferenceData(ref_counting), vlen(len)
+{
+    vector = HF_MALLOC(T, len);
+}
+
+template<class T>
 HFVector<T>::~HFVector()
 {
     unref();
@@ -145,6 +152,24 @@ HFVector<T> HFVector<T>::operator +=(HFVector<T>& that)
 {
     add(that);
     return *this;
+}
+
+template<class T>
+void HFVector<T>::load(CFile* loader)
+{
+    ASSERT(loader);
+    
+    unref();
+    
+    // TODO
+}
+
+template<class T>
+void HFVector<T>::save(CFile* saver)
+{
+    ASSERT(saver);
+    
+    // TODO
 }
 
 /** supported types **/

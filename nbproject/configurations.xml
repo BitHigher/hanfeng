@@ -2,24 +2,63 @@
 <configurationDescriptor version="88">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles" displayName="头文件" projectFiles="true">
+      <itemPath>labels/BinaryLabels.h</itemPath>
+      <itemPath>labels/DenseLabels.h</itemPath>
+      <itemPath>features/DotFeatures.h</itemPath>
+      <itemPath>features/Features.h</itemPath>
+      <itemPath>io/File.cpp</itemPath>
+      <itemPath>io/File.h</itemPath>
       <itemPath>lib/HFException.h</itemPath>
       <itemPath>io/HFIO.h</itemPath>
       <itemPath>structure/HFMatrix.h</itemPath>
+      <itemPath>base/HFObject.h</itemPath>
       <itemPath>structure/HFReferenceData.h</itemPath>
       <itemPath>structure/HFVector.h</itemPath>
+      <itemPath>labels/Labels.h</itemPath>
+      <itemPath>labels/LatentLabels.h</itemPath>
+      <itemPath>machine/LinearMachine.h</itemPath>
+      <itemPath>loss/LogLoss.h</itemPath>
+      <itemPath>loss/LossFunction.h</itemPath>
+      <itemPath>machine/Machine.h</itemPath>
       <itemPath>math/Math.h</itemPath>
+      <itemPath>labels/MultiClassLabels.h</itemPath>
+      <itemPath>base/Parallel.h</itemPath>
+      <itemPath>labels/RegressionLabels.h</itemPath>
+      <itemPath>labels/StructuredLabels.h</itemPath>
+      <itemPath>structure/Subset.h</itemPath>
+      <itemPath>structure/SubsetStack.h</itemPath>
       <itemPath>base/common.h</itemPath>
+      <itemPath>lib/config.h</itemPath>
       <itemPath>base/init.h</itemPath>
+      <itemPath>math/lapack.h</itemPath>
+      <itemPath>lib/lapacke.h</itemPath>
       <itemPath>base/memory.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles" displayName="源文件" projectFiles="true">
+      <itemPath>labels/BinaryLabels.cpp</itemPath>
+      <itemPath>labels/DenseLabels.cpp</itemPath>
+      <itemPath>features/DotFeatures.cpp</itemPath>
+      <itemPath>features/Features.cpp</itemPath>
       <itemPath>lib/HFException.cpp</itemPath>
       <itemPath>io/HFIO.cpp</itemPath>
       <itemPath>structure/HFMatrix.cpp</itemPath>
+      <itemPath>base/HFObject.cpp</itemPath>
       <itemPath>structure/HFReferenceData.cpp</itemPath>
       <itemPath>structure/HFVector.cpp</itemPath>
+      <itemPath>labels/Labels.cpp</itemPath>
+      <itemPath>labels/LatentLabels.cpp</itemPath>
+      <itemPath>machine/LinearMachine.cpp</itemPath>
+      <itemPath>loss/LogLoss.cpp</itemPath>
+      <itemPath>machine/Machine.cpp</itemPath>
       <itemPath>math/Math.cpp</itemPath>
+      <itemPath>labels/MultiClassLabels.cpp</itemPath>
+      <itemPath>base/Parallel.cpp</itemPath>
+      <itemPath>labels/RegressionLabels.cpp</itemPath>
+      <itemPath>labels/StructuredLabels.cpp</itemPath>
+      <itemPath>structure/Subset.cpp</itemPath>
+      <itemPath>structure/SubsetStack.cpp</itemPath>
       <itemPath>base/init.cpp</itemPath>
+      <itemPath>math/lapack.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
       <itemPath>base/memory.cpp</itemPath>
     </logicalFolder>
@@ -50,7 +89,18 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <linkerTool>
+          <commandLine>-llapack -lcblas</commandLine>
+        </linkerTool>
       </compileType>
+      <item path="base/HFObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="base/HFObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="base/Parallel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="base/Parallel.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="base/common.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="base/init.cpp" ex="false" tool="1" flavor2="0">
@@ -61,19 +111,81 @@
       </item>
       <item path="base/memory.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="features/DotFeatures.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="features/DotFeatures.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="features/Features.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="features/Features.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="io/File.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="io/File.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="io/HFIO.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="io/HFIO.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="labels/BinaryLabels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="labels/BinaryLabels.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labels/DenseLabels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="labels/DenseLabels.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labels/Labels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="labels/Labels.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labels/LatentLabels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="labels/LatentLabels.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labels/MultiClassLabels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="labels/MultiClassLabels.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labels/RegressionLabels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="labels/RegressionLabels.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labels/StructuredLabels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="labels/StructuredLabels.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="lib/HFException.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="lib/HFException.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="lib/config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="lib/lapacke.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="loss/LogLoss.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="loss/LogLoss.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="loss/LossFunction.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="machine/LinearMachine.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="machine/LinearMachine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="machine/Machine.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="machine/Machine.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="math/Math.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="math/Math.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="math/lapack.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="math/lapack.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="structure/HFMatrix.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -86,6 +198,14 @@
       <item path="structure/HFVector.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="structure/HFVector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="structure/Subset.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="structure/Subset.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="structure/SubsetStack.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="structure/SubsetStack.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -109,6 +229,14 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="base/HFObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="base/HFObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="base/Parallel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="base/Parallel.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="base/common.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="base/init.cpp" ex="false" tool="1" flavor2="0">
@@ -119,19 +247,81 @@
       </item>
       <item path="base/memory.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="features/DotFeatures.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="features/DotFeatures.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="features/Features.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="features/Features.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="io/File.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="io/File.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="io/HFIO.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="io/HFIO.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="labels/BinaryLabels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="labels/BinaryLabels.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labels/DenseLabels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="labels/DenseLabels.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labels/Labels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="labels/Labels.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labels/LatentLabels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="labels/LatentLabels.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labels/MultiClassLabels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="labels/MultiClassLabels.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labels/RegressionLabels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="labels/RegressionLabels.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labels/StructuredLabels.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="labels/StructuredLabels.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="lib/HFException.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="lib/HFException.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="lib/config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="lib/lapacke.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="loss/LogLoss.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="loss/LogLoss.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="loss/LossFunction.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="machine/LinearMachine.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="machine/LinearMachine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="machine/Machine.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="machine/Machine.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="math/Math.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="math/Math.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="math/lapack.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="math/lapack.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="structure/HFMatrix.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -144,6 +334,14 @@
       <item path="structure/HFVector.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="structure/HFVector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="structure/Subset.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="structure/Subset.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="structure/SubsetStack.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="structure/SubsetStack.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

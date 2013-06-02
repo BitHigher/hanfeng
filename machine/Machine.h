@@ -19,10 +19,11 @@
 #include "../labels/StructuredLabels.h"
 #include "../labels/LatentLabels.h"
 
+#include "../features/Features.h"
+
 namespace hanfeng
 {
     
-class CFeatures;
 class CMath;
 
 enum EMachineType
@@ -59,6 +60,11 @@ public:
     
     virtual bool train(CFeatures *data = NULL);
     
+    virtual float64_t apply_one(int32_t vec_idx)
+    {
+        // TODO HF_NOTIMPLEMENTED
+        return 0.0;
+    }
     virtual CLabels* apply(CFeatures *data = NULL);
     virtual CBinaryLabels* apply_binary(CFeatures *data = NULL);
     virtual CRegressionLabels* apply_regression(CFeatures *data = NULL);
@@ -88,6 +94,12 @@ public:
     ESolverType get_solver_type(){return solver_type_;}
     
     inline bool is_data_locked() const { return data_locked_;}
+    
+    virtual CMachine* clone()
+    {
+        // TODO HF_NOTIMPLEMENTED
+        return NULL;
+    }
     
 protected:
     virtual bool train_machine(CFeatures *data = NULL)

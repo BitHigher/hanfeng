@@ -6,6 +6,7 @@
         <itemPath>base/HFObject.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="features" projectFiles="true">
+        <itemPath>features/DenseFeatures.h</itemPath>
         <itemPath>features/DotFeatures.h</itemPath>
         <itemPath>features/Features.h</itemPath>
       </logicalFolder>
@@ -37,6 +38,7 @@
         <itemPath>structure/Subset.h</itemPath>
         <itemPath>structure/SubsetStack.h</itemPath>
       </logicalFolder>
+      <itemPath>classifier/LDA.h</itemPath>
       <itemPath>loss/LogLoss.h</itemPath>
       <itemPath>loss/LossFunction.h</itemPath>
       <itemPath>math/Math.h</itemPath>
@@ -72,10 +74,12 @@
         <itemPath>structure/Subset.cpp</itemPath>
         <itemPath>structure/SubsetStack.cpp</itemPath>
       </logicalFolder>
+      <itemPath>features/DenseFeatures.cpp</itemPath>
       <itemPath>io/File.cpp</itemPath>
       <itemPath>lib/HFException.cpp</itemPath>
       <itemPath>io/HFIO.cpp</itemPath>
       <itemPath>base/HFObject.cpp</itemPath>
+      <itemPath>classifier/LDA.cpp</itemPath>
       <itemPath>loss/LogLoss.cpp</itemPath>
       <itemPath>math/Math.cpp</itemPath>
       <itemPath>base/Parallel.cpp</itemPath>
@@ -132,6 +136,14 @@
       <item path="base/memory.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="base/memory.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="classifier/LDA.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="classifier/LDA.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="features/DenseFeatures.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="features/DenseFeatures.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="features/DotFeatures.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -268,6 +280,14 @@
       <item path="base/memory.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="base/memory.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="classifier/LDA.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="classifier/LDA.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="features/DenseFeatures.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="features/DenseFeatures.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="features/DotFeatures.cpp" ex="false" tool="1" flavor2="0">
       </item>

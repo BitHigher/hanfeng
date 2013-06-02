@@ -30,6 +30,7 @@ enum EMachineType
 {
     CT_NONE = 0,
     CT_LIGHT = 10,
+    CT_LDA = 100,
     CT_LIBLINEAR = 230
 };
 
@@ -52,6 +53,9 @@ enum EProblemType
     PT_STRUCTURED = 3,
     PT_LATENT = 4
 };
+
+#define MACHINE_PROBLEM_TYPE(PT) \
+        virtual EProblemType get_machine_problem_type() const {return PT;}
 
 class CMachine : public CHFObject {
 public:

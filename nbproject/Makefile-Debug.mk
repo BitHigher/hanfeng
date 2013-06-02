@@ -39,6 +39,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/base/Parallel.o \
 	${OBJECTDIR}/base/init.o \
 	${OBJECTDIR}/base/memory.o \
+	${OBJECTDIR}/classifier/LDA.o \
+	${OBJECTDIR}/features/DenseFeatures.o \
 	${OBJECTDIR}/features/DotFeatures.o \
 	${OBJECTDIR}/features/Features.o \
 	${OBJECTDIR}/io/File.o \
@@ -107,6 +109,16 @@ ${OBJECTDIR}/base/memory.o: base/memory.cpp
 	${MKDIR} -p ${OBJECTDIR}/base
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/base/memory.o base/memory.cpp
+
+${OBJECTDIR}/classifier/LDA.o: classifier/LDA.cpp 
+	${MKDIR} -p ${OBJECTDIR}/classifier
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/classifier/LDA.o classifier/LDA.cpp
+
+${OBJECTDIR}/features/DenseFeatures.o: features/DenseFeatures.cpp 
+	${MKDIR} -p ${OBJECTDIR}/features
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/features/DenseFeatures.o features/DenseFeatures.cpp
 
 ${OBJECTDIR}/features/DotFeatures.o: features/DotFeatures.cpp 
 	${MKDIR} -p ${OBJECTDIR}/features

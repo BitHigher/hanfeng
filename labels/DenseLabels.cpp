@@ -102,3 +102,23 @@ void CDenseLabels::save(CFile *saver)
     
     labels_.save(saver);
 }
+
+int32_t CDenseLabels::get_int_label(index_t index)
+{
+    int real_num = subset_stack_->subset_idx_conversion(index);
+    ASSERT(labels_.vector && index < get_num_labels());
+    
+    // TODO more check
+    
+    return int32_t(labels_.vector[real_num]);
+}
+
+HFVector<int32_t> CDenseLabels::get_int_labels()
+{
+    HFVector<int32_t> intlabs(get_num_labels());
+    
+    for(index_t i = 0; i < get_num_labels(); ++i)
+        intlabs.vector[i] = get_int_label(i);
+    
+    return intlabs;
+}

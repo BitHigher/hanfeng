@@ -46,6 +46,7 @@ void test_vector()
     
     HFVector<float64_t> v2 = v1.clone();
     
+    /*
     float64_t *b = new float64_t[11];
     HFVector<float64_t> v3(b, 2);
     
@@ -53,6 +54,10 @@ void test_vector()
     
     
     v2.display_vector();
+     */
+    
+    HFVector<float64_t> w(5);
+    w.display_vector();
 }
 
 void test_matrix()
@@ -96,8 +101,8 @@ int main(int argc, char** argv)
   
     init_hanfeng(print_error, print_error, print_error);    
     
-    // test_vector();
+    test_vector();
     
-    test_matrix();
+    // test_matrix();
     return 0;
 }

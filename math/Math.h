@@ -133,6 +133,13 @@ public:
         }
     }
     
+    template<class T>
+    static inline T max(T a, T b)
+    {
+        return (a <= b) ? b : a;
+    }
+    
+    
 private:
 
 };

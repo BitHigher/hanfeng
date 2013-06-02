@@ -14,12 +14,30 @@
 namespace hanfeng
 {
 
-enum EFeatureProperty{
+enum EFeatureProperty
+{
     FP_NONE = 0,
     FP_DOT = 1,
     FP_STREAMING_DOT = 2
 };
+
+enum EFeatureClass
+{
+    C_UNKNOWN = 0,
+    C_DENSE = 10,
+    C_SPARSE = 20,
+    C_STRING = 30
+};
     
+enum EFeatureType
+{
+    F_UNKNOWN = 0,
+    F_BOOL = 5,
+    F_CHAR = 10,
+    F_BYTE = 20,
+    F_DREAL = 100
+};
+
 class CFeatures : public CHFObject {
 public:
     CFeatures();
@@ -33,6 +51,8 @@ public:
     
     virtual int32_t get_num_vectors() const = 0;
     
+    virtual EFeatureClass get_feature_class() const = 0;
+    virtual EFeatureType get_feature_type() const = 0;
 private:
     
     uint64_t properties_;

@@ -11,6 +11,8 @@
 #include "structure/HFVector.h"
 #include "structure/HFMatrix.h"
 
+#include "base/Parallel.h"
+
 using namespace hanfeng;
 
 void print_error(FILE *target, const char *str)
@@ -95,14 +97,26 @@ void test_matrix()
     C.display_matrix();
 }
 
+void test_parallel()
+{
+    std::cout << "[test parallel]\n";
+    
+    Parallel p;
+    std::cout << "CPUs: " << p.get_num_cpus() << '\n';
+}
+
 int main(int argc, char** argv) 
 {
-    std::cout << "hanfeng, a toy for Machine Learning\n";
+    std::cout << "\n-------- test start --------\n";
   
     init_hanfeng(print_error, print_error, print_error);    
     
-    test_vector();
+    // test_vector();
     
     // test_matrix();
+    
+    test_parallel();
+    
+    std::cout << "\n--------test finished--------\n";
     return 0;
 }

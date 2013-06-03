@@ -8,6 +8,8 @@
 #ifndef BASE_PARALLEL_H
 #define BASE_PARALLEL_H
 
+#include "../base/common.h"
+
 namespace hanfeng
 {
 
@@ -16,8 +18,19 @@ public:
     Parallel();
     Parallel(const Parallel& orig);
     virtual ~Parallel();
-private:
+    
+    int32_t get_num_cpus() const;
+    void set_num_threads(int32_t n);
+    int32_t get_num_threads() const;
 
+    inline int32_t ref_count(){return refcount_;}
+    int32_t ref();
+    int32_t unref();
+    
+    
+private:
+    int32_t refcount_;
+    int32_t num_threads_;
 };
 
 }

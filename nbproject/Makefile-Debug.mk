@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/base/init.o \
 	${OBJECTDIR}/base/memory.o \
 	${OBJECTDIR}/classifier/LDA.o \
+	${OBJECTDIR}/classifier/LPM.o \
 	${OBJECTDIR}/features/DenseFeatures.o \
 	${OBJECTDIR}/features/DotFeatures.o \
 	${OBJECTDIR}/features/Features.o \
@@ -114,6 +115,11 @@ ${OBJECTDIR}/classifier/LDA.o: classifier/LDA.cpp
 	${MKDIR} -p ${OBJECTDIR}/classifier
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/classifier/LDA.o classifier/LDA.cpp
+
+${OBJECTDIR}/classifier/LPM.o: classifier/LPM.cpp 
+	${MKDIR} -p ${OBJECTDIR}/classifier
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/classifier/LPM.o classifier/LPM.cpp
 
 ${OBJECTDIR}/features/DenseFeatures.o: features/DenseFeatures.cpp 
 	${MKDIR} -p ${OBJECTDIR}/features

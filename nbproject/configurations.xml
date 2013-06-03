@@ -32,6 +32,7 @@
         <itemPath>machine/Machine.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f6" displayName="structure" projectFiles="true">
+        <itemPath>structure/Cache.h</itemPath>
         <itemPath>structure/HFMatrix.h</itemPath>
         <itemPath>structure/HFReferenceData.h</itemPath>
         <itemPath>structure/HFVector.h</itemPath>
@@ -39,6 +40,7 @@
         <itemPath>structure/SubsetStack.h</itemPath>
       </logicalFolder>
       <itemPath>classifier/LDA.h</itemPath>
+      <itemPath>classifier/LPM.h</itemPath>
       <itemPath>loss/LogLoss.h</itemPath>
       <itemPath>loss/LossFunction.h</itemPath>
       <itemPath>math/Math.h</itemPath>
@@ -80,6 +82,7 @@
       <itemPath>io/HFIO.cpp</itemPath>
       <itemPath>base/HFObject.cpp</itemPath>
       <itemPath>classifier/LDA.cpp</itemPath>
+      <itemPath>classifier/LPM.cpp</itemPath>
       <itemPath>loss/LogLoss.cpp</itemPath>
       <itemPath>math/Math.cpp</itemPath>
       <itemPath>base/Parallel.cpp</itemPath>
@@ -140,6 +143,10 @@
       <item path="classifier/LDA.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="classifier/LDA.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="classifier/LPM.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="classifier/LPM.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="features/DenseFeatures.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -220,6 +227,8 @@
       <item path="math/lapack.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="math/lapack.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="structure/Cache.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="structure/HFMatrix.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -285,6 +294,10 @@
       </item>
       <item path="classifier/LDA.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="classifier/LPM.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="classifier/LPM.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="features/DenseFeatures.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="features/DenseFeatures.h" ex="false" tool="3" flavor2="0">
@@ -364,6 +377,8 @@
       <item path="math/lapack.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="math/lapack.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="structure/Cache.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="structure/HFMatrix.cpp" ex="false" tool="1" flavor2="0">
       </item>

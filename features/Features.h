@@ -10,6 +10,7 @@
 
 #include "../base/HFObject.h"
 #include "../base/common.h"
+#include "../structure/SubsetStack.h"
 
 namespace hanfeng
 {
@@ -57,6 +58,8 @@ private:
     
     uint64_t properties_;
 
+protected:
+    CSubsetStack *subset_stack_;
 };
 
 }

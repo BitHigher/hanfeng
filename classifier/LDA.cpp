@@ -99,18 +99,75 @@ bool CLDA::train_machine(CFeatures *data)
     // mean neg
     for(i = 0; i < num_neg; ++i)
     {
-        // TODO
+        int32_t vlen;
+        bool vfree;
+        float64_t *vec = rf->get_feature_vector(classidx_neg[i], vlen, vfree);
+        
+        ASSERT(vec);
+        
+        for(j = 0; j < vlen; ++j)
+        {
+            mean_neg[j] += vec[j];
+            buffer[num_feat*i+j] = vec[j];
+        }
+        
+        rf->free_feature_vector(vec, classidx_neg[i], vfree);
     }
     
+    for(j = 0; j < num_feat; ++j)
+        mean_neg[j] /= num_neg;
+    
+    for(i = 0; i < num_neg; ++i)
+    {
+        for(j = 0; j < num_feat; ++j)
+            buffer[i*num_feat+j] -= mean_neg[j];
+    }
+    
+    cblas_dgemm(CblasColMajor, CblasNoTrans, CblasTrans, nf, nf,
+                num_neg, 1.0, buffer, nf, buffer, nf, 0, scatter, nf);
     
     // mean pos
     for(i = 0; i < num_pos; ++i)
     {
-        // TODO
+        int32_t vlen;
+        bool vfree;
+        float64_t *vec = rf->get_feature_vector(classidx_pos[i], vlen, vfree);
+        
+        // TOOD should ASSERT(vlen == num_feat) ???
+        ASSERT(vec);
+        
+        for(j = 0; j < vlen; ++j)
+        {
+            mean_pos[j] += vec[j];
+            buffer[num_feat*i+j] = vec[j];
+        }
+        
+        rf->free_feature_vector(vec, classidx_pos[i], vfree);
     }
     
+    for(j = 0; j < num_feat; ++j)
+        mean_pos[j] /= num_pos;
+    
+    for(i = 0; i < num_pos; ++i)
+    {
+        for(j = 0; j < num_feat; ++j)
+            buffer[i*num_feat+j] -= mean_pos[j];
+    }
+    
+    cblas_dgemm(CblasColMajor, CblasNoTrans, CblasTrans, nf, nf, num_pos,
+                1.0/(train_labels.vlen-1), buffer, nf, buffer, nf,
+                1.0/(train_labels.vlen-1), scatter, nf);
     
     float64_t trace = HFMatrix<float64_t>::trace(scatter, num_feat, num_feat);
+    
+    float64_t s = 1.0 - gamma_;
+    for(i = 0; i < num_feat*num_feat; ++i)
+        scatter[i] *= s;
+    
+    for(i = 0; i < num_feat; ++i)
+        scatter[i*num_feat+i] += trace*gamma_/num_feat;
+    
+    // TODO
     
 #ifdef DEBUG_LDA
         // TODO

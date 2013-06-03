@@ -30,6 +30,7 @@ enum EMachineType
 {
     CT_NONE = 0,
     CT_LIGHT = 10,
+    CT_PERCEPTRON = 80,
     CT_LDA = 100,
     CT_LIBLINEAR = 230
 };

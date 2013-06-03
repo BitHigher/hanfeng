@@ -28,13 +28,16 @@ public:
     HFVector<T> get_feature_vecotr(int32_t num);
     
     void free_feature_vector(T *feat_vec, int32_t num, bool dofree);
+
+    virtual void add_to_dense_vec(float64_t alpha, int32_t vec_idx1, 
+               float64_t *vec2, int32_t vec2_len, bool abs_val = false);
     
 protected:
-    int32_t num_vectors;
-    int32_t num_features;
+    int32_t num_vectors_;
+    int32_t num_features_;
     
-    HFMatrix<T> feature_matrix;
-    CCache<T> *feature_cache;
+    HFMatrix<T> feature_matrix_;
+    CCache<T> *feature_cache_;
 };
 
 }

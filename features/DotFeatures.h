@@ -29,6 +29,9 @@ public:
                                 int32_t stop, float64_t *alphas,
                                 float64_t *vec, int32_t dim,
                                 float64_t b);
+    
+    virtual void add_to_dense_vec(float64_t alpha, int32_t vec_idx1, 
+               float64_t *vec2, int32_t vec2_len, bool abs_val = false) = 0;
 private:
 
 };

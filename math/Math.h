@@ -145,6 +145,25 @@ public:
         return (a <=b)? a : b;
     }
     
+    template<class T>
+    static inline T sign(T a)
+    {
+        if(a == 0)
+            return 0;
+        else return (a<0)? -1 : 1;
+    }
+    
+    template<class T>
+    static T abs(T a)
+    {
+        // why not return (a>=0)?a:(-a);
+        if(a == 0)
+            return 0;
+        else if(a > 0)
+            return a;
+        else
+            return -a;
+    }
     
 private:
 

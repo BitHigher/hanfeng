@@ -7,6 +7,7 @@
 
 #include "DenseFeatures.h"
 #include "../base/common.h"
+#include "../math/Math.h"
 
 using namespace hanfeng;
 
@@ -40,24 +41,24 @@ template<class T>
 T* CDenseFeatures<T>::get_feature_vector(int32_t num, int32_t& len, bool& dofree)
 {
     int32_t real_num = subset_stack_->subset_idx_conversion(num);
-    len = num_features;
+    len = num_features_;
     
-    if(feature_matrix.matrix)
+    if(feature_matrix_.matrix)
     {
         dofree = false;
-        return &feature_matrix.matrix[real_num * int64_t(num_features)];
+        return &feature_matrix_.matrix[real_num * int64_t(num_features_)];
     }
     
     T *feat = NULL;
     dofree = false;
     
-    if(feature_cache)
+    if(feature_cache_)
     {
-        feat = feature_cache->lock_entry(real_num);
+        feat = feature_cache_->lock_entry(real_num);
         if(feat)
             return feat;
         else
-            feat = feature_cache->set_entry(real_num);
+            feat = feature_cache_->set_entry(real_num);
     }
     
     // TODO
@@ -86,6 +87,32 @@ void CDenseFeatures<T>::free_feature_vector(T* feat_vec,
                                                 int32_t num, bool dofree)
 {
     // TODO
+}
+
+template<class T>
+void CDenseFeatures<T>::add_to_dense_vec(float64_t alpha, int32_t vec_idx1, 
+                float64_t* vec2, int32_t vec2_len, bool abs_val)
+{
+    ASSERT(vec2_len == num_features_);
+    
+    int32_t vlen;
+    bool vfree;
+    T *vec1 = get_feature_vector(vec_idx1, vlen, vfree);
+    
+    ASSERT(vlen == num_features_);
+    
+    if(abs_val)
+    {
+        for(index_t i = 0; i < num_features_; ++i)
+            vec2[i] += alpha * CMath::abs(vec1[i]);
+    }
+    else
+    {
+        for(index_t i = 0; i < num_features_; ++i)
+            vec2[i] += alpha * vec1[i];
+    }
+    
+    free_feature_vector(vec1, vec_idx1, vfree);
 }
 
 template class CDenseFeatures<float64_t>;

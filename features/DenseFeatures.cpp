@@ -81,4 +81,11 @@ HFVector<T> CDenseFeatures<T>::get_feature_vecotr(int32_t num)
     return HFVector<T>(vector, vlen, do_free);
 }
 
+template<class T>
+void CDenseFeatures<T>::free_feature_vector(T* feat_vec, 
+                                                int32_t num, bool dofree)
+{
+    // TODO
+}
+
 template class CDenseFeatures<float64_t>;

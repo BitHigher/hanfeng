@@ -11,6 +11,7 @@
 
 #include "LDA.h"
 #include "../math/Math.h"
+#include "../math/lapack.h"
 #include "../structure/HFMatrix.h"
 #include "../io/HFIO.h"
 
@@ -167,7 +168,22 @@ bool CLDA::train_machine(CFeatures *data)
     for(i = 0; i < num_feat; ++i)
         scatter[i*num_feat+i] += trace*gamma_/num_feat;
     
-    // TODO
+    float64_t *inv_scatter = (float64_t*)HFMatrix<float64_t>::pinv(
+                                scatter, num_feat, num_feat, NULL);
+    
+    float64_t *w_pos = buffer;
+    float64_t *w_neg = &buffer[num_feat];
+    
+    cblas_dsymv(CblasColMajor, CblasUpper, nf, 1.0, inv_scatter, nf,
+                     (double*) mean_pos, 1, 0., (double*) w_pos, 1);
+    cblas_dsymv(CblasColMajor, CblasUpper, nf, 1.0, inv_scatter, nf,
+                     (double*) mean_neg, 1, 0, (double*) w_neg, 1);
+    
+    bias_ = 0.5 * (HFVector<float64_t>::dot(w_neg, mean_neg, num_feat) - 
+                   HFVector<float64_t>::dot(w_pos, mean_pos, num_feat));
+    
+    for(i = 0; i < num_feat; ++i)
+        w_.vector[i] = w_pos[i] - w_neg[i];
     
 #ifdef DEBUG_LDA
         // TODO
@@ -179,6 +195,7 @@ bool CLDA::train_machine(CFeatures *data)
     HF_FREE(mean_neg);
     HF_FREE(mean_pos);
     HF_FREE(scatter);
+    HF_FREE(inv_scatter);
     HF_FREE(buffer);
     
     return true;

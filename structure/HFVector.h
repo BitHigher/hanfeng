@@ -51,7 +51,12 @@ public:
     void zero();
     void random(T min_value, T max_value);
     
-    void display_vector();
+    void display_vector(const char *name="vector", const char *prefix="") const;
+    static void display_vector(const T *vector, int32_t n, 
+                        const char *name="vector", const char *prefix="");
+    
+    static void display_vector(const HFVector<T>, const char *name="vector",
+                                        const char *prefix="");
     
     /** calculations **/
     static inline T sum(T *vec, int32_t len)
@@ -98,6 +103,8 @@ public:
     {
         return product(vector, vlen);
     }
+    
+    static float64_t dot(const float64_t *v1, const float64_t *v2, int32_t n);
     
     void load(CFile *loader);
     void save(CFile *saver);

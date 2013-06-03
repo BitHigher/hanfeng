@@ -141,7 +141,41 @@ template<class T>
 float64_t* HFMatrix<T>::pinv(float64_t* matrix, int32_t rows, 
                                 int32_t cols, float64_t *target)
 {
-    // TODO
+    if(!target)
+        target = HF_MALLOC(float64_t, rows*cols);
+    
+    char jobu = 'A';
+    char jobvt = 'A';
+    
+    int32_t m = rows;
+    int32_t n = cols;
+    int32_t lda = m;
+    int32_t ldu = m;
+    int32_t ldvt = n;
+    int32_t info = -1;
+    
+    int32_t lsize = CMath::min(m, n);
+    float64_t *s = HF_MALLOC(float64_t, lsize);
+    float64_t *u = HF_MALLOC(float64_t, m*m);
+    float64_t *vt = HF_MALLOC(float64_t, n*n);
+    
+    // TODO undefind symbol _wrap_dgesvd
+    //wrap_dgesvd(jobu, jobvt, m, n, matrix, lda, s, u, ldu, vt, ldvt, &info);
+    ASSERT(info == 0);
+    
+    for(index_t i = 0; i < n; ++i)
+    {
+        for(index_t j = 0; j < lsize; ++j)
+            vt[i*n+j] = vt[i*n+j]/s[j];
+    }
+    
+    cblas_dgemm(CblasColMajor, CblasTrans, CblasTrans, m, n,
+                m, 1.0, vt, ldvt, u, ldu, 0, target, m);
+
+    HF_FREE(s);
+    HF_FREE(u);
+    HF_FREE(vt);
+    return target;
 }
 
 #endif

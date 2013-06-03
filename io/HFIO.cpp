@@ -34,7 +34,7 @@ const char *HFIO::message_strings_highlight[NUM_LOG_LEVELS] = {
 
 HFIO::HFIO()
 :target(stdout), syntax_highlight(true),
- show_file_and_line(true), loglevel(MSG_WARNING)
+ show_file_and_line(false), loglevel(MSG_WARNING)
 {
 }
 

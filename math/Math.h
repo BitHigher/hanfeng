@@ -139,6 +139,12 @@ public:
         return (a <= b) ? b : a;
     }
     
+    template<class T>
+    static inline T min(T a, T b)
+    {
+        return (a <=b)? a : b;
+    }
+    
     
 private:
 

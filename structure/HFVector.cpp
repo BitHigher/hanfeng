@@ -9,6 +9,7 @@
 #include "../math/Math.h"
 #include "../io/HFIO.h"
 #include "../base/common.h"
+#include "../math/lapack.h"
 #include <iostream>
 
 using namespace hanfeng;
@@ -94,8 +95,9 @@ void HFVector<T>::random_vector(T* vec, int32_t len, T min_value, T max_value)
 }
 
 template<class T>
-void HFVector<T>::display_vector()
+void HFVector<T>::display_vector(const char *name, const char *prefix) const
 {
+    /*
     std::cout << '[';
     for(int32_t i = 0; i < vlen-1; ++i)
         std::cout << vector[i] << ',';
@@ -104,6 +106,156 @@ void HFVector<T>::display_vector()
         std::cout << vector[vlen-1];
     
     std::cout << ']' << '\n';
+     */
+    
+    display_vector(vector, vlen, name, prefix);
+}
+
+namespace hanfeng
+{
+template<>
+void HFVector<bool>::display_vector(const bool* vector, int32_t n, 
+                                const char *name, const char *prefix)
+{
+    ASSERT(n > 0);
+    HF_SPRINT("%s%s=[", prefix, name);
+    for(index_t i = 0; i < n; ++i)
+        HF_SPRINT("%s%d%s", prefix, vector[i]?1:0, i==n-1?"":",");
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFVector<char>::display_vector(const char* vector, int32_t n, 
+                                const char *name, const char *prefix)
+{
+    ASSERT(n > 0);
+    HF_SPRINT("%s%s=[", prefix, name);
+    for(index_t i = 0; i < n; ++i)
+        HF_SPRINT("%s%c%s", prefix, vector[i], i==n-1?"":",");
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFVector<uint8_t>::display_vector(const uint8_t* vector, int32_t n, 
+                                const char *name, const char *prefix)
+{
+    ASSERT(n > 0);
+    HF_SPRINT("%s%s=[", prefix, name);
+    for(index_t i = 0; i < n; ++i)
+        HF_SPRINT("%s%d%s", prefix, vector[i], i==n-1?"":",");
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFVector<uint16_t>::display_vector(const uint16_t* vector, int32_t n, 
+                                const char *name, const char *prefix)
+{
+    ASSERT(n > 0);
+    HF_SPRINT("%s%s=[", prefix, name);
+    for(index_t i = 0; i < n; ++i)
+        HF_SPRINT("%s%d%s", prefix, vector[i], i==n-1?"":",");
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFVector<uint32_t>::display_vector(const uint32_t* vector, int32_t n, 
+                                const char *name, const char *prefix)
+{
+    ASSERT(n > 0);
+    HF_SPRINT("%s%s=[", prefix, name);
+    for(index_t i = 0; i < n; ++i)
+        HF_SPRINT("%s%d%s", prefix, vector[i], i==n-1?"":",");
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFVector<uint64_t>::display_vector(const uint64_t* vector, int32_t n, 
+                                const char *name, const char *prefix)
+{
+    ASSERT(n > 0);
+    HF_SPRINT("%s%s=[", prefix, name);
+    for(index_t i = 0; i < n; ++i)
+        HF_SPRINT("%s%d%s", prefix, vector[i], i==n-1?"":",");
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFVector<int8_t>::display_vector(const int8_t* vector, int32_t n, 
+                                const char *name, const char *prefix)
+{
+    ASSERT(n > 0);
+    HF_SPRINT("%s%s=[", prefix, name);
+    for(index_t i = 0; i < n; ++i)
+        HF_SPRINT("%s%d%s", prefix, vector[i], i==n-1?"":",");
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFVector<int16_t>::display_vector(const int16_t* vector, int32_t n, 
+                                const char *name, const char *prefix)
+{
+    ASSERT(n > 0);
+    HF_SPRINT("%s%s=[", prefix, name);
+    for(index_t i = 0; i < n; ++i)
+        HF_SPRINT("%s%d%s", prefix, vector[i], i==n-1?"":",");
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFVector<int32_t>::display_vector(const int32_t* vector, int32_t n, 
+                                const char *name, const char *prefix)
+{
+    ASSERT(n > 0);
+    HF_SPRINT("%s%s=[", prefix, name);
+    for(index_t i = 0; i < n; ++i)
+        HF_SPRINT("%s%d%s", prefix, vector[i], i==n-1?"":",");
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFVector<int64_t>::display_vector(const int64_t* vector, int32_t n, 
+                                const char *name, const char *prefix)
+{
+    ASSERT(n > 0);
+    HF_SPRINT("%s%s=[", prefix, name);
+    for(index_t i = 0; i < n; ++i)
+        HF_SPRINT("%s%d%s", prefix, vector[i], i==n-1?"":",");
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFVector<float32_t>::display_vector(const float32_t* vector, int32_t n, 
+                                const char *name, const char *prefix)
+{
+    ASSERT(n > 0);
+    HF_SPRINT("%s%s=[", prefix, name);
+    for(index_t i = 0; i < n; ++i)
+        HF_SPRINT("%s%g%s", prefix, vector[i], i==n-1?"":",");
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFVector<float64_t>::display_vector(const float64_t* vector, int32_t n, 
+                                const char *name, const char *prefix)
+{
+    ASSERT(n > 0);
+    HF_SPRINT("%s%s=[", prefix, name);
+    for(index_t i = 0; i < n; ++i)
+        HF_SPRINT("%s%.18g%s", prefix, vector[i], i==n-1?"":",");
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFVector<floatmax_t>::display_vector(const floatmax_t* vector, int32_t n, 
+                                const char *name, const char *prefix)
+{
+    ASSERT(n > 0);
+    HF_SPRINT("%s%s=[", prefix, name);
+    for(index_t i = 0; i < n; ++i)
+        HF_SPRINT("%s%.36Lg%s", prefix, vector[i], i==n-1?"":",");
+    HF_SPRINT("%s]\n", prefix);
+}
+
 }
 
 template<class T>
@@ -153,6 +305,25 @@ HFVector<T> HFVector<T>::operator +=(HFVector<T>& that)
     add(that);
     return *this;
 }
+
+template<class T>
+float64_t HFVector<T>::dot(const float64_t* v1, const float64_t* v2, int32_t n)
+{
+    float64_t r = 0;
+#ifdef HAVE_EIGN3
+    // TODO
+#elif HAVE_LAPACK
+    int32_t skip = 1;
+    r = cblas_ddot(n, v1, skip, v2, skip);
+#else
+    for(index_t i = 0; i < n; ++i)
+        r += v1[i] * v2[i];
+#endif
+    
+    return r;
+}
+
+
 
 template<class T>
 void HFVector<T>::load(CFile* loader)

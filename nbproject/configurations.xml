@@ -48,7 +48,6 @@
       <itemPath>base/common.h</itemPath>
       <itemPath>base/init.h</itemPath>
       <itemPath>math/lapack.h</itemPath>
-      <itemPath>lib/lapacke.h</itemPath>
       <itemPath>base/memory.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles" displayName="源文件" projectFiles="true">
@@ -202,8 +201,6 @@
       </item>
       <item path="lib/config.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="lib/lapacke.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="loss/LogLoss.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="loss/LogLoss.h" ex="false" tool="3" flavor2="0">
@@ -351,8 +348,6 @@
       <item path="lib/HFException.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="lib/config.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="lib/lapacke.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="loss/LogLoss.cpp" ex="false" tool="1" flavor2="0">
       </item>

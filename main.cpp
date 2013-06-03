@@ -58,12 +58,28 @@ void test_vector()
     v2.display_vector();
      */
     
+    /*
     HFVector<float64_t> w(5);
+    w.random(0,6);
     w.display_vector();
+     */
+    
+    float64_t *mv1 = new float64_t[3];
+    float64_t *mv2 = new float64_t[3];
+    
+    for(int i = 0; i < 3; ++i)
+    {
+        mv1[i] = i+1;
+        mv2[i] = (i+3)*(i+2);
+    }
+    
+    std::cout << "DOT: " << HFVector<float64_t>::dot(mv1, mv2, 3);
 }
 
 void test_matrix()
 {
+    std::cout << "[test matrix]\n";
+    
     int32_t *a = new int32_t[50];
     for(int i = 0; i < 15; ++i)
     {
@@ -111,11 +127,11 @@ int main(int argc, char** argv)
   
     init_hanfeng(print_error, print_error, print_error);    
     
-    // test_vector();
+    test_vector();
     
     // test_matrix();
     
-    test_parallel();
+    // test_parallel();
     
     std::cout << "\n--------test finished--------\n";
     return 0;

@@ -405,6 +405,28 @@ void HFMatrix<T>::remove_column_mean()
     
     HF_FREE(means);
 }
+
+template<class T>
+void HFMatrix<T>::load(CFile *loader)
+{
+    ASSERT(loader);
+    unref();
+    
+    HF_SET_LOCALE_C;
+    loader->get_matrix(matrix, num_rows, num_cols);
+    HF_RESET_LOCALE;
+}
+
+template<class T>
+void HFMatrix<T>::save(CFile *saver)
+{
+    ASSERT(saver);
+    
+    HF_SET_LOCALE_C;
+    saver->set_matrix(matrix, num_rows, num_cols);
+    HF_RESET_LOCALE;
+}
+
 /** supported types **/
 template class HFMatrix<bool>;
 template class HFMatrix<char>;

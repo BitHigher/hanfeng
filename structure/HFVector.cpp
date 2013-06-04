@@ -332,7 +332,9 @@ void HFVector<T>::load(CFile* loader)
     
     unref();
     
-    // TODO
+    HF_SET_LOCALE_C;
+    loader->get_vector(vector, vlen);
+    HF_RESET_LOCALE;
 }
 
 template<class T>
@@ -340,7 +342,9 @@ void HFVector<T>::save(CFile* saver)
 {
     ASSERT(saver);
     
-    // TODO
+    HF_SET_LOCALE_C;
+    saver->set_vector(vector, vlen);
+    HF_RESET_LOCALE;
 }
 
 /** supported types **/

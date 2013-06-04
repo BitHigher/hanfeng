@@ -51,6 +51,10 @@ enum EMessageType
         HF_ERROR("Assertion %s failed in file %s line %d\n", #x, __FILE__, __LINE__) \
 }
 
+
+#define HF_SET_LOCALE_C setlocale(LC_ALL, "C")
+#define HF_RESET_LOCALE setlocale(LC_ALL, "")
+
 class HFIO 
 {
 public:

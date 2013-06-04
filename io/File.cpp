@@ -83,3 +83,58 @@ char* CFile::read_whole_file(char* fname, size_t& len)
     
     return result;
 }
+
+void CFile::get_vector(bool*& vector, int32_t& len)
+{
+    int32_t *int_vector;
+    get_vector(int_vector, len);
+    
+    ASSERT(len > 0);
+    vector = HF_MALLOC(bool, len);
+    
+    for(index_t i = 0; i < len; ++i)
+        vector[i] = (int_vector[i] != 0);
+    
+    HF_FREE(int_vector);
+}
+
+void CFile::set_vector(const bool* vector, int32_t len)
+{
+    int32_t *int_vector = HF_MALLOC(int32_t, len);
+    for(index_t i = 0; i < len; ++i)
+    {
+        if(vector[i])
+            int_vector[i] = 1;
+        else
+            int_vector[i] = 0;
+    }
+    
+    set_vector(int_vector, len);
+    
+    HF_FREE(int_vector);
+}
+
+void CFile::get_matrix(bool*& matrix, int32_t& num_feat, int32_t& num_vec)
+{
+    int32_t *int_matrix;
+    get_matrix(int_matrix, num_feat, num_vec);
+    
+    ASSERT(num_feat > 0 && num_vec > 0);
+    
+    matrix = HF_MALLOC(bool, num_feat * num_vec);
+    for(index_t i = 0; i < num_feat * num_vec; ++i)
+        matrix[i] = (int_matrix[i] != 0);
+    
+    HF_FREE(int_matrix);
+}
+
+void CFile::set_matrix(const bool *matrix, int32_t num_feat, int32_t num_vec)
+{
+    int32_t *int_matrix = HF_MALLOC(int32_t, num_feat*num_vec);
+    for(index_t i = 0; i < num_feat*num_vec; ++i)
+        int_matrix[i] = matrix[i];
+    
+    set_matrix(int_matrix, num_feat, num_vec);
+    
+    HF_FREE(int_matrix);
+}

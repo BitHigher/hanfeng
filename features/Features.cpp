@@ -9,12 +9,21 @@
 
 using namespace hanfeng;
 
-CFeatures::CFeatures() {
+CFeatures::CFeatures(int32_t size)
+{
+    
 }
 
-CFeatures::CFeatures(const CFeatures &orig) {
+CFeatures::CFeatures(const CFeatures &orig)
+{
+    
 }
 
-CFeatures::~CFeatures() {
+CFeatures::CFeatures(CFile *loader)
+{
+    
 }
 
+CFeatures::~CFeatures()
+{
+}

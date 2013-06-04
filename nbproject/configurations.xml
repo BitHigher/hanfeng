@@ -4,10 +4,21 @@
     <logicalFolder name="HeaderFiles" displayName="头文件" projectFiles="true">
       <logicalFolder name="f1" displayName="base" projectFiles="true">
         <itemPath>base/HFObject.h</itemPath>
+        <itemPath>base/Parallel.h</itemPath>
+        <itemPath>base/Version.h</itemPath>
+        <itemPath>base/common.h</itemPath>
+        <itemPath>base/init.h</itemPath>
+        <itemPath>base/memory.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f8" displayName="classifier" projectFiles="true">
+        <itemPath>classifier/LDA.h</itemPath>
+        <itemPath>classifier/LPM.h</itemPath>
+        <itemPath>classifier/Perceptron.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="features" projectFiles="true">
         <itemPath>features/DenseFeatures.h</itemPath>
         <itemPath>features/DotFeatures.h</itemPath>
+        <itemPath>features/FeatureType.h</itemPath>
         <itemPath>features/Features.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="io" projectFiles="true">
@@ -31,6 +42,10 @@
         <itemPath>machine/LinearMachine.h</itemPath>
         <itemPath>machine/Machine.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="f9" displayName="math" projectFiles="true">
+        <itemPath>math/Math.h</itemPath>
+        <itemPath>math/lapack.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="f6" displayName="structure" projectFiles="true">
         <itemPath>structure/Cache.h</itemPath>
         <itemPath>structure/HFMatrix.h</itemPath>
@@ -39,23 +54,31 @@
         <itemPath>structure/Subset.h</itemPath>
         <itemPath>structure/SubsetStack.h</itemPath>
       </logicalFolder>
-      <itemPath>classifier/LDA.h</itemPath>
-      <itemPath>classifier/LPM.h</itemPath>
       <itemPath>loss/LogLoss.h</itemPath>
       <itemPath>loss/LossFunction.h</itemPath>
-      <itemPath>math/Math.h</itemPath>
-      <itemPath>base/Parallel.h</itemPath>
-      <itemPath>classifier/Perceptron.h</itemPath>
-      <itemPath>base/common.h</itemPath>
-      <itemPath>base/init.h</itemPath>
-      <itemPath>math/lapack.h</itemPath>
-      <itemPath>base/memory.h</itemPath>
+      <itemPath>preprocessor/Preprocessor.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles" displayName="源文件" projectFiles="true">
+      <logicalFolder name="f7" displayName="base" projectFiles="true">
+        <itemPath>base/HFObject.cpp</itemPath>
+        <itemPath>base/Parallel.cpp</itemPath>
+        <itemPath>base/Version.cpp</itemPath>
+        <itemPath>base/init.cpp</itemPath>
+        <itemPath>base/memory.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f6" displayName="classifier" projectFiles="true">
+        <itemPath>classifier/LDA.cpp</itemPath>
+        <itemPath>classifier/LPM.cpp</itemPath>
+        <itemPath>classifier/Perceptron.cpp</itemPath>
+      </logicalFolder>
       <logicalFolder name="f2" displayName="features" projectFiles="true">
         <itemPath>features/DenseFeatures.cpp</itemPath>
         <itemPath>features/DotFeatures.cpp</itemPath>
         <itemPath>features/Features.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5" displayName="io" projectFiles="true">
+        <itemPath>io/File.cpp</itemPath>
+        <itemPath>io/HFIO.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="labels" projectFiles="true">
         <itemPath>labels/BinaryLabels.cpp</itemPath>
@@ -70,6 +93,10 @@
         <itemPath>machine/LinearMachine.cpp</itemPath>
         <itemPath>machine/Machine.cpp</itemPath>
       </logicalFolder>
+      <logicalFolder name="f8" displayName="math" projectFiles="true">
+        <itemPath>math/Math.cpp</itemPath>
+        <itemPath>math/lapack.cpp</itemPath>
+      </logicalFolder>
       <logicalFolder name="f3" displayName="structure" projectFiles="true">
         <itemPath>structure/HFMatrix.cpp</itemPath>
         <itemPath>structure/HFReferenceData.cpp</itemPath>
@@ -77,20 +104,9 @@
         <itemPath>structure/Subset.cpp</itemPath>
         <itemPath>structure/SubsetStack.cpp</itemPath>
       </logicalFolder>
-      <itemPath>io/File.cpp</itemPath>
       <itemPath>lib/HFException.cpp</itemPath>
-      <itemPath>io/HFIO.cpp</itemPath>
-      <itemPath>base/HFObject.cpp</itemPath>
-      <itemPath>classifier/LDA.cpp</itemPath>
-      <itemPath>classifier/LPM.cpp</itemPath>
       <itemPath>loss/LogLoss.cpp</itemPath>
-      <itemPath>math/Math.cpp</itemPath>
-      <itemPath>base/Parallel.cpp</itemPath>
-      <itemPath>classifier/Perceptron.cpp</itemPath>
-      <itemPath>base/init.cpp</itemPath>
-      <itemPath>math/lapack.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
-      <itemPath>base/memory.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles" displayName="资源文件" projectFiles="true">
     </logicalFolder>
@@ -131,6 +147,10 @@
       </item>
       <item path="base/Parallel.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="base/Version.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="base/Version.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="base/common.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="base/init.cpp" ex="false" tool="1" flavor2="0">
@@ -160,6 +180,8 @@
       <item path="features/DotFeatures.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="features/DotFeatures.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="features/FeatureType.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="features/Features.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -230,6 +252,8 @@
       <item path="math/lapack.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="math/lapack.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="preprocessor/Preprocessor.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="structure/Cache.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -283,6 +307,10 @@
       </item>
       <item path="base/Parallel.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="base/Version.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="base/Version.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="base/common.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="base/init.cpp" ex="false" tool="1" flavor2="0">
@@ -312,6 +340,8 @@
       <item path="features/DotFeatures.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="features/DotFeatures.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="features/FeatureType.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="features/Features.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -382,6 +412,8 @@
       <item path="math/lapack.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="math/lapack.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="preprocessor/Preprocessor.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="structure/Cache.h" ex="false" tool="3" flavor2="0">
       </item>

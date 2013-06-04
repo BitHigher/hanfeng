@@ -52,6 +52,9 @@ enum EMessageType
 }
 
 
+
+#define HF_NOTIMPLEMENTED {io->not_implemented(__FILE__, __LINE__);}
+
 #define HF_SET_LOCALE_C setlocale(LC_ALL, "C")
 #define HF_RESET_LOCALE setlocale(LC_ALL, "")
 
@@ -107,6 +110,32 @@ public:
     }
     
     void set_target(FILE *target);
+    
+    inline void not_implemented(const char *file, int32_t line) const
+    {
+        message(MSG_ERROR, file, line, "Sorry, not yet implemented.");
+    }
+    
+    inline int32_t refcount() const
+    {
+        return refcount_;
+    }
+    
+    inline int32_t ref()
+    {
+        return ++refcount_;
+    }
+    
+    inline int32_t unref()
+    {
+        if(refcount_ == 0 || --refcount_ == 0)
+        {
+            delete this;
+            return 0;
+        }
+        else
+            return refcount_;
+    }
 protected:
     const char* get_msg_intro(EMessageType prio) const;
     
@@ -118,6 +147,10 @@ protected:
     static const EMessageType levels[NUM_LOG_LEVELS];
     static const char *message_strings[NUM_LOG_LEVELS];
     static const char *message_strings_highlight[NUM_LOG_LEVELS];
+    
+private:
+    int32_t refcount_;
+    
 };
 
 

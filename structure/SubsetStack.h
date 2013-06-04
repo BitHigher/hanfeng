@@ -17,7 +17,7 @@
 namespace hanfeng
 {
 
-class CSubsetStack : CHFObject {
+class CSubsetStack : public CHFObject {
 public:
     CSubsetStack();
     CSubsetStack(const CSubsetStack& orig);

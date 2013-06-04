@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/base/HFObject.o \
 	${OBJECTDIR}/base/Parallel.o \
+	${OBJECTDIR}/base/Version.o \
 	${OBJECTDIR}/base/init.o \
 	${OBJECTDIR}/base/memory.o \
 	${OBJECTDIR}/classifier/LDA.o \
@@ -101,6 +102,11 @@ ${OBJECTDIR}/base/Parallel.o: base/Parallel.cpp
 	${MKDIR} -p ${OBJECTDIR}/base
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/base/Parallel.o base/Parallel.cpp
+
+${OBJECTDIR}/base/Version.o: base/Version.cpp 
+	${MKDIR} -p ${OBJECTDIR}/base
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/base/Version.o base/Version.cpp
 
 ${OBJECTDIR}/base/init.o: base/init.cpp 
 	${MKDIR} -p ${OBJECTDIR}/base

@@ -10,6 +10,23 @@
 
 #include "../base/common.h"
 
+#ifdef HAVE_PTHREAD
+#ifdef USE_SPINLOCKS
+    #define PTHREAD_LOCK_T pthread_spinlock_t
+    #define PTHREAD_LOCK_INIT(lock) pthread_spinlock_init(lock, NULL)
+    #define PTHREAD_LOCK_DESTROY(lock) pthread_spinlock_destroy(lock)
+    #define PTHREAD_LOCK(lock) pthread_spinlock_lock(lock)
+    #define PTHREAD_UNLOCK(lock) pthread_spinlock_unlock(lock)
+#else
+    #define PTHREAD_LOCK_T pthread_mutex_t
+    #define PTHREAD_LOCK_INIT(lock) pthread_mutex_init(lock, NULL)
+    #define PTHREAD_LOCK_DESTROY(lock) pthread_mutex_destroy(lock)
+    #define PTHREAD_LOCK(lock) pthread_mutex_lock(lock)
+    #define PTHREAD_UNLOCK(lock) pthread_mutex_unlock(lock)
+#endif /* USE_SPINLOCKS */
+#endif /* HAVE_PTHREAD */
+
+
 namespace hanfeng
 {
 

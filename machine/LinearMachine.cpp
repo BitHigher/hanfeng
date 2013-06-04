@@ -26,7 +26,7 @@ CLinearMachine::CLinearMachine(CLinearMachine *machine)
 
 CLinearMachine::~CLinearMachine()
 {
-    HF_UNREF(features);
+    HF_UNREF(features_);
 }
 
 void CLinearMachine::init()

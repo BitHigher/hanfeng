@@ -1,9 +1,15 @@
 #include "init.h"
 #include "../io/HFIO.h"
+#include "../base/Parallel.h"
+#include "../base/Version.h"
+#include "../math/Math.h"
 
 namespace hanfeng
 {
     HFIO *hf_io = NULL;
+    Parallel *hf_parallel = NULL;
+    Version *hf_version = NULL;
+    CMath *hf_math = NULL;
     
     void (*hf_print_message)(FILE *target, const char *str) = NULL;
     void (*hf_print_warning)(FILE *target, const char *str) = NULL;
@@ -18,6 +24,12 @@ namespace hanfeng
     {
         if(!hf_io)
             hf_io = new HFIO();
+        if(!hf_parallel)
+            hf_parallel = new Parallel();
+        if(!hf_version)
+            hf_version = new Version();
+        if(!hf_math)
+            hf_math = new CMath();
         
         hf_print_message = print_message;
         hf_print_warning = print_warning;

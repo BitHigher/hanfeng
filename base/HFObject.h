@@ -8,6 +8,8 @@
 #ifndef BASE_HFOBJECT_H
 #define BASE_HFOBJECT_H
 
+#include "../io/HFIO.h"
+
 namespace hanfeng
 {
 
@@ -22,6 +24,9 @@ public:
     virtual ~CHFObject();
     
     virtual const char* get_name() const = 0;
+    
+public:
+    HFIO *io;
     
 private:
     void init();

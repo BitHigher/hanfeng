@@ -12,6 +12,7 @@
 #include "structure/HFMatrix.h"
 
 #include "base/Parallel.h"
+#include "io/File.h"
 
 using namespace hanfeng;
 
@@ -121,17 +122,31 @@ void test_parallel()
     std::cout << "CPUs: " << p.get_num_cpus() << '\n';
 }
 
+void test_file()
+{
+    std::cout << "[test file]\n";
+    
+    size_t len = 0;
+    char *fname = "/Users/zhf/Desktop/test.txt";
+    char *buf = CFile::read_whole_file(fname, len);
+    
+    std::cout << "[length]:" << len << '\n'
+                << "[Content]:\n" << buf << '\n';
+}
+
 int main(int argc, char** argv) 
 {
     std::cout << "\n-------- test start --------\n";
   
     init_hanfeng(print_error, print_error, print_error);    
     
-    test_vector();
+    // test_vector();
     
     // test_matrix();
     
     // test_parallel();
+    
+    test_file();
     
     std::cout << "\n--------test finished--------\n";
     return 0;

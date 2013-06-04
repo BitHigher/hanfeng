@@ -125,3 +125,8 @@ CLatentLabels* CMachine::apply_latent(CFeatures* data)
     HF_ERROR("%s does not support apply_latent()", get_name());
     return NULL;
 }
+
+void CMachine::set_store_model_features(bool store_model)
+{
+    store_model_features_ = store_model;
+}

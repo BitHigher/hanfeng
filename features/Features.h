@@ -28,9 +28,10 @@ public:
     CFeatures(CFile *loader);
     virtual ~CFeatures();
     
-    virtual CFeatures* duplicate() = 0;
+    virtual CFeatures* duplicate() const = 0;
     virtual EFeatureClass get_feature_class() const = 0;
     virtual EFeatureType get_feature_type() const = 0;
+    
     virtual int32_t get_num_vectors() const = 0;
     virtual int32_t get_size() const = 0;
     

@@ -43,6 +43,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/classifier/LDA.o \
 	${OBJECTDIR}/classifier/LPM.o \
 	${OBJECTDIR}/classifier/Perceptron.o \
+	${OBJECTDIR}/clustering/KMeans.o \
+	${OBJECTDIR}/distance/Distance.o \
 	${OBJECTDIR}/features/DenseFeatures.o \
 	${OBJECTDIR}/features/DotFeatures.o \
 	${OBJECTDIR}/features/Features.o \
@@ -57,6 +59,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/labels/StructuredLabels.o \
 	${OBJECTDIR}/lib/HFException.o \
 	${OBJECTDIR}/loss/LogLoss.o \
+	${OBJECTDIR}/machine/DistanceMachine.o \
 	${OBJECTDIR}/machine/LinearMachine.o \
 	${OBJECTDIR}/machine/Machine.o \
 	${OBJECTDIR}/main.o \
@@ -133,6 +136,16 @@ ${OBJECTDIR}/classifier/Perceptron.o: classifier/Perceptron.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/classifier/Perceptron.o classifier/Perceptron.cpp
 
+${OBJECTDIR}/clustering/KMeans.o: clustering/KMeans.cpp 
+	${MKDIR} -p ${OBJECTDIR}/clustering
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/clustering/KMeans.o clustering/KMeans.cpp
+
+${OBJECTDIR}/distance/Distance.o: distance/Distance.cpp 
+	${MKDIR} -p ${OBJECTDIR}/distance
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/distance/Distance.o distance/Distance.cpp
+
 ${OBJECTDIR}/features/DenseFeatures.o: features/DenseFeatures.cpp 
 	${MKDIR} -p ${OBJECTDIR}/features
 	${RM} $@.d
@@ -202,6 +215,11 @@ ${OBJECTDIR}/loss/LogLoss.o: loss/LogLoss.cpp
 	${MKDIR} -p ${OBJECTDIR}/loss
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/loss/LogLoss.o loss/LogLoss.cpp
+
+${OBJECTDIR}/machine/DistanceMachine.o: machine/DistanceMachine.cpp 
+	${MKDIR} -p ${OBJECTDIR}/machine
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/machine/DistanceMachine.o machine/DistanceMachine.cpp
 
 ${OBJECTDIR}/machine/LinearMachine.o: machine/LinearMachine.cpp 
 	${MKDIR} -p ${OBJECTDIR}/machine

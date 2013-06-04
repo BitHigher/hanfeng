@@ -12,12 +12,54 @@
 using namespace hanfeng;
 
 template<class T>
-CDenseFeatures<T>::CDenseFeatures()
+CDenseFeatures<T>::CDenseFeatures(int32_t size)
+: CDotFeatures(size)
 {
+    init();
 }
 
 template<class T>
-CDenseFeatures<T>::~CDenseFeatures() {
+CDenseFeatures<T>::CDenseFeatures(const CDenseFeatures &orig)
+: CDotFeatures(orig)
+{
+    init();
+    set_feature_matrix(orig.feature_matrix_);
+    
+    // TODO
+    HF_NOTIMPLEMENTED
+}
+
+template<class T>
+CDenseFeatures<T>::CDenseFeatures(HFMatrix<T> matrix)
+{
+    init();
+    set_feature_matrix(matrix);
+}
+
+template<class T>
+CDenseFeatures<T>::~CDenseFeatures()
+{
+    
+}
+
+template<class T>
+void CDenseFeatures<T>::free_feature_matrix()
+{
+    subset_stack_->remove_all_subsets();
+    feature_matrix_ = HFMatrix<T>();
+    num_features_ = 0;
+    num_vectors_ = 0;
+}
+
+template<class T>
+void CDenseFeatures<T>::set_feature_matrix(HFMatrix<T> matrix)
+{
+    subset_stack_->remove_all_subsets();
+    free_feature_matrix();
+    
+    feature_matrix_ = matrix;
+    num_features_ = matrix.num_rows;
+    num_vectors_ = matrix.num_cols;
 }
 
 
@@ -34,6 +76,26 @@ GET_FEATURE_TYPE(F_BOOL, bool)
 GET_FEATURE_TYPE(F_DREAL, float64_t)
 
 #undef GET_FEATURE_TYPE
+
+
+template<>
+float64_t CDenseFeatures<float64_t>::dense_dot(int32_t vec_idx1, 
+                                const float64_t* vec2, int32_t vec2_len)
+{
+    ASSERT(vec2_len == num_features_);
+    
+    int32_t vlen;
+    bool vfree;
+    float64_t *vec1 = get_feature_vector(vec_idx1, vlen, vfree);
+    
+    ASSERT(vlen == num_features_);
+    float64_t result = HFVector<float64_t>::dot(vec1, vec2, vlen);
+    
+    free_feature_vector(vec1, vec_idx1, vfree);
+    
+    return result;
+}
+
 
 }
 
@@ -113,6 +175,52 @@ void CDenseFeatures<T>::add_to_dense_vec(float64_t alpha, int32_t vec_idx1,
     }
     
     free_feature_vector(vec1, vec_idx1, vfree);
+}
+
+template<class T>
+HFMatrix<T> CDenseFeatures<T>::get_feature_matrix()
+{
+    // TODO
+    HF_NOTIMPLEMENTED
+    return HFMatrix<T>();
+}
+
+template<class T>
+CFeatures* CDenseFeatures<T>::duplicate() const
+{
+    return new CDenseFeatures<T>(*this);
+}
+
+template<class T>
+void CDenseFeatures<T>::init()
+{
+    num_features_ = 0;
+    num_vectors_ = 0;
+    
+    feature_matrix_ = HFMatrix<T>();
+    feature_cache_ = NULL;
+    
+    // TODO
+    HF_NOTIMPLEMENTED
+}
+
+template<class T>
+int32_t CDenseFeatures<T>::get_num_vectors() const
+{
+    return subset_stack_->has_subsets()?subset_stack_->get_size():num_vectors_;
+}
+
+template<class T>
+int32_t CDenseFeatures<T>::get_dim_feature_space() const
+{
+    return num_features_;
+}
+
+template<class T>
+int32_t CDenseFeatures<T>::get_size() const
+{
+    // TODO is this right???
+    return sizeof(T);
 }
 
 template class CDenseFeatures<float64_t>;

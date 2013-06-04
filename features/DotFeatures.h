@@ -16,7 +16,7 @@ namespace hanfeng
 
 class CDotFeatures : public CFeatures {
 public:
-    CDotFeatures();
+    CDotFeatures(int32_t size = 0);
     CDotFeatures(const CDotFeatures& orig);
     virtual ~CDotFeatures();
     
@@ -33,7 +33,10 @@ public:
     virtual void add_to_dense_vec(float64_t alpha, int32_t vec_idx1, 
                float64_t *vec2, int32_t vec2_len, bool abs_val = false) = 0;
 private:
-
+    void init();
+    
+protected:
+    float64_t combined_weight_;
 };
 
 }

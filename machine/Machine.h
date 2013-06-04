@@ -32,7 +32,8 @@ enum EMachineType
     CT_LIGHT = 10,
     CT_PERCEPTRON = 80,
     CT_LDA = 100,
-    CT_LIBLINEAR = 230
+    CT_LIBLINEAR = 230,
+    CT_KEAMS = 240
 };
 
 enum ESolverType
@@ -105,6 +106,8 @@ public:
         // TODO HF_NOTIMPLEMENTED
         return NULL;
     }
+    
+    virtual void set_store_model_features(bool store_model);
     
 protected:
     virtual bool train_machine(CFeatures *data = NULL)

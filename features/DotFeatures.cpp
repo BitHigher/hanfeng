@@ -10,12 +10,16 @@
 
 using namespace hanfeng;
 
-CDotFeatures::CDotFeatures()
+CDotFeatures::CDotFeatures(int32_t size)
+: CFeatures(size), combined_weight_(1.0)
 {
+    init();
 }
 
 CDotFeatures::CDotFeatures(const CDotFeatures &orig)
+: CFeatures(orig), combined_weight_(orig.combined_weight_)
 {
+    init();
 }
 
 CDotFeatures::~CDotFeatures()
@@ -37,4 +41,11 @@ void CDotFeatures::dense_dot_range(float64_t* output, int32_t start,
     ASSERT(num_vectors > 0);
     
     // TODO
+}
+
+
+void CDotFeatures::init()
+{
+    set_property(FP_DOT);
+    // TODO add to parameters
 }

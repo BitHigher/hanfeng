@@ -27,7 +27,7 @@ CHFObject::CHFObject()
 CHFObject::CHFObject(const CHFObject &orig)
 : io(orig.io), parallel(orig.parallel)
 {
-    init();
+    init(); // TODO here may exist bug !!!  
     set_global_objects();
 }
 
@@ -42,6 +42,20 @@ CHFObject::~CHFObject()
     unset_global_objects();
     
     // TODO delete objects
+}
+
+void CHFObject::init()
+{
+#ifdef HAVE_PTHREAD
+    PTHREAD_LOCK_INIT(&ref_lock_);
+#endif
+    
+    refcount_ = 0;
+    io = NULL;
+    parallel = NULL;
+    version = NULL;
+    
+    // TODO
 }
 
 void CHFObject::set_global_objects()

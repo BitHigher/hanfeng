@@ -10,7 +10,6 @@
 #include "../io/HFIO.h"
 #include "../base/common.h"
 #include "../math/lapack.h"
-#include <iostream>
 
 using namespace hanfeng;
 

@@ -8,6 +8,7 @@
 #ifndef IO_HFIO_H
 #define IO_HFIO_H
 
+#include <locale.h>
 #include "../base/common.h"
 #include "../base/init.h"
 

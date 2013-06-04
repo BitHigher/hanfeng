@@ -62,6 +62,8 @@ public:
     virtual void remove_subset();
     virtual void remove_all_subsets();
     
+    virtual void subset_changed_post(){}
+    
 private:
     void init();
     

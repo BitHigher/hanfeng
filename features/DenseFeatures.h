@@ -31,7 +31,8 @@ public:
     HFVector<T> get_feature_vecotr(int32_t num);
     
     void free_feature_vector(T *feat_vec, int32_t num, bool dofree);
-
+    void free_feature_vector(HFVector<T> vec, int32_t num);
+    
     virtual void add_to_dense_vec(float64_t alpha, int32_t vec_idx1, 
                float64_t *vec2, int32_t vec2_len, bool abs_val = false);
     

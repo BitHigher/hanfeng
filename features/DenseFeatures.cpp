@@ -152,6 +152,12 @@ void CDenseFeatures<T>::free_feature_vector(T* feat_vec,
 }
 
 template<class T>
+void CDenseFeatures<T>::free_feature_vector(HFVector<T> vec, int32_t num)
+{
+    // TODO
+}
+
+template<class T>
 void CDenseFeatures<T>::add_to_dense_vec(float64_t alpha, int32_t vec_idx1, 
                 float64_t* vec2, int32_t vec2_len, bool abs_val)
 {

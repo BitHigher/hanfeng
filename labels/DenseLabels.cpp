@@ -122,3 +122,10 @@ HFVector<int32_t> CDenseLabels::get_int_labels()
     
     return intlabs;
 }
+
+float64_t CDenseLabels::get_label(index_t index)
+{
+    int32_t real_num = subset_stack_->subset_idx_conversion(index);
+    ASSERT(labels_.vector && index < get_num_labels());
+    return labels_.vector[real_num];
+}

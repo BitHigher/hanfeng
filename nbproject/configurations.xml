@@ -47,6 +47,10 @@
         <itemPath>math/Math.h</itemPath>
         <itemPath>math/lapack.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="f10" displayName="regression" projectFiles="true">
+        <itemPath>regression/LinearRidgeRegression.h</itemPath>
+        <itemPath>regression/Regression.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="f6" displayName="structure" projectFiles="true">
         <itemPath>structure/Cache.h</itemPath>
         <itemPath>structure/HFMatrix.h</itemPath>
@@ -56,7 +60,6 @@
         <itemPath>structure/SubsetStack.h</itemPath>
       </logicalFolder>
       <itemPath>distance/Distance.h</itemPath>
-      <itemPath>clustering/KMeans.cpp</itemPath>
       <itemPath>clustering/KMeans.h</itemPath>
       <itemPath>loss/LogLoss.h</itemPath>
       <itemPath>loss/LossFunction.h</itemPath>
@@ -111,6 +114,8 @@
       </logicalFolder>
       <itemPath>distance/Distance.cpp</itemPath>
       <itemPath>lib/HFException.cpp</itemPath>
+      <itemPath>clustering/KMeans.cpp</itemPath>
+      <itemPath>regression/LinearRidgeRegression.cpp</itemPath>
       <itemPath>loss/LogLoss.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
@@ -272,6 +277,15 @@
       <item path="math/lapack.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="preprocessor/Preprocessor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="regression/LinearRidgeRegression.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="regression/LinearRidgeRegression.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="regression/Regression.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="structure/Cache.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -444,6 +458,15 @@
       <item path="math/lapack.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="preprocessor/Preprocessor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="regression/LinearRidgeRegression.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="regression/LinearRidgeRegression.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="regression/Regression.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="structure/Cache.h" ex="false" tool="3" flavor2="0">
       </item>

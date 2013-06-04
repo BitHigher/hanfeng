@@ -33,7 +33,8 @@ enum EMachineType
     CT_PERCEPTRON = 80,
     CT_LDA = 100,
     CT_LIBLINEAR = 230,
-    CT_KEAMS = 240
+    CT_KEAMS = 240,
+    CT_LINEARRIDGEREGRESSION = 410
 };
 
 enum ESolverType

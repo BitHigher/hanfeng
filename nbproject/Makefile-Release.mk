@@ -65,6 +65,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/math/Math.o \
 	${OBJECTDIR}/math/lapack.o \
+	${OBJECTDIR}/regression/LinearRidgeRegression.o \
 	${OBJECTDIR}/structure/HFMatrix.o \
 	${OBJECTDIR}/structure/HFReferenceData.o \
 	${OBJECTDIR}/structure/HFVector.o \
@@ -245,6 +246,11 @@ ${OBJECTDIR}/math/lapack.o: math/lapack.cpp
 	${MKDIR} -p ${OBJECTDIR}/math
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/math/lapack.o math/lapack.cpp
+
+${OBJECTDIR}/regression/LinearRidgeRegression.o: regression/LinearRidgeRegression.cpp 
+	${MKDIR} -p ${OBJECTDIR}/regression
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/regression/LinearRidgeRegression.o regression/LinearRidgeRegression.cpp
 
 ${OBJECTDIR}/structure/HFMatrix.o: structure/HFMatrix.cpp 
 	${MKDIR} -p ${OBJECTDIR}/structure

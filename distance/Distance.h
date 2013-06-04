@@ -27,6 +27,10 @@ public:
     
     virtual EFeatureType get_feature_type() = 0;
     
+    virtual void remove_lhs();
+    virtual void remove_rhs();
+    virtual void remove_lhs_and_rhs();
+    
 private:
     void init();
     

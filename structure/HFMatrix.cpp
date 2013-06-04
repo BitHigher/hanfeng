@@ -159,8 +159,7 @@ float64_t* HFMatrix<T>::pinv(float64_t* matrix, int32_t rows,
     float64_t *u = HF_MALLOC(float64_t, m*m);
     float64_t *vt = HF_MALLOC(float64_t, n*n);
     
-    // TODO undefind symbol _wrap_dgesvd
-    //wrap_dgesvd(jobu, jobvt, m, n, matrix, lda, s, u, ldu, vt, ldvt, &info);
+    wrap_dgesvd(jobu, jobvt, m, n, matrix, lda, s, u, ldu, vt, ldvt, &info);
     ASSERT(info == 0);
     
     for(index_t i = 0; i < n; ++i)

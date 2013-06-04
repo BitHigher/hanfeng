@@ -227,7 +227,7 @@ int clapack_dpotrs(const CBLAS_ORDER Order, const CBLAS_UPLO Uplo,
 #undef DPOTRS
 #endif //HAVE_ATLAS
 
-namespace shogun
+namespace hanfeng
 {
 
 void wrap_dsyev(char jobz, char uplo, int n, double *a, int lda, double *w, int *info)

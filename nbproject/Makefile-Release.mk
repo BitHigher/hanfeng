@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/base/HFObject.o \
 	${OBJECTDIR}/base/Parallel.o \
+	${OBJECTDIR}/base/Parameter.o \
 	${OBJECTDIR}/base/Version.o \
 	${OBJECTDIR}/base/init.o \
 	${OBJECTDIR}/base/memory.o \
@@ -65,6 +66,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/math/Math.o \
 	${OBJECTDIR}/math/lapack.o \
+	${OBJECTDIR}/multiclass/KNN.o \
+	${OBJECTDIR}/regression/LeastSquaresRegression.o \
 	${OBJECTDIR}/regression/LinearRidgeRegression.o \
 	${OBJECTDIR}/structure/HFMatrix.o \
 	${OBJECTDIR}/structure/HFReferenceData.o \
@@ -106,6 +109,11 @@ ${OBJECTDIR}/base/Parallel.o: base/Parallel.cpp
 	${MKDIR} -p ${OBJECTDIR}/base
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/base/Parallel.o base/Parallel.cpp
+
+${OBJECTDIR}/base/Parameter.o: base/Parameter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/base
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/base/Parameter.o base/Parameter.cpp
 
 ${OBJECTDIR}/base/Version.o: base/Version.cpp 
 	${MKDIR} -p ${OBJECTDIR}/base
@@ -246,6 +254,16 @@ ${OBJECTDIR}/math/lapack.o: math/lapack.cpp
 	${MKDIR} -p ${OBJECTDIR}/math
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/math/lapack.o math/lapack.cpp
+
+${OBJECTDIR}/multiclass/KNN.o: multiclass/KNN.cpp 
+	${MKDIR} -p ${OBJECTDIR}/multiclass
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/multiclass/KNN.o multiclass/KNN.cpp
+
+${OBJECTDIR}/regression/LeastSquaresRegression.o: regression/LeastSquaresRegression.cpp 
+	${MKDIR} -p ${OBJECTDIR}/regression
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/regression/LeastSquaresRegression.o regression/LeastSquaresRegression.cpp
 
 ${OBJECTDIR}/regression/LinearRidgeRegression.o: regression/LinearRidgeRegression.cpp 
 	${MKDIR} -p ${OBJECTDIR}/regression

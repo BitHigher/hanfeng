@@ -19,6 +19,10 @@ typedef long double floatmax_t;
 
 typedef int32_t index_t;
 
+#define STRING_LEN 256
+#define STRING_LEN_STR "256"
+typedef char string_t[STRING_LEN];
+
 #include "memory.h"
 
 #include "../lib/config.h"

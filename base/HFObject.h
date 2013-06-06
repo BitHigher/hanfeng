@@ -28,6 +28,14 @@ namespace hanfeng
 #define HF_UNREF(x)
 #define HF_UNREF_NO_NULL(x)
 #endif
+
+/* parameters */
+#define HF_ADD(param, name, description, ms_available) { \
+        parameters_->ddd(param, name, description); \
+        // if(ms_available) \
+            // TODO \
+        }
+    
     
 class CHFObject {
 public:

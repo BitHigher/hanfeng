@@ -146,7 +146,7 @@ int main(int argc, char** argv)
     
     // test_parallel();
     
-    test_file();
+    // test_file();
     
     std::cout << "\n--------test finished--------\n";
     return 0;

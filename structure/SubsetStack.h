@@ -11,6 +11,7 @@
 #include "../base/HFObject.h"
 #include "../io/HFIO.h"
 #include "../structure/HFVector.h"
+#include "../structure/DynamicObjectArray.h"
 
 #include "Subset.h"
 
@@ -26,8 +27,7 @@ public:
     
     virtual bool has_subsets()
     {
-        // TODO
-        return false;
+        return active_subsets_stack_->get_num_elements();
     }
     
     inline int32_t get_size()
@@ -51,6 +51,10 @@ public:
     virtual void remove_all_subsets();
     
 private:
+    void init();
+    
+private:
+    CDynamicObjectArray *active_subsets_stack_;
     CSubset *active_subset_;
 };
 

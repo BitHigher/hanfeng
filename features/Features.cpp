@@ -8,6 +8,8 @@
 #include "Features.h"
 #include "../io/HFIO.h"
 #include <string.h>
+#include "../base/Parameter.h"
+
 
 using namespace hanfeng;
 
@@ -46,7 +48,17 @@ CFeatures::~CFeatures()
 
 void CFeatures::init()
 {
+    HF_ADD(&properties_, "properties", "Feature properties", MS_NOT_AVAILABLE);
+    HF_ADD(&cache_size_, "cache_size", "Size of cache", MS_NOT_AVAILABLE);
+    
     // TODO
+    // ADD VECTOR
+    
+    properties_ = FP_NONE;
+    cache_size_ = 0;
+    preproc_ = NULL;
+    num_preproc_ = 0;
+    preprocessed_ = false;
 }
 
 void CFeatures::add_subset(HFVector<index_t> subset)

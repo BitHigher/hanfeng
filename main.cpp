@@ -14,6 +14,9 @@
 #include "base/Parallel.h"
 #include "io/File.h"
 #include "structure/Subset.h"
+#include "machine/Machine.h"
+#include "math/Math.h"
+#include "base/Parameter.h"
 
 using namespace hanfeng;
 
@@ -138,7 +141,8 @@ void test_file()
 void test_object()
 {
     std::cout << "[test object]\n";
-    
+ 
+    /*
     EMessageType level = hf_io->get_loglevel();
     hf_io->set_loglevel(MSG_GCDEBUG);
     
@@ -148,15 +152,41 @@ void test_object()
     s->ref_count();
     s->ref();
     
-    CSubset *ss = new CSubset();
+    CMachine *ss = new CMachine();
     
     s->unref();
-   
-    
     ss->ref();
     ss->unref();
     
     hf_io->set_loglevel(level);
+    */
+    
+    CMachine *mm = new CMachine();
+    mm->print_serializable();
+    
+    
+//    CSubset *sss = new CSubset;
+//    sss->print_serializable();
+    
+}
+
+void test_math()
+{
+    std::cout << "[test math]\n";
+    
+    int32_t arr[10];
+    for(int i = 0; i < 10; ++i)
+        arr[i] = CMath::random(0, 10);
+    
+    for(int i = 0; i < 10; ++i)
+        std::cout << arr[i] << ' ';
+    std::cout << '\n';
+    
+    
+    CMath::qsort<int32_t>(arr, 10);
+    for(int i = 0; i < 10; ++i)
+        std::cout << arr[i] << ' ';
+    std::cout << '\n';
 }
 
 int main(int argc, char** argv) 
@@ -174,6 +204,8 @@ int main(int argc, char** argv)
     // test_file();
     
     test_object();
+    
+    // test_math();
     
     std::cout << "\n--------test finished--------\n";
     return 0;

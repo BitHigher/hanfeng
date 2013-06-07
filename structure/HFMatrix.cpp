@@ -182,7 +182,7 @@ float64_t* HFMatrix<T>::pinv(float64_t* matrix, int32_t rows,
 template<class T>
 float64_t HFMatrix<T>::trace(float64_t* mat, int32_t nrows, int32_t ncols)
 {
-    // TODO ASSERT(nrows == ncols);
+    ASSERT(nrows == ncols);
     float64_t trace = 0;
     for(int32_t i = 0; i < nrows; ++i)
         trace += mat[i*ncols + i];
@@ -303,7 +303,7 @@ HFMatrix<float64_t> HFMatrix<T>::matrix_multiply(
     /* check dimension */
     if(cols_A != rows_B)
     {
-        HF_ERROR("HFMatirx::matrix_multiply(): dimension mismatch: "
+        HF_SERROR("HFMatirx::matrix_multiply(): dimension mismatch: "
                 "A(%dx%d)*B(%dx%d)\n", rows_A, cols_A, rows_B, cols_B);
     }
     

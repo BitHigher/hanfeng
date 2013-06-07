@@ -6,6 +6,7 @@
  */
 
 #include "SubsetStack.h"
+#include "../base/Parameter.h"
 
 using namespace hanfeng;
 
@@ -41,7 +42,11 @@ void CSubsetStack::remove_all_subsets()
 
 void CSubsetStack::init()
 {
-    // TODO add parameters
+    HF_ADD((CHFObject**)&active_subset_, "active_subset",
+            "Currently active subset", MS_NOT_AVAILABLE);
+    
+    HF_ADD((CHFObject**)&active_subsets_stack_, "active_subsets_stack",
+            "Stack of active subsets", MS_NOT_AVAILABLE);
     
     active_subset_ = NULL;
     active_subsets_stack_ = new CDynamicObjectArray();
@@ -50,6 +55,11 @@ void CSubsetStack::init()
 
 void CSubsetStack::add_subset(HFVector<index_t> subset)
 {
+    if(active_subsets_stack_->get_num_elements())
+    {
+        // TODO
+    }
+    
     // TODO
     HF_NOTIMPLEMENTED;
 }

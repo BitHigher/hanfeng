@@ -15,10 +15,12 @@
 #define HF_FREE(ptr) hf_generic_free(ptr)
 
 
-
+namespace hanfeng
+{
 
 /** functions **/
 void* hf_malloc(size_t size);
+
 template<class T>
 T* hf_generic_malloc(size_t len)
 {
@@ -27,6 +29,7 @@ T* hf_generic_malloc(size_t len)
 
 
 void* hf_calloc(size_t num, size_t size);
+
 template<class T>
 T* hf_generic_calloc(size_t len)
 {
@@ -35,12 +38,14 @@ T* hf_generic_calloc(size_t len)
 
 
 void hf_free(void *ptr);
+
 template<class T>
 void hf_generic_free(T *ptr)
 {
     hf_free((void*)ptr);
 }
 
+}
 
 #endif	/* BASE_MEMORY_H */
 

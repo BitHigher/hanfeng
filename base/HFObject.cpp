@@ -29,6 +29,7 @@ CHFObject::CHFObject()
 CHFObject::CHFObject(const CHFObject &orig)
 : io(orig.io), parallel(orig.parallel)
 {
+    // FIXME
     init(); // TODO here may exist bug !!!  
     set_global_objects();
 }
@@ -166,7 +167,7 @@ int32_t CHFObject::ref()
 
 int32_t CHFObject::unref()
 {
-    #ifdef HAVE_PTHREAD
+#ifdef HAVE_PTHREAD
     PTHREAD_LOCK(&ref_lock_);
 #endif
     if(refcount_ == 0 || --refcount_ == 0)
@@ -191,5 +192,11 @@ int32_t CHFObject::unref()
 #endif
         return count;
     }
+}
+
+void CHFObject::print_serializable(const char *prefix)
+{
+    HF_PRINT("\n%s\n===========================================\n", get_name());
+    parameters->print(prefix);
 }
 #endif /* USE_REFERENCE_COUNTING */

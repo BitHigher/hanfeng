@@ -9,6 +9,7 @@
 #define MATH_MATH_H
 
 #include "../base/common.h"
+#include "../io/HFIO.h"
 
 namespace hanfeng
 {
@@ -34,7 +35,7 @@ public:
     {
         uint64_t ret = min_value + (
                 uint64_t)((max_value - min_value+1)*(random()/(RAND_MAX+1.0)));
-        // TODO ASSERT(ret >= min_value && ret <= max_value);
+        ASSERT(ret >= min_value && ret <= max_value);
         return ret;
     }
     
@@ -42,7 +43,7 @@ public:
     {
         int64_t ret = min_value + 
                 (int64_t)((max_value - min_value+1)*(random()/(RAND_MAX+1.0)));
-        // TODO ASSERT(ret >= min_value && ret <= max_value);
+        ASSERT(ret >= min_value && ret <= max_value);
         return ret;
     }
     
@@ -50,7 +51,7 @@ public:
     {
         uint32_t ret = min_value + 
                 (uint32_t)((max_value - min_value+1)*(random()/(RAND_MAX+1.0)));
-        // TODO ASSERT(ret >= min_value && ret <= max_value);
+        ASSERT(ret >= min_value && ret <= max_value);
         return ret;
     }
     
@@ -58,7 +59,7 @@ public:
     {
         int32_t ret = min_value + 
                 (int32_t)((max_value - min_value+1)*(random()/(RAND_MAX+1.0)));
-        // TODO ASSERT(ret >= min_value && ret <= max_value);
+        ASSERT(ret >= min_value && ret <= max_value);
         return ret;
     }
     
@@ -66,7 +67,7 @@ public:
     {
         float32_t ret = min_value + 
                 (float32_t)((max_value - min_value+1)*(random()/(RAND_MAX+1.0)));
-        // TODO ASSERT(ret >= min_value && ret <= max_value);
+        ASSERT(ret >= min_value && ret <= max_value);
         return ret;
     }
     
@@ -74,7 +75,7 @@ public:
     {
         float64_t ret = min_value + 
                 (float64_t)((max_value - min_value+1)*(random()/(RAND_MAX+1.0)));
-        // TODO ASSERT(ret >= min_value && ret <= max_value);
+        ASSERT(ret >= min_value && ret <= max_value);
         return ret;
     }
     
@@ -82,7 +83,7 @@ public:
     {
         floatmax_t ret = min_value + 
                 (floatmax_t)((max_value - min_value+1)*(random()/(RAND_MAX+1.0)));
-        // TODO ASSERT(ret >= min_value && ret <= max_value);
+        ASSERT(ret >= min_value && ret <= max_value);
         return ret;
     }
     
@@ -107,7 +108,7 @@ public:
                 CMath::swap(output[0], output[1]);
             return;
         }
-        // TODO
+        
         T split = output[size/2];
         int32_t left = 0;
         int32_t right = size-1;

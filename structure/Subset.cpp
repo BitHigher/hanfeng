@@ -6,6 +6,7 @@
  */
 
 #include "Subset.h"
+#include "../base/Parameter.h"
 
 using namespace hanfeng;
 
@@ -27,5 +28,6 @@ CSubset::~CSubset()
 
 void CSubset::init()
 {
-    // TODO HF_ADD();
+    HF_ADD(&subset_index_, "subset", "Vector of subset indeices",
+            MS_NOT_AVAILABLE);
 }

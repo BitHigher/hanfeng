@@ -6,6 +6,7 @@
  */
 
 #include "Labels.h"
+#include "../base/Parameter.h"
 
 using namespace hanfeng;
 
@@ -21,7 +22,8 @@ CLabels::~CLabels()
 
 void CLabels::init()
 {
-    // TODO HF_ADD
+    HF_ADD((CHFObject**)&subset_stack_, "subset_stack",
+            "Current subset stack", MS_NOT_AVAILABLE);
     
     subset_stack_ = new CSubsetStack();
     HF_REF(subset_stack_);
@@ -57,7 +59,11 @@ HFVector<float64_t> CLabels::get_values()
 
 void CLabels::set_value(float64_t value, index_t index)
 {
-    // TODO
+    REQUIRE(current_values_.vector, "%s::set_value(%f, %d): No value vector "
+            "set!\n", get_name(), value, index);
+    
+    REQUIRE(get_num_labels(), "%s::set_value(%f, %d): Number of values is "
+            "zero!", get_name(), value, index);
     
     index_t real_num = subset_stack_->subset_idx_conversion(index);
     current_values_.vector[real_num] = value;

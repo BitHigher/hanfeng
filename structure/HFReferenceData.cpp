@@ -18,7 +18,10 @@ HFReferenceData::HFReferenceData(bool ref_counting):refcount_(NULL)
     if(ref_counting)
     {
         refcount_ = HF_CALLOC(refcount_t, 1);
-        refcount_->rc = 0;
+        
+#ifdef HAVE_PTHREAD
+        //PTHREAD_LOCK_INIT(&refcount_->lock);
+#endif
     }
     
     ref();
@@ -52,13 +55,13 @@ int32_t HFReferenceData::ref_count()
         return -1;
     
 #ifdef HAVE_PTHREAD
-    // TODO get lock
+    PTHREAD_LOCK(&refcount_->lock);
 #endif
     
     int32_t c = refcount_->rc;
     
 #ifdef HAVE_PTHREAD
-    // TODO release lock
+    PTHREAD_UNLOCK(&refcount_->lock);
 #endif
     
     return c;
@@ -70,13 +73,13 @@ int32_t HFReferenceData::ref()
         return -1;
     
 #ifdef HAVE_PTHREAD
-    // TODO get lock
+    PTHREAD_LOCK(&refcount_->lock);
 #endif
     
     int32_t c = ++(this->refcount_->rc);
     
 #ifdef HAVE_PTHREAD
-    // TODO release lock
+    PTHREAD_UNLOCK(&refcount_->lock);
 #endif
     
     return c;
@@ -92,27 +95,27 @@ int32_t HFReferenceData::unref()
     }
     
 #ifdef HAVE_PTHREAD
-    // TODO get lock
+    PTHREAD_LOCK(&refcount_->lock);
 #endif 
     
-    int32_t c = --(this->refcount_->rc);
-    
-#ifdef HAVE_PTHREAD
-    // TODO release lock
-#endif
-    
-    if(c <= 0)
+    if(this->refcount_->rc == 0 || --(this->refcount_->rc) == 0)
     {
-        free_data();
-        
 #ifdef HAVE_PTHREAD
-        // TODO desctroy lock
+        PTHREAD_UNLOCK(&refcount_->lock);
+        PTHREAD_LOCK_DESTROY(&refcount_->lock);
 #endif
+        free_data();
         HF_FREE(this->refcount_);
         this->refcount_ = NULL;
         return 0;
+    }else
+    {
+#ifdef HAVE_PTHREAD
+        PTHREAD_UNLOCK(&refcount_->lock);
+#endif
+        return this->refcount_->rc;
     }
-}
+ }
 
 void HFReferenceData::copy_refcount(const HFReferenceData &orig)
 {    

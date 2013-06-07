@@ -71,7 +71,7 @@ public:
     
     virtual float64_t apply_one(int32_t vec_idx)
     {
-        // TODO HF_NOTIMPLEMENTED
+        HF_NOTIMPLEMENTED
         return 0.0;
     }
     virtual CLabels* apply(CFeatures *data = NULL);
@@ -106,7 +106,7 @@ public:
     
     virtual CMachine* clone()
     {
-        // TODO HF_NOTIMPLEMENTED
+        HF_NOTIMPLEMENTED
         return NULL;
     }
     
@@ -121,13 +121,12 @@ protected:
 
     virtual void store_model_features()
     {
-        // NOT IMPELMENTED
+        HF_NOTIMPLEMENTED
     }
 
     virtual EProblemType get_machine_problem_type()
     {
-        // TODO
-        // HF_NOTIMPLEMENTED
+        HF_NOTIMPLEMENTED
         return PT_BINARY;
     }
     

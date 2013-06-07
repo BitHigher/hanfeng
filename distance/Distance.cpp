@@ -6,6 +6,7 @@
  */
 
 #include "Distance.h"
+#include "../base/Parameter.h"
 
 using namespace hanfeng;
 
@@ -54,7 +55,11 @@ void CDistance::init()
     num_lhs_ = 0;
     num_rhs_ = 0;
     
-    // TODO add parameters
+    HF_ADD((CHFObject**)&lhs_, "lhs", 
+            "Feature vectors to occur on left hand side", MS_NOT_AVAILABLE);
+    
+    HF_ADD((CHFObject**)&rhs_, "rhs", 
+            "Feature vectors to occur on right hand side", MS_NOT_AVAILABLE);
 }
 
 void CDistance::remove_lhs()

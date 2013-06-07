@@ -8,12 +8,22 @@
 #ifndef STRUCTURE_HFREFERENCEDATA_H
 #define STRUCTURE_HFREFERENCEDATA_H
 
+#include "../lib/config.h"
 #include "../base/common.h"
+#include "../base/Parallel.h"
+
+#ifdef HAVE_PTHREAD
+#include <pthread.h>
+#endif
 
 namespace hanfeng{
 
 struct refcount_t{
     int32_t rc;
+    
+#ifdef HAVE_PTHREAD
+    PTHREAD_LOCK_T lock;
+#endif
 };
     
 class HFReferenceData {

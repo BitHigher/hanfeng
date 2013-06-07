@@ -9,6 +9,7 @@
 #define DYNARRAY_H
 
 #include "../base/common.h"
+#include "../io/HFIO.h"
 
 namespace hanfeng
 {
@@ -41,6 +42,53 @@ public:
             else
                 free(array_);
         }
+    }
+    
+    inline int32_t get_num_elements() const
+    {
+        return current_num_elements_;
+    }
+    
+    inline T get_element(int32_t index) const
+    {
+        return array_[index];
+    }
+    
+    inline bool resize_array(int32_t n, bool exact_resize = false)
+    {
+        int32_t new_num_elments = n;
+        
+        // TODO
+        HF_SNOTIMPLEMENTED
+    }
+    
+    inline bool set_element(T element, int32_t index)
+    {
+        if(index < 0)
+            return false;
+        else if(index < current_num_elements_)
+        {
+            array_[index] = element;
+            return true;
+        }
+        else if(index < num_elements_)
+        {
+            array_[index] = element;
+            current_num_elements_ = index+1;
+            return true;
+        }
+        else
+        {
+            if(free_array_ && resize_array(index))
+                return set_element(element, index);
+            else
+                return false;
+        }
+    }
+    
+    inline bool append_element(T element)
+    {
+        return set_element(element, current_num_elements_);
     }
 
 private:

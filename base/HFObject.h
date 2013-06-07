@@ -81,6 +81,8 @@ public:
     void set_global_version(Version *version);
     Version* get_global_version();
     
+    virtual void print_serializable(const char *prefix="");
+    
 private:
     void set_global_objects();
     void unset_global_objects();

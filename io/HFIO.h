@@ -44,8 +44,14 @@ enum EMessageType
 #endif
 
 #define HF_SPRINT(...) {hf_io->message(MSG_MESSAGEONLY, __FILE__, __LINE__, __VA_ARGS__);}
-#define HF_WARNING(...) {hf_io->message(MSG_WARNING, __FILE__, __LINE__, __VA_ARGS__);}
-#define HF_ERROR(...) {hf_io->message(MSG_ERROR, __FILE__, __LINE__, __VA_ARGS__);}
+#define HF_SWARNING(...) {hf_io->message(MSG_WARNING, __FILE__, __LINE__, __VA_ARGS__);}
+#define HF_SERROR(...) {hf_io->message(MSG_ERROR, __FILE__, __LINE__, __VA_ARGS__);}
+
+#define HF_SNOTIMPLEMENTED {hf_io->not_implemented(__FILE__, __LINE__);}
+
+#define HF_PRINT(...) {io->message(MSG_MESSAGEONLY, __FILE__, __LINE__, __VA_ARGS__);}
+#define HF_WARNING(...) {io->message(MSG_WARNING, __FILE__, __LINE__, __VA_ARGS__);}
+#define HF_ERROR(...) {io->message(MSG_ERROR, __FILE__, __LINE__, __VA_ARGS__);}
 
 #define HF_GCDEBUG(...) { \
     if(HF_UNLIKELY(io->loglevel_above(MSG_GCDEBUG))) \
@@ -55,7 +61,7 @@ enum EMessageType
 
 #define ASSERT(x){      \
     if(HF_UNLIKELY(!(x)))       \
-        HF_ERROR("Assertion %s failed in file %s line %d\n", #x, __FILE__, __LINE__) \
+        HF_SERROR("Assertion %s failed in file %s line %d\n", #x, __FILE__, __LINE__) \
 }
 
 
@@ -64,6 +70,11 @@ enum EMessageType
 
 #define HF_SET_LOCALE_C setlocale(LC_ALL, "C")
 #define HF_RESET_LOCALE setlocale(LC_ALL, "")
+
+#define REQUIRE(x, ...) { \
+    if(HF_UNLIKELY(!(x))) \
+        HF_SERROR(__VA_ARGS__); \
+}
 
 class HFIO 
 {

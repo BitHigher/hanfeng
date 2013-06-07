@@ -10,6 +10,7 @@
 
 #include "../base/common.h"
 #include "../io/HFIO.h"
+#include "../math/Math.h"
 
 namespace hanfeng
 {
@@ -44,6 +45,19 @@ public:
         }
     }
     
+    
+    inline int32_t set_granularity(int32_t g)
+    {
+        g = CMath::max(g, 128);
+        this->resize_granularity_ = g;
+        return g;
+    }
+    
+    inline int32_t get_array_size() const
+    {
+        return num_elements_;
+    }
+    
     inline int32_t get_num_elements() const
     {
         return current_num_elements_;
@@ -58,7 +72,7 @@ public:
     {
         int32_t new_num_elments = n;
         
-        // TODO
+        // TODO resize_array
         HF_SNOTIMPLEMENTED
     }
     
@@ -89,6 +103,24 @@ public:
     inline bool append_element(T element)
     {
         return set_element(element, current_num_elements_);
+    }
+    
+    inline bool delete_element(int32_t index)
+    {
+        if(index >= 0 && index < current_num_elements_)
+        {
+            for(index_t i = index; i < current_num_elements_-1; ++i)
+                array_[i] = array_[i+1];
+            
+            current_num_elements_--;
+            
+            if(num_elements_ - current_num_elements_ - 1 > resize_granularity_)
+                resize_array(current_num_elements_);
+            
+            return true;
+        }
+        
+        return false;
     }
 
 private:

@@ -13,6 +13,8 @@
 namespace hanfeng
 {
 
+#define PT_NOT_GENERIC PT_HFOBJECT
+    
 enum EContainerType
 {
     CT_SCALAR = 0,

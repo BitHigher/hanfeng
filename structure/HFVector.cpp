@@ -309,8 +309,8 @@ template<class T>
 float64_t HFVector<T>::dot(const float64_t* v1, const float64_t* v2, int32_t n)
 {
     float64_t r = 0;
-#ifdef HAVE_EIGN3
-    // TODO
+#ifdef HAVE_EIGEN3
+    // TODO EIGEN3
 #elif HAVE_LAPACK
     int32_t skip = 1;
     r = cblas_ddot(n, v1, skip, v2, skip);

@@ -63,8 +63,19 @@ void CHFObject::init()
     parameters = new Parameter();
     model_selection_parameters = new Parameter();
     parameter_map = new ParameterMap();
+    hash = 0;
     
-    // TODO
+    generic_ = PT_NOT_GENERIC;
+    load_pre_called_ = false;
+    load_post_called_ = false;
+    
+}
+
+bool CHFObject::is_generic(EPrimitiveType* generic) const
+{
+    *generic = generic_;
+    
+    return generic_ != PT_NOT_GENERIC;
 }
 
 void CHFObject::set_global_objects()

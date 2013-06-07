@@ -9,10 +9,6 @@ void* hf_malloc(size_t size)
 {
     void *p = malloc(size);
     
-#ifdef TRACE_MEMORY_ALLOCS
-    // TODO
-#endif
-    
     if(!p)
     {
         const size_t buf_len = 128;

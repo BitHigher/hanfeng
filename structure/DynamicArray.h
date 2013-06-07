@@ -29,7 +29,7 @@ public:
         init();
     }
             
-    CDynamicArray(int32_t dim1_size, int32_t dim2_size=1, dim3_size=1)
+    CDynamicArray(int32_t dim1_size, int32_t dim2_size=1, int32_t dim3_size=1)
     : array_(dim1_size*dim2_size*dim3_size), name_("Array")
     {
         dim1_size_ = dim1_size;
@@ -46,12 +46,12 @@ public:
 
     inline int32_t set_granularity(int32_t g)
     {
-        // TODO
+        return array_.set_granularity(g);
     }
     
     inline int32_t get_array_size()
     {
-        // TODO
+        return array_.get_array_size();
     }
     
     inline void get_array_size(int32_t &dim1, int32_t &dim2)
@@ -74,7 +74,10 @@ public:
 private:
     void init()
     {
-        // TODO
+        set_generic<T>();
+        
+        
+        // TODO init
     }
     
 protected:

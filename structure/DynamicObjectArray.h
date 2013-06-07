@@ -9,6 +9,7 @@
 #define DYNAMICOBJECTARRAY_H
 
 #include "../base/HFObject.h"
+#include "../structure/DynArray.h"
 
 namespace hanfeng
 {
@@ -41,28 +42,44 @@ public:
     
     virtual const char* get_name() const {return "DynamiacObjectArray";}
     
+    inline int32_t set_granularity(int32_t g)
+    {
+        return array_.set_granularity(g);
+    }
+    
+    inline int32_t get_array_size() const
+    {
+        return array_.get_array_size();
+    }
+    
     inline int32_t get_num_elements() const
     {
-        // TODO
-        return 0;
+        return array_.get_num_elements();
     }
     
     inline CHFObject* get_element(int32_t index) const
     {
-        // TODO
-        return NULL;
+        CHFObject *ele = array_.get_element(index);
+        HF_REF(ele);
+        return ele;
     }
     
     inline bool append_element(CHFObject *e)
     {
-        // TODO
-        return false;
+        bool success = array_.append_element(e);
+        if(success)
+            HF_REF(e);
+        
+        return success;
     }
     
     inline bool delete_element(int32_t index)
     {
-        // TODO
-        return false;
+        CHFObject *ele = array_.get_element(index);
+        HF_UNREF(ele);
+        array_.set_element(NULL, index);
+        
+        return array_.delete_element(index);
     }
     
 private:
@@ -78,7 +95,7 @@ private:
     }
     
 private:
-    // TODO DynArray<>
+    DynArray<CHFObject*> array_;
     
     int32_t dim1_size_;
     int32_t dim2_size_;

@@ -17,6 +17,8 @@
 #include "machine/Machine.h"
 #include "math/Math.h"
 #include "base/Parameter.h"
+#include "classifier/LDA.h"
+
 
 using namespace hanfeng;
 
@@ -161,9 +163,11 @@ void test_object()
     hf_io->set_loglevel(level);
     */
     
-    CMachine *mm = new CMachine();
-    mm->print_serializable();
+   // CMachine *mm = new CMachine();
+   // mm->print_serializable();
     
+    CLDA *lda = new CLDA();
+    lda->print_serializable();
     
 //    CSubset *sss = new CSubset;
 //    sss->print_serializable();

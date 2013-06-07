@@ -11,6 +11,7 @@
 #include "../io/HFIO.h"
 #include "../base/Parallel.h"
 #include "../base/Version.h"
+#include "../base/DataType.h"
 
 #ifdef HAVE_PTHREAD
 #include <pthread.h>
@@ -73,6 +74,8 @@ public:
     
     virtual const char* get_name() const = 0;
     
+    virtual bool is_generic(EPrimitiveType *generic) const;
+    template<class T> void set_generic();
     
     void set_global_io(HFIO *io);
     HFIO* get_global_io();
@@ -97,7 +100,15 @@ public:
     
     ParameterMap *parameter_map;
 
+    int32_t hash;
 private:
+    EPrimitiveType generic_;
+    bool load_pre_called_;
+    bool load_post_called_;
+    bool save_pre_called_;
+    bool save_post_called_;
+    
+    
     int32_t refcount_;
     
 #ifdef HAVE_PTHREAD

@@ -13,6 +13,7 @@
 
 #include "base/Parallel.h"
 #include "io/File.h"
+#include "structure/Subset.h"
 
 using namespace hanfeng;
 
@@ -134,6 +135,30 @@ void test_file()
                 << "[Content]:\n" << buf << '\n';
 }
 
+void test_object()
+{
+    std::cout << "[test object]\n";
+    
+    EMessageType level = hf_io->get_loglevel();
+    hf_io->set_loglevel(MSG_GCDEBUG);
+    
+    CSubset *s = new CSubset;
+   
+   
+    s->ref_count();
+    s->ref();
+    
+    CSubset *ss = new CSubset();
+    
+    s->unref();
+   
+    
+    ss->ref();
+    ss->unref();
+    
+    hf_io->set_loglevel(level);
+}
+
 int main(int argc, char** argv) 
 {
     std::cout << "\n-------- test start --------\n";
@@ -147,6 +172,8 @@ int main(int argc, char** argv)
     // test_parallel();
     
     // test_file();
+    
+    test_object();
     
     std::cout << "\n--------test finished--------\n";
     return 0;

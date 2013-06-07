@@ -11,6 +11,7 @@
 #include "HFReferenceData.h"
 #include "../base/common.h"
 #include "../io/File.h"
+#include <string.h>
 
 namespace hanfeng
 {

@@ -47,6 +47,12 @@ enum EMessageType
 #define HF_WARNING(...) {hf_io->message(MSG_WARNING, __FILE__, __LINE__, __VA_ARGS__);}
 #define HF_ERROR(...) {hf_io->message(MSG_ERROR, __FILE__, __LINE__, __VA_ARGS__);}
 
+#define HF_GCDEBUG(...) { \
+    if(HF_UNLIKELY(io->loglevel_above(MSG_GCDEBUG))) \
+        io->message(MSG_GCDEBUG, __FILE__, __LINE__, __VA_ARGS__); \
+}
+
+
 #define ASSERT(x){      \
     if(HF_UNLIKELY(!(x)))       \
         HF_ERROR("Assertion %s failed in file %s line %d\n", #x, __FILE__, __LINE__) \
@@ -137,6 +143,12 @@ public:
         else
             return refcount_;
     }
+    
+    inline bool loglevel_above(EMessageType type) const
+    {
+        return loglevel <= type;
+    }
+    
 protected:
     const char* get_msg_intro(EMessageType prio) const;
     

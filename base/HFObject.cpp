@@ -6,6 +6,8 @@
  */
 
 #include "HFObject.h"
+#include "../base/Parameter.h"
+#include "../base/ParameterMap.h"
 
 namespace hanfeng
 {
@@ -21,7 +23,7 @@ CHFObject::CHFObject()
     init();
     set_global_objects();
     
-    // TODO HF_GCDEBUG()
+    HF_GCDEBUG("HFObject created (%p)\n", this);
 }
 
 CHFObject::CHFObject(const CHFObject &orig)
@@ -33,7 +35,7 @@ CHFObject::CHFObject(const CHFObject &orig)
 
 CHFObject::~CHFObject()
 {
-    // TODO HF_GCDEBUG()
+    HF_GCDEBUG("HFObject destroyed (%p)\n", this);
     
 #ifdef HAVE_PTHREAD
     PTHREAD_LOCK_DESTROY(&ref_lock_);
@@ -41,7 +43,9 @@ CHFObject::~CHFObject()
     
     unset_global_objects();
     
-    // TODO delete objects
+    delete parameters;
+    delete model_selection_parameters;
+    delete parameter_map;
 }
 
 void CHFObject::init()
@@ -54,6 +58,10 @@ void CHFObject::init()
     io = NULL;
     parallel = NULL;
     version = NULL;
+    
+    parameters = new Parameter();
+    model_selection_parameters = new Parameter();
+    parameter_map = new ParameterMap();
     
     // TODO
 }
@@ -133,7 +141,9 @@ int32_t CHFObject::ref_count()
     PTHREAD_UNLOCK(&ref_lock_);
 #endif
     
-    // TODO HF_GCDEBUG
+    HF_GCDEBUG("ref_count(): refcount: %d, obj %s (%p)\n", count, 
+                this->get_name(), this);
+    
     return count;
 }
 
@@ -149,7 +159,8 @@ int32_t CHFObject::ref()
     PTHREAD_UNLOCK(&ref_lock_);
 #endif
     
-    // TODO HF_GCDEBUG
+    HF_GCDEBUG("ref(): refcount: %d, obj %s (%p) increased\n", count, 
+                this->get_name(), this);
     return count;
 }
 
@@ -160,6 +171,9 @@ int32_t CHFObject::unref()
 #endif
     if(refcount_ == 0 || --refcount_ == 0)
     {
+        HF_GCDEBUG("unref(): refcount: %d, obj %s (%p) destroying\n", refcount_, 
+                this->get_name(), this);
+        
 #ifdef HAVE_PTHREAD
         PTHREAD_UNLOCK(&ref_lock_);
 #endif
@@ -168,6 +182,9 @@ int32_t CHFObject::unref()
     }
     else
     {
+        HF_GCDEBUG("unref(): refcount: %d, obj %s (%p) increased\n", refcount_, 
+                this->get_name(), this);
+        
         int32_t count = refcount_;
 #ifdef HAVE_PTHREAD
         PTHREAD_UNLOCK(&ref_lock_);

@@ -35,9 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/base/DataType.o \
 	${OBJECTDIR}/base/HFObject.o \
 	${OBJECTDIR}/base/Parallel.o \
 	${OBJECTDIR}/base/Parameter.o \
+	${OBJECTDIR}/base/ParameterMap.o \
 	${OBJECTDIR}/base/Version.o \
 	${OBJECTDIR}/base/init.o \
 	${OBJECTDIR}/base/memory.o \
@@ -100,6 +102,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hanfeng: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/hanfeng ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/base/DataType.o: base/DataType.cpp 
+	${MKDIR} -p ${OBJECTDIR}/base
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/base/DataType.o base/DataType.cpp
+
 ${OBJECTDIR}/base/HFObject.o: base/HFObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/base
 	${RM} $@.d
@@ -114,6 +121,11 @@ ${OBJECTDIR}/base/Parameter.o: base/Parameter.cpp
 	${MKDIR} -p ${OBJECTDIR}/base
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/base/Parameter.o base/Parameter.cpp
+
+${OBJECTDIR}/base/ParameterMap.o: base/ParameterMap.cpp 
+	${MKDIR} -p ${OBJECTDIR}/base
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/base/ParameterMap.o base/ParameterMap.cpp
 
 ${OBJECTDIR}/base/Version.o: base/Version.cpp 
 	${MKDIR} -p ${OBJECTDIR}/base

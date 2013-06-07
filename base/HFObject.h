@@ -18,6 +18,9 @@
 
 namespace hanfeng
 {
+    
+class Parameter;
+class ParameterMap;
 
 #ifdef USE_REFERENCE_COUNTING
 #define HF_REF(x) {if(x) (x)->ref();}
@@ -29,12 +32,19 @@ namespace hanfeng
 #define HF_UNREF_NO_NULL(x)
 #endif
 
-/* parameters */
+/* add parameters */
 #define HF_ADD(param, name, description, ms_available) { \
-        parameters_->ddd(param, name, description); \
-        // if(ms_available) \
-            // TODO \
+        parameters->add(param, name, description); \
+           if(ms_available) \
+               model_selection_parameters->add(param, name, description); \
         }
+    
+/* model selection availability */    
+enum
+{
+    MS_NOT_AVAILABLE = 0,
+    MS_AVAILABLE
+};
     
     
 class CHFObject {
@@ -80,6 +90,10 @@ public:
     HFIO *io;
     Parallel *parallel;
     Version *version;
+    Parameter *parameters;
+    Parameter *model_selection_parameters;
+    
+    ParameterMap *parameter_map;
 
 private:
     int32_t refcount_;

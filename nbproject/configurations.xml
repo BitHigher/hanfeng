@@ -3,9 +3,11 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles" displayName="头文件" projectFiles="true">
       <logicalFolder name="f1" displayName="base" projectFiles="true">
+        <itemPath>base/DataType.h</itemPath>
         <itemPath>base/HFObject.h</itemPath>
         <itemPath>base/Parallel.h</itemPath>
         <itemPath>base/Parameter.h</itemPath>
+        <itemPath>base/ParameterMap.h</itemPath>
         <itemPath>base/Version.h</itemPath>
         <itemPath>base/common.h</itemPath>
         <itemPath>base/init.h</itemPath>
@@ -73,9 +75,11 @@
     </logicalFolder>
     <logicalFolder name="SourceFiles" displayName="源文件" projectFiles="true">
       <logicalFolder name="f7" displayName="base" projectFiles="true">
+        <itemPath>base/DataType.cpp</itemPath>
         <itemPath>base/HFObject.cpp</itemPath>
         <itemPath>base/Parallel.cpp</itemPath>
         <itemPath>base/Parameter.cpp</itemPath>
+        <itemPath>base/ParameterMap.cpp</itemPath>
         <itemPath>base/Version.cpp</itemPath>
         <itemPath>base/init.cpp</itemPath>
         <itemPath>base/memory.cpp</itemPath>
@@ -159,6 +163,10 @@
           <commandLine>-llapack -lcblas</commandLine>
         </linkerTool>
       </compileType>
+      <item path="base/DataType.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="base/DataType.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="base/HFObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="base/HFObject.h" ex="false" tool="3" flavor2="0">
@@ -170,6 +178,10 @@
       <item path="base/Parameter.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="base/Parameter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="base/ParameterMap.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="base/ParameterMap.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="base/Version.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -364,6 +376,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="base/DataType.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="base/DataType.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="base/HFObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="base/HFObject.h" ex="false" tool="3" flavor2="0">
@@ -375,6 +391,10 @@
       <item path="base/Parameter.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="base/Parameter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="base/ParameterMap.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="base/ParameterMap.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="base/Version.cpp" ex="false" tool="1" flavor2="0">
       </item>

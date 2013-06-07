@@ -8,6 +8,8 @@
 #ifndef DYNARRAY_H
 #define DYNARRAY_H
 
+#include "../base/common.h"
+
 namespace hanfeng
 {
 

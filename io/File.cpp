@@ -8,6 +8,8 @@
 #include "File.h"
 #include "HFIO.h"
 
+#include <string.h>
+
 using namespace hanfeng;
 
 CFile::CFile()

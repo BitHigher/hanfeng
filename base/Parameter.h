@@ -10,6 +10,7 @@
 
 #include "../base/common.h"
 #include "../structure/DynArray.h"
+#include "../base/HFObject.h"
 
 namespace hanfeng
 {
@@ -46,7 +47,25 @@ public:
         // TODO
     }
     
+    void add(bool *param, char *name, const char *description="");
+    void add(char *param, char *name, const char *description="");
+    void add(int8_t *param, char *name, const char *description="");
+    void add(int16_t *param, char *name, const char *description="");
+    void add(int32_t *param, char *name, const char *description="");
+    void add(int64_t *param, char *name, const char *description="");
+    void add(uint8_t *param, char *name, const char *description="");
+    void add(uint16_t *param, char *name, const char *description="");
+    void add(uint32_t *param, char *name, const char *description="");
+    void add(uint64_t *param, char *name, const char *description="");
+    void add(float32_t *param, char *name, const char *description="");
     void add(float64_t *param, char *name, const char *description="");
+    void add(floatmax_t *param, char *name, const char *description="");
+    
+    void add(CHFObject **param, char *name, const char *description="");
+    
+protected:
+    
+    
 private:
     
 protected:

@@ -7,6 +7,7 @@
 
 #include "Features.h"
 #include "../io/HFIO.h"
+#include <string.h>
 
 using namespace hanfeng;
 

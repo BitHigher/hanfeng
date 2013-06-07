@@ -11,7 +11,6 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdio.h>
-#include <string.h>
 
 typedef float float32_t;
 typedef double float64_t;
@@ -22,6 +21,8 @@ typedef int32_t index_t;
 #define STRING_LEN 256
 #define STRING_LEN_STR "256"
 typedef char string_t[STRING_LEN];
+
+typedef int machine_int_t;
 
 #include "memory.h"
 

@@ -15,13 +15,14 @@ using namespace hanfeng;
 const EMessageType HFIO::levels[NUM_LOG_LEVELS] = {
     MSG_GCDEBUG, MSG_DEBUG, MSG_INFO,
     MSG_NOTICE, MSG_WARNING, MSG_ERROR,
-    MSG_CRITICAL, MSG_EMERGENCY, MSG_MESSAGEONLY
+    MSG_CRITICAL, MSG_ALERT, MSG_EMERGENCY,
+    MSG_MESSAGEONLY
 };
 
 const char *HFIO::message_strings[NUM_LOG_LEVELS] = {
     "[GCDEBUG] \0", "[DEBUG] \0", "[INFO] \0",
     "[NOTICE] \0", "[WARNING] \0", "[ERROR] \0",
-    "[CRITICAL] \0", "[EMERGENCY] \0", "\0"
+    "[CRITICAL] \0", "[ALERT] \0", "[EMERGENCY] \0", "\0"
 };
 
 const char *HFIO::message_strings_highlight[NUM_LOG_LEVELS] = {
@@ -29,6 +30,7 @@ const char *HFIO::message_strings_highlight[NUM_LOG_LEVELS] = {
     "[NOTICE] \0", "\033[1;34m[WARNING]\033[0m \0", 
     "\033[1;31m[ERROR]\033[0m \0",
     "\033[1;31m[CRITICAL]\033[0m \0",
+    "\033[1;31m[ALERT]\033[0m \0",
     "\033[1;31m[EMERGENCY]\033[0m \0", "\0"
 };
 

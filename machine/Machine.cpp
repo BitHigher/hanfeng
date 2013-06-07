@@ -6,6 +6,8 @@
  */
 
 #include "Machine.h"
+#include "../base/Parameter.h"
+#include "../base/ParameterMap.h"
 
 using namespace hanfeng;
 
@@ -17,12 +19,32 @@ solver_type_(ST_AUTO)
     data_locked_ = false;
     store_model_features_ = false;
     
-    // TODO
+    HF_ADD(&max_train_time_, "max_train_time",
+            "Maximum training time.", MS_NOT_AVAILABLE);
+    
+    HF_ADD((machine_int_t*)&solver_type_, "solver_type",
+            "Type of solver.", MS_NOT_AVAILABLE);
+    
+    HF_ADD((CHFObject**)&labels_, "labels",
+            "Labels to be used.", MS_NOT_AVAILABLE);
+    
+    HF_ADD(&store_model_features_, "store_model_features",
+            "Should feature data of model be stored after training?", 
+            MS_NOT_AVAILABLE);
+    
+    HF_ADD(&data_locked_, "data_locked",
+            "Whether data is locked?", MS_NOT_AVAILABLE);
+    
+    parameter_map->put(
+               new HFParamInfo("data_locked", CT_SCALAR, ST_NONE, PT_BOOL, 1),
+               new HFParamInfo());
+    
+    parameter_map->finalize_map();
 }
 
 CMachine::~CMachine()
 {
-    // TODO
+    HF_UNREF(labels_);
 }
 
 void CMachine::set_labels(CLabels* labels)

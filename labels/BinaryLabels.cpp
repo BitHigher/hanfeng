@@ -39,6 +39,9 @@ CBinaryLabels::~CBinaryLabels()
 
 void CBinaryLabels::ensure_valid(const char *context)
 {
+    CDenseLabels::ensure_valid(context);
+    
+    
     // TODO ensure_valid
 }
 

@@ -53,6 +53,11 @@ enum EMessageType
 #define HF_WARNING(...) {io->message(MSG_WARNING, __FILE__, __LINE__, __VA_ARGS__);}
 #define HF_ERROR(...) {io->message(MSG_ERROR, __FILE__, __LINE__, __VA_ARGS__);}
 
+#define HF_INFO(...) { \
+    if(HF_UNLIKELY(io->loglevel_above(MSG_INFO))) \
+        io->message(MSG_INFO, __FILE__, __LINE__, __VA_ARGS__); \
+}
+
 #define HF_GCDEBUG(...) { \
     if(HF_UNLIKELY(io->loglevel_above(MSG_GCDEBUG))) \
         io->message(MSG_GCDEBUG, __FILE__, __LINE__, __VA_ARGS__); \

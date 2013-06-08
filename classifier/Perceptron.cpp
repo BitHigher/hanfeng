@@ -12,12 +12,12 @@
 using namespace hanfeng;
 
 CPerceptron::CPerceptron()
-: CLinearMachine(), learn_rate_(0.1), max_iter_(1000)
+: learn_rate_(0.1), max_iter_(1000)
 {
 }
 
 CPerceptron::CPerceptron(CDotFeatures* traindat, CLabels* trainlab)
-: CLinearMachine(), learn_rate_(0.1), max_iter_(1000)
+: learn_rate_(0.1), max_iter_(1000)
 {
     set_features(traindat);
     set_labels(trainlab);
@@ -77,11 +77,17 @@ bool CPerceptron::train_machine(CFeatures *data)
     }
     
     if(converged)
-        //HF_INFO("Perceptron algorithm converged after %d iterations.", iter);
-        printf("Perceptron algorithm converged after %d iterations.", iter);
+        HF_INFO("Perceptron algorithm converged after %d iterations.", iter)
     else
         HF_WARNING("Perceptron algorithm dit not converge "
                    "after %d iterations.", iter);
+    
+#ifdef DEBUG_PERCEPTRON
+    HF_PRINT("Perceptron algorithm converged after %d iterations.\n", iter)
+    HF_PRINT("bias: %f\n", bias_);
+    HFVector<float64_t>::display_vector(w_, num_feat, "w");
+#endif
+    
     
     HF_FREE(output);
     

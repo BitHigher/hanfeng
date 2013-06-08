@@ -51,6 +51,8 @@ public:
     virtual int32_t get_dim_feature_space() const;
     
     void initialize_cache();
+    
+    CFeatures* create_merged_copy(CFeatures *other);
 private:
     void init();
     

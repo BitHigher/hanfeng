@@ -14,7 +14,6 @@
 using namespace hanfeng;
 
 CFeatures::CFeatures(int32_t size)
-: CHFObject()
 {
     init();
     cache_size_ = size;
@@ -51,8 +50,13 @@ void CFeatures::init()
     HF_ADD(&properties_, "properties", "Feature properties", MS_NOT_AVAILABLE);
     HF_ADD(&cache_size_, "cache_size", "Size of cache", MS_NOT_AVAILABLE);
     
-    // TODO
-    // ADD VECTOR
+    HF_ADD_VECTOR((CHFObject***)&preproc_, &num_preproc_, "preproc",
+                       "List of preprocessors", MS_NOT_AVAILABLE);
+    HF_ADD_VECTOR(&preprocessed_, &num_preproc_, "preprocessed",
+                       "Feature[i] is already preprocessed", MS_NOT_AVAILABLE);
+    
+    subset_stack_ = new CSubsetStack();
+    HF_REF(subset_stack_);
     
     properties_ = FP_NONE;
     cache_size_ = 0;

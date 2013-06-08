@@ -190,6 +190,13 @@ void Parameter::add(HFMatrix<float64_t>* param, char* name,
     add_type(&type, param, name, description);
 }
 
+void Parameter::add_vector(bool** param, int32_t* length, 
+                                const char* name, const char* description)
+{
+    THFDataType type(CT_VECTOR, ST_NONE, PT_BOOL, length);
+    add_type(&type, param, name, description);
+}
+
 void Parameter::add_vector(CHFObject*** param, int32_t* length, 
                                 const char* name, const char* description)
 {

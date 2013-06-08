@@ -21,6 +21,10 @@ public:
     CDenseLabels(CFile *loader);
     virtual ~CDenseLabels();
     
+    virtual const char* get_name() const{return "DenseLabels"; }
+    virtual ELabelType get_label_type() = 0;
+    
+    
     virtual void ensure_valid(const char *context = NULL);
     virtual void load(CFile *loader);
     virtual void save(CFile *saver);

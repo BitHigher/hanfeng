@@ -75,7 +75,11 @@ OBJECTFILES= \
 	${OBJECTDIR}/structure/HFReferenceData.o \
 	${OBJECTDIR}/structure/HFVector.o \
 	${OBJECTDIR}/structure/Subset.o \
-	${OBJECTDIR}/structure/SubsetStack.o
+	${OBJECTDIR}/structure/SubsetStack.o \
+	${OBJECTDIR}/test/test_features.o \
+	${OBJECTDIR}/test/test_labels.o \
+	${OBJECTDIR}/test/test_matrix.o \
+	${OBJECTDIR}/test/test_vector.o
 
 
 # C Compiler Flags
@@ -306,6 +310,26 @@ ${OBJECTDIR}/structure/SubsetStack.o: structure/SubsetStack.cpp
 	${MKDIR} -p ${OBJECTDIR}/structure
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/structure/SubsetStack.o structure/SubsetStack.cpp
+
+${OBJECTDIR}/test/test_features.o: test/test_features.cpp 
+	${MKDIR} -p ${OBJECTDIR}/test
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/test/test_features.o test/test_features.cpp
+
+${OBJECTDIR}/test/test_labels.o: test/test_labels.cpp 
+	${MKDIR} -p ${OBJECTDIR}/test
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/test/test_labels.o test/test_labels.cpp
+
+${OBJECTDIR}/test/test_matrix.o: test/test_matrix.cpp 
+	${MKDIR} -p ${OBJECTDIR}/test
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/test/test_matrix.o test/test_matrix.cpp
+
+${OBJECTDIR}/test/test_vector.o: test/test_vector.cpp 
+	${MKDIR} -p ${OBJECTDIR}/test
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/test/test_vector.o test/test_vector.cpp
 
 # Subprojects
 .build-subprojects:

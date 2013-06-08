@@ -224,7 +224,7 @@ void CDenseFeatures<T>::init()
     HF_ADD(&num_features_, "num_features",
             "Number of features", MS_NOT_AVAILABLE);
     HF_ADD(&feature_matrix_, "feature_matrix", 
-            "Matrix of feature vector / 1 vector per column", MS_NOT_AVAILABLE);
+            "Matrix of feature vector, one vector per column", MS_NOT_AVAILABLE);
 }
 
 template<class T>
@@ -260,6 +260,12 @@ void CDenseFeatures<T>::initialize_cache()
         
         HF_REF(feature_cache_);
     }
+}
+
+template<class T>
+CFeatures* CDenseFeatures<T>::create_merged_copy(CFeatures *other)
+{
+    // TODO create merged copy
 }
 
 

@@ -16,7 +16,7 @@ CDenseLabels::CDenseLabels(): CLabels()
     init();
 }
 
-CDenseLabels::CDenseLabels(int32_t num_labels) : CLabels()
+CDenseLabels::CDenseLabels(int32_t num_labels)
 {
     init();
     labels_ = HFVector<float64_t>(num_labels);

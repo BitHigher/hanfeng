@@ -44,4 +44,15 @@ namespace hanfeng
         hf_print_error = NULL;
         hf_cancel_computations = NULL;
     }
+    
+    void hf_global_print_default(FILE *target, const char *str)
+    {
+        fprintf(target, "%s", str);
+    }
+    
+    void init_hanfeng_with_defaults()
+    {
+        init_hanfeng(hf_global_print_default, hf_global_print_default,
+                hf_global_print_default);
+    }
 }

@@ -24,6 +24,8 @@ namespace hanfeng
                 void (*print_error)(FILE *target, const char *str) = NULL,
                 void (*cancel_computations)(bool &delayed, bool &immediately) = NULL);
     
+    void init_hanfeng_with_defaults();
+    
     void exit_hanfeng();
 }
 

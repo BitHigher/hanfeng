@@ -22,13 +22,6 @@
 
 using namespace hanfeng;
 
-void print_error(FILE *target, const char *str)
-{
-    //std::cout << str << '\n';
-    fputs(str, target);
-}
-
-
 void test_vector()
 {
     std::cout << "Testing HFVector...\n";
@@ -197,8 +190,9 @@ int main(int argc, char** argv)
 {
     std::cout << "\n-------- test start --------\n";
   
-    init_hanfeng(print_error, print_error, print_error);    
-    
+    init_hanfeng_with_defaults();
+    //EMessageType level = hf_io->get_loglevel();
+    hf_io->set_loglevel(MSG_GCDEBUG);
     // test_vector();
     
     // test_matrix();
@@ -212,5 +206,7 @@ int main(int argc, char** argv)
     // test_math();
     
     std::cout << "\n--------test finished--------\n";
+    
+    exit_hanfeng();
     return 0;
 }

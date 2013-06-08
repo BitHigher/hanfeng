@@ -12,6 +12,7 @@
 
 #define HF_MALLOC(type, len) hf_generic_malloc<type>(size_t(len))
 #define HF_CALLOC(type, len) hf_generic_calloc<type>(size_t(len))
+#define HF_REALLOC(type, ptr, old_len, len) hf_generic_realloc<type>(ptr, size_t(old_len), size_t(len))
 #define HF_FREE(ptr) hf_generic_free(ptr)
 
 
@@ -36,6 +37,13 @@ T* hf_generic_calloc(size_t len)
     return (T*)hf_calloc(len, sizeof(T));
 }
 
+void *hf_realloc(void *ptr, size_t len);
+
+template<class T>
+T* hf_generic_realloc(T *ptr, size_t old_len, size_t len)
+{
+    return (T*)hf_realloc(ptr, sizeof(T)*len);
+}
 
 void hf_free(void *ptr);
 

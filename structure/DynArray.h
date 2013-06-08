@@ -72,10 +72,30 @@ public:
     
     inline bool resize_array(int32_t n, bool exact_resize = false)
     {
-        int32_t new_num_elments = n;
+        int32_t new_num_elements = n;
         
-        // TODO resize_array
-        HF_SNOTIMPLEMENTED
+        if(!exact_resize)
+            new_num_elements=((n/resize_granularity_)+1) * resize_granularity_;
+        
+        T *p;
+        
+        if(use_hf_mallocs_)
+            p = HF_REALLOC(T, array_, num_elements_, new_num_elements);
+        else
+            p = (T*)realloc(array_, new_num_elements*sizeof(T));
+        
+        if(p || new_num_elements == 0)
+        {
+            array_ = p;
+            
+            if(n-1 < current_num_elements_-1)
+                current_num_elements_ = n;
+            
+            num_elements_ = new_num_elements;
+            return true;
+        }
+        else
+            return false;
     }
     
     inline bool set_element(T element, int32_t index)

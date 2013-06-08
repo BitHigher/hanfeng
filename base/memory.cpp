@@ -48,6 +48,27 @@ void* hf_calloc(size_t num, size_t size)
     return p;
 }
 
+void* hf_realloc(void *ptr, size_t size)
+{
+    void *p = realloc(ptr, size);
+    
+    if(!p)
+    {
+        const size_t buf_len = 128;
+        char buf[buf_len];
+        size_t written = snprintf(buf, buf_len,
+                "Out of memory error, tried to allocate %lld bytes "
+                "using realloc.\n", (long long int)size);
+        
+        if(written < buf_len)
+            throw HFException(buf);
+        else
+            throw HFException("Out of memory error using realloc");
+    }
+    
+    return p;
+}
+
 void hf_free(void *ptr)
 {
     free(ptr);

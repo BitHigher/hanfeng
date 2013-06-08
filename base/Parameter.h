@@ -101,6 +101,9 @@ public:
     void add(floatmax_t *param, char *name, const char *description="");
     
     void add(HFVector<int32_t> *param, char *name, const char *description="");
+    void add(HFVector<float64_t> *param, char *name, const char *description="");
+    void add(HFMatrix<int32_t> *param, char *name, const char *description="");
+    void add(HFMatrix<float64_t> *param, char *name, const char *description="");
     
     void add(CHFObject **param, char *name, const char *description="");
     

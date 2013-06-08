@@ -175,6 +175,21 @@ void Parameter::add(HFVector<int32_t>* param, char* name,
     add_type(&type, param, name, description);
 }
 
+void Parameter::add(HFVector<float64_t>* param, char* name, 
+                        const char* description)
+{
+    THFDataType type(CT_HFVECTOR, ST_NONE, PT_FLOAT64, &param->vlen);
+    add_type(&type, param, name, description);
+}
+
+void Parameter::add(HFMatrix<float64_t>* param, char* name, 
+                        const char* description)
+{
+    THFDataType type(CT_HFMATRIX, ST_NONE, PT_FLOAT64, 
+                        &param->num_rows, &param->num_cols);
+    add_type(&type, param, name, description);
+}
+
 void Parameter::add_vector(CHFObject*** param, int32_t* length, 
                                 const char* name, const char* description)
 {

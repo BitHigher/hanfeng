@@ -14,6 +14,84 @@ namespace hanfeng
     extern HFIO *hf_io;
     extern Parallel *hf_parallel;
     extern Version *hf_version;
+    
+    template<>
+    void CHFObject::set_generic<bool>()
+    {
+        generic_ = PT_BOOL;
+    }
+    
+    template<>
+    void CHFObject::set_generic<char>()
+    {
+        generic_ = PT_CHAR;
+    }
+    
+    template<>
+    void CHFObject::set_generic<int8_t>()
+    {
+        generic_ = PT_INT8;
+    }
+    
+    template<>
+    void CHFObject::set_generic<int16_t>()
+    {
+        generic_ = PT_INT16;
+    }
+    
+    template<>
+    void CHFObject::set_generic<int32_t>()
+    {
+        generic_ = PT_INT32;
+    }
+    
+    template<>
+    void CHFObject::set_generic<int64_t>()
+    {
+        generic_ = PT_INT64;
+    }
+    
+    template<>
+    void CHFObject::set_generic<uint8_t>()
+    {
+        generic_ = PT_UINT8;
+    }
+    
+    template<>
+    void CHFObject::set_generic<uint16_t>()
+    {
+        generic_ = PT_UINT16;
+    }
+    
+    template<>
+    void CHFObject::set_generic<uint32_t>()
+    {
+        generic_ = PT_UINT32;
+    }
+    
+    template<>
+    void CHFObject::set_generic<uint64_t>()
+    {
+        generic_ = PT_UINT64;
+    }
+    
+    template<>
+    void CHFObject::set_generic<float32_t>()
+    {
+        generic_ = PT_FLOAT32;
+    }
+    
+    template<>
+    void CHFObject::set_generic<float64_t>()
+    {
+        generic_ = PT_FLOAT64;
+    }
+    
+    template<>
+    void CHFObject::set_generic<floatmax_t>()
+    {
+        generic_ = PT_FLOATMAX;
+    }
 }
 
 using namespace hanfeng;
@@ -29,8 +107,7 @@ CHFObject::CHFObject()
 CHFObject::CHFObject(const CHFObject &orig)
 : io(orig.io), parallel(orig.parallel)
 {
-    // FIXME
-    init(); // TODO here may exist bug !!!  
+    init(); // FIXME here may exist bug !!!  
     set_global_objects();
 }
 

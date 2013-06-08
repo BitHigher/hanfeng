@@ -66,9 +66,15 @@ public:
         return NULL;
     }
     
+    inline void unlock_entry(int64_t num)
+    {
+        if(lookup_table)
+            lookup_table[num].locked = false;
+    }
+    
     T* set_entry(int64_t num)
     {
-        // TODO
+        // TODO set entry
         return NULL;
     }
     

@@ -34,14 +34,16 @@ CDenseLabels::~CDenseLabels()
 
 void CDenseLabels::init()
 {
-    // TODO
-    // HF_ADD()
+    HF_ADD(&labels_, "labels", "The labels", MS_NOT_AVAILABLE);
 }
 
 void CDenseLabels::set_to_const(float64_t c)
 {
     ASSERT(labels_.vector);
-    // TODO
+    index_t subset_size = get_num_labels();
+    
+    for(index_t i = 0; i < subset_size; ++i)
+        labels_.vector[subset_stack_->subset_idx_conversion(i)] = c;
 }
 
 void CDenseLabels::set_to_one()

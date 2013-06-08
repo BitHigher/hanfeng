@@ -32,6 +32,16 @@ THFDataType::THFDataType(EContainerType ctype, EStructType stype,
     length_x = NULL;
 }
 
+THFDataType::THFDataType(EContainerType ctype, EStructType stype, 
+                EPrimitiveType ptype, index_t* length_y, index_t* length_x)
+{
+    this->ctype = ctype;
+    this->stype = stype;
+    this->ptype = ptype;
+    
+    this->length_y = length_y;
+    this->length_x = length_x;
+}
 
 THFDataType::~THFDataType()
 {

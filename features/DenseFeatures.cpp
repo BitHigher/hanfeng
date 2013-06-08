@@ -8,6 +8,7 @@
 #include "DenseFeatures.h"
 #include "../base/common.h"
 #include "../math/Math.h"
+#include "../base/Parameter.h"
 
 using namespace hanfeng;
 
@@ -129,7 +130,7 @@ T* CDenseFeatures<T>::get_feature_vector(int32_t num, int32_t& len, bool& dofree
             feat = feature_cache_->set_entry(real_num);
     }
     
-    // TODO
+    // TODO get feature vector
     
     return NULL;
 }
@@ -154,13 +155,18 @@ template<class T>
 void CDenseFeatures<T>::free_feature_vector(T* feat_vec, 
                                                 int32_t num, bool dofree)
 {
-    // TODO
+    if(feature_cache_)
+        feature_cache_->unlock_entry(subset_stack_->subset_idx_conversion(num));
+    
+    if(dofree)
+        HF_FREE(feat_vec);
 }
 
 template<class T>
 void CDenseFeatures<T>::free_feature_vector(HFVector<T> vec, int32_t num)
 {
-    // TODO
+    free_feature_vector(vec.vector, num, false);
+    vec = HFVector<T>(); // FIXME what's the meaning?
 }
 
 template<class T>
@@ -192,7 +198,7 @@ void CDenseFeatures<T>::add_to_dense_vec(float64_t alpha, int32_t vec_idx1,
 template<class T>
 HFMatrix<T> CDenseFeatures<T>::get_feature_matrix()
 {
-    // TODO
+    // TODO get feature matrix
     HF_NOTIMPLEMENTED
     return HFMatrix<T>();
 }
@@ -212,8 +218,13 @@ void CDenseFeatures<T>::init()
     feature_matrix_ = HFMatrix<T>();
     feature_cache_ = NULL;
     
-    // TODO
-    HF_NOTIMPLEMENTED
+    set_generic<T>();
+    
+    HF_ADD(&num_vectors_, "num_vectors", "Number of Vectors", MS_NOT_AVAILABLE);
+    HF_ADD(&num_features_, "num_features",
+            "Number of features", MS_NOT_AVAILABLE);
+    HF_ADD(&feature_matrix_, "feature_matrix", 
+            "Matrix of feature vector / 1 vector per column", MS_NOT_AVAILABLE);
 }
 
 template<class T>

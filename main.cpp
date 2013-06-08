@@ -100,12 +100,16 @@ extern void test_matrix();
 extern void test_labels();
 extern void test_features();
 
+extern void test_classifier();
+
 int main(int argc, char** argv) 
 {
     std::cout << "\n-------- test start --------\n";
   
     init_hanfeng_with_defaults();
-    hf_io->set_loglevel(MSG_GCDEBUG);
+    //hf_io->enable_file_and_line();
+    
+    //hf_io->set_loglevel(MSG_GCDEBUG);
     // test_vector();
     
     // test_matrix();
@@ -120,7 +124,9 @@ int main(int argc, char** argv)
     
     // test_labels();
     
-    test_features();
+    // test_features();
+    
+    test_classifier();
     
     std::cout << "\n--------test finished--------\n";
     

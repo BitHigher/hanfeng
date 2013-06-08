@@ -131,3 +131,15 @@ float64_t CDenseLabels::get_label(index_t index)
     ASSERT(labels_.vector && index < get_num_labels());
     return labels_.vector[real_num];
 }
+
+bool CDenseLabels::set_label(index_t index, float64_t label)
+{
+    int32_t real_num = subset_stack_->subset_idx_conversion(index);
+    
+    if(labels_.vector && real_num < get_num_labels())
+    {
+        labels_.vector[real_num] = label;
+        return true;
+    }else
+        return false;
+}

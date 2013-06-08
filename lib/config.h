@@ -1,3 +1,5 @@
+#define DEBUG_LDA 1
+
 #define HAVE_READLINE 1
 #define HAVE_HDF5 1
 

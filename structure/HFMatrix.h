@@ -25,8 +25,6 @@ public:
     HFMatrix(int32_t nrows, int32_t ncols, bool ref_counting=true);
     HFMatrix(const HFMatrix &orig);
     virtual ~HFMatrix();
-  
-    void display_matrix();
     
     /** read only access **/
     inline const T& operator()(index_t i_row, index_t i_col) const
@@ -86,6 +84,15 @@ public:
             HFMatrix<float64_t> A, HFMatrix<float64_t> B,
             bool transpose_A = false, bool transpose_B = false,
             float64_t scale = 1.0);
+    
+    /* display */
+    void display_matrix(const char *name = "Matrix") const;
+    
+    static void display_matrix(const T *matrix, int32_t rows, int32_t cols,
+                            const char *name="Matrix", const char *prefix="");
+    
+    static void display_matrix(const HFMatrix<T> matrix, 
+                            const char *name="Matrix", const char *prefix="");
     
 #ifdef HAVE_LAPACK
     static void inverse(HFMatrix<float64_t> &matrix);

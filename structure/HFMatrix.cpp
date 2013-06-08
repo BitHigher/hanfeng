@@ -74,19 +74,6 @@ void HFMatrix<T>::free_data()
 }
 
 template<class T>
-void HFMatrix<T>::display_matrix()
-{
-    for(uint32_t i = 0; i < num_rows; ++i)
-    {
-        for(uint32_t j = 0; j < num_cols; ++j)
-        {
-            std::cout << matrix[int64_t(j)*num_rows + i] << ' ';
-        }
-        std::cout << '\n';
-    }
-}
-
-template<class T>
 T* HFMatrix<T>::clone_matrix(const T* matrix, int32_t nrows, int32_t ncols)
 {
     T *result = HF_MALLOC(T, int64_t(nrows)*ncols);
@@ -425,6 +412,275 @@ void HFMatrix<T>::save(CFile *saver)
     saver->set_matrix(matrix, num_rows, num_cols);
     HF_RESET_LOCALE;
 }
+
+template<class T>
+void HFMatrix<T>::display_matrix(const char *name) const
+{
+    display_matrix(matrix, num_rows, num_cols, name);
+}
+
+template<class T>
+void HFMatrix<T>::display_matrix(const HFMatrix<T> matrix, 
+                                const char *name, const char *prefix)
+{
+    // FIXME there is a bug in shogun
+    // matrix.display_matrix(); 
+    display_matrix(matrix.matrix, matrix.num_rows, matrix.num_cols,
+                        name, prefix);
+}
+
+namespace hanfeng
+{
+
+template<>
+void HFMatrix<bool>::display_matrix(const bool *matrix, int32_t rows, 
+                            int32_t cols, const char *name, const char *prefix)
+{
+    ASSERT(rows >= 0 && cols >= 0);
+    
+    HF_SPRINT("%s%s=[\n", prefix, name);
+    for(index_t i = 0; i < rows; ++i)
+    {
+        HF_SPRINT("%s[", prefix);
+        for(index_t j = 0; j < cols; ++j)
+            HF_SPRINT("%s\t%d%s", prefix, matrix[j*rows+i] != 0, 
+                    j==cols-1?"":",");
+        
+        HF_SPRINT("%s]%s\n", prefix, i==rows-1?"":",");
+    }
+    HF_SPRINT("%s]\n", prefix);
+}
+    
+template<>
+void HFMatrix<char>::display_matrix(const char *matrix, int32_t rows, 
+                            int32_t cols, const char *name, const char *prefix)
+{
+    ASSERT(rows >= 0 && cols >= 0);
+    
+    HF_SPRINT("%s%s=[\n", prefix, name);
+    for(index_t i = 0; i < rows; ++i)
+    {
+        HF_SPRINT("%s[", prefix);
+        for(index_t j = 0; j < cols; ++j)
+            HF_SPRINT("%s\t%c%s", prefix, matrix[j*rows+i], 
+                    j==cols-1?"":",");
+        
+        HF_SPRINT("%s]%s\n", prefix, i==rows-1?"":",");
+    }
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFMatrix<int8_t>::display_matrix(const int8_t *matrix, int32_t rows, 
+                            int32_t cols, const char *name, const char *prefix)
+{
+    ASSERT(rows >= 0 && cols >= 0);
+    
+    HF_SPRINT("%s%s=[\n", prefix, name);
+    for(index_t i = 0; i < rows; ++i)
+    {
+        HF_SPRINT("%s[", prefix);
+        for(index_t j = 0; j < cols; ++j)
+            HF_SPRINT("%s\t%d%s", prefix, matrix[j*rows+i], 
+                    j==cols-1?"":",");
+        
+        HF_SPRINT("%s]%s\n", prefix, i==rows-1?"":",");
+    }
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFMatrix<int16_t>::display_matrix(const int16_t *matrix, int32_t rows, 
+                            int32_t cols, const char *name, const char *prefix)
+{
+    ASSERT(rows >= 0 && cols >= 0);
+    
+    HF_SPRINT("%s%s=[\n", prefix, name);
+    for(index_t i = 0; i < rows; ++i)
+    {
+        HF_SPRINT("%s[", prefix);
+        for(index_t j = 0; j < cols; ++j)
+            HF_SPRINT("%s\t%d%s", prefix, matrix[j*rows+i], 
+                    j==cols-1?"":",");
+        
+        HF_SPRINT("%s]%s\n", prefix, i==rows-1?"":",");
+    }
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFMatrix<int32_t>::display_matrix(const int32_t *matrix, int32_t rows, 
+                            int32_t cols, const char *name, const char *prefix)
+{
+    ASSERT(rows >= 0 && cols >= 0);
+    
+    HF_SPRINT("%s%s=[\n", prefix, name);
+    for(index_t i = 0; i < rows; ++i)
+    {
+        HF_SPRINT("%s[", prefix);
+        for(index_t j = 0; j < cols; ++j)
+            HF_SPRINT("%s\t%d%s", prefix, matrix[j*rows+i], 
+                    j==cols-1?"":",");
+        
+        HF_SPRINT("%s]%s\n", prefix, i==rows-1?"":",");
+    }
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFMatrix<int64_t>::display_matrix(const int64_t *matrix, int32_t rows, 
+                            int32_t cols, const char *name, const char *prefix)
+{
+    ASSERT(rows >= 0 && cols >= 0);
+    
+    HF_SPRINT("%s%s=[\n", prefix, name);
+    for(index_t i = 0; i < rows; ++i)
+    {
+        HF_SPRINT("%s[", prefix);
+        for(index_t j = 0; j < cols; ++j)
+            HF_SPRINT("%s\t%d%s", prefix, matrix[j*rows+i], 
+                    j==cols-1?"":",");
+        
+        HF_SPRINT("%s]%s\n", prefix, i==rows-1?"":",");
+    }
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFMatrix<uint8_t>::display_matrix(const uint8_t *matrix, int32_t rows, 
+                            int32_t cols, const char *name, const char *prefix)
+{
+    ASSERT(rows >= 0 && cols >= 0);
+    
+    HF_SPRINT("%s%s=[\n", prefix, name);
+    for(index_t i = 0; i < rows; ++i)
+    {
+        HF_SPRINT("%s[", prefix);
+        for(index_t j = 0; j < cols; ++j)
+            HF_SPRINT("%s\t%d%s", prefix, matrix[j*rows+i], 
+                    j==cols-1?"":",");
+        
+        HF_SPRINT("%s]%s\n", prefix, i==rows-1?"":",");
+    }
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFMatrix<uint16_t>::display_matrix(const uint16_t *matrix, int32_t rows, 
+                            int32_t cols, const char *name, const char *prefix)
+{
+    ASSERT(rows >= 0 && cols >= 0);
+    
+    HF_SPRINT("%s%s=[\n", prefix, name);
+    for(index_t i = 0; i < rows; ++i)
+    {
+        HF_SPRINT("%s[", prefix);
+        for(index_t j = 0; j < cols; ++j)
+            HF_SPRINT("%s\t%d%s", prefix, matrix[j*rows+i], 
+                    j==cols-1?"":",");
+        
+        HF_SPRINT("%s]%s\n", prefix, i==rows-1?"":",");
+    }
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFMatrix<uint32_t>::display_matrix(const uint32_t *matrix, int32_t rows, 
+                            int32_t cols, const char *name, const char *prefix)
+{
+    ASSERT(rows >= 0 && cols >= 0);
+    
+    HF_SPRINT("%s%s=[\n", prefix, name);
+    for(index_t i = 0; i < rows; ++i)
+    {
+        HF_SPRINT("%s[", prefix);
+        for(index_t j = 0; j < cols; ++j)
+            HF_SPRINT("%s\t%d%s", prefix, matrix[j*rows+i], 
+                    j==cols-1?"":",");
+        
+        HF_SPRINT("%s]%s\n", prefix, i==rows-1?"":",");
+    }
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFMatrix<uint64_t>::display_matrix(const uint64_t *matrix, int32_t rows, 
+                            int32_t cols, const char *name, const char *prefix)
+{
+    ASSERT(rows >= 0 && cols >= 0);
+    
+    HF_SPRINT("%s%s=[\n", prefix, name);
+    for(index_t i = 0; i < rows; ++i)
+    {
+        HF_SPRINT("%s[", prefix);
+        for(index_t j = 0; j < cols; ++j)
+            HF_SPRINT("%s\t%d%s", prefix, matrix[j*rows+i], 
+                    j==cols-1?"":",");
+        
+        HF_SPRINT("%s]%s\n", prefix, i==rows-1?"":",");
+    }
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFMatrix<float32_t>::display_matrix(const float32_t *matrix, int32_t rows, 
+                            int32_t cols, const char *name, const char *prefix)
+{
+    ASSERT(rows >= 0 && cols >= 0);
+    
+    HF_SPRINT("%s%s=[\n", prefix, name);
+    for(index_t i = 0; i < rows; ++i)
+    {
+        HF_SPRINT("%s[", prefix);
+        for(index_t j = 0; j < cols; ++j)
+            HF_SPRINT("%s\t%g%s", prefix, matrix[j*rows+i], 
+                    j==cols-1?"":",");
+        
+        HF_SPRINT("%s]%s\n", prefix, i==rows-1?"":",");
+    }
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFMatrix<float64_t>::display_matrix(const float64_t *matrix, int32_t rows, 
+                            int32_t cols, const char *name, const char *prefix)
+{
+    ASSERT(rows >= 0 && cols >= 0);
+    
+    HF_SPRINT("%s%s=[\n", prefix, name);
+    for(index_t i = 0; i < rows; ++i)
+    {
+        HF_SPRINT("%s[", prefix);
+        for(index_t j = 0; j < cols; ++j)
+            HF_SPRINT("%s\t%.18g%s", prefix, matrix[j*rows+i], 
+                    j==cols-1?"":",");
+        
+        HF_SPRINT("%s]%s\n", prefix, i==rows-1?"":",");
+    }
+    HF_SPRINT("%s]\n", prefix);
+}
+
+template<>
+void HFMatrix<floatmax_t>::display_matrix(const floatmax_t *matrix, int32_t rows, 
+                            int32_t cols, const char *name, const char *prefix)
+{
+    ASSERT(rows >= 0 && cols >= 0);
+    
+    HF_SPRINT("%s%s=[\n", prefix, name);
+    for(index_t i = 0; i < rows; ++i)
+    {
+        HF_SPRINT("%s[", prefix);
+        for(index_t j = 0; j < cols; ++j)
+            HF_SPRINT("%s\t%.36Lg%s", prefix, matrix[j*rows+i], 
+                    j==cols-1?"":",");
+        
+        HF_SPRINT("%s]%s\n", prefix, i==rows-1?"":",");
+    }
+    HF_SPRINT("%s]\n", prefix);
+}
+
+}
+
 
 /** supported types **/
 template class HFMatrix<bool>;

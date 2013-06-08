@@ -18,13 +18,13 @@
 using namespace hanfeng;
 
 CLDA::CLDA(float64_t gamma)
-: CLinearMachine(), gamma_(gamma)
+: gamma_(gamma)
 {
 }
 
 CLDA::CLDA(float64_t gamma, CDenseFeatures<float64_t> *traindat, 
                 CLabels *trainlab)
-: CLinearMachine(), gamma_(gamma)
+: gamma_(gamma)
 {
     set_features(traindat);
     set_labels(trainlab);
@@ -134,7 +134,6 @@ bool CLDA::train_machine(CFeatures *data)
         bool vfree;
         float64_t *vec = rf->get_feature_vector(classidx_pos[i], vlen, vfree);
         
-        // TOOD should ASSERT(vlen == num_feat) ???
         ASSERT(vec);
         
         for(j = 0; j < vlen; ++j)
@@ -186,10 +185,14 @@ bool CLDA::train_machine(CFeatures *data)
         w_.vector[i] = w_pos[i] - w_neg[i];
     
 #ifdef DEBUG_LDA
-        // TODO
+    HF_PRINT("bias: %f\n", bias_);
+    w_.display_vector("w");
+    HFVector<float64_t>::display_vector(w_pos, num_feat, "w_pos");
+    HFVector<float64_t>::display_vector(w_neg, num_feat, "w_neg");
+    HFVector<float64_t>::display_vector(mean_pos, num_feat, "mean_pos");
+    HFVector<float64_t>::display_vector(mean_neg, num_feat, "mean_neg");
 #endif
     
-    // TODO
     HF_FREE(classidx_neg);
     HF_FREE(classidx_pos);
     HF_FREE(mean_neg);

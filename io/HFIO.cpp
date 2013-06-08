@@ -86,7 +86,7 @@ void HFIO::message(EMessageType prio, const char* file, int32_t line,
         int len = strlen(str);
         char *s = str+len;
         
-        if(show_file_and_line)
+        if(show_file_and_line || prio == MSG_ERROR) // FIXME prio == MSG_WARNING add by zhf
         {
             snprintf(s, sizeof(str)-len, "In file %s line %d: ", file, line);
             len = strlen(str);

@@ -7,6 +7,7 @@
 
 #include "DotFeatures.h"
 #include "../io/HFIO.h"
+#include "../base/Parameter.h"
 
 using namespace hanfeng;
 
@@ -40,12 +41,14 @@ void CDotFeatures::dense_dot_range(float64_t* output, int32_t start,
     int32_t num_vectors = stop-start;
     ASSERT(num_vectors > 0);
     
-    // TODO
+    // TODO CSignal
 }
 
 
 void CDotFeatures::init()
 {
     set_property(FP_DOT);
-    // TODO add to parameters
+    
+    HF_ADD(&combined_weight_, "combined_weight",
+            "Feature weighting in combined dot feature", MS_NOT_AVAILABLE);
 }

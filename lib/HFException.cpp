@@ -38,7 +38,7 @@ void HFException::init(const char* str)
         strncpy(val, str, n);
     else
     {
-        // TODO 
+        // TODO fprintf
         exit(1);
     }
 }

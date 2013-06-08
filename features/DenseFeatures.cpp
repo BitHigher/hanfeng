@@ -25,8 +25,14 @@ CDenseFeatures<T>::CDenseFeatures(const CDenseFeatures &orig)
     init();
     set_feature_matrix(orig.feature_matrix_);
     
-    // TODO
-    HF_NOTIMPLEMENTED
+    initialize_cache();
+    
+    if(orig.subset_stack_)
+    {
+        HF_UNREF(subset_stack_);
+        subset_stack_ = new CSubsetStack(*orig.subset_stack_);
+        HF_REF(subset_stack_);
+    }
 }
 
 template<class T>
@@ -228,5 +234,22 @@ int32_t CDenseFeatures<T>::get_size() const
     // TODO is this right???
     return sizeof(T);
 }
+
+template<class T>
+void CDenseFeatures<T>::initialize_cache()
+{
+    if(subset_stack_->has_subsets())
+        HF_ERROR("A subset is set, cannot call initialize_cache()");
+    
+    if(num_features_ && num_vectors_)
+    {
+        HF_UNREF(feature_cache_);
+        feature_cache_ = new CCache<T>(get_cache_size(), 
+                                        num_features_, num_vectors_);
+        
+        HF_REF(feature_cache_);
+    }
+}
+
 
 template class CDenseFeatures<float64_t>;

@@ -36,10 +36,16 @@ class ParameterMap;
 /* add parameters */
 #define HF_ADD(param, name, description, ms_available) { \
         parameters->add(param, name, description); \
-           if(ms_available) \
-               model_selection_parameters->add(param, name, description); \
-        }
+        if(ms_available) \
+            model_selection_parameters->add(param, name, description); \
+    }
     
+#define HF_ADD_VECTOR(param, length, name, description, ms_available) { \
+        parameters->add_vector(param, length, name, description); \
+        if(ms_available) \
+            model_selection_parameters->add_vector(param, length, name, description); \
+     }
+
 /* model selection availability */    
 enum
 {

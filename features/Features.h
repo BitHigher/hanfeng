@@ -35,7 +35,6 @@ public:
     virtual int32_t get_num_vectors() const = 0;
     virtual int32_t get_size() const = 0;
     
-    
     void set_preprocessed(int32_t num);
     bool is_preprocessed() const;
     int32_t get_num_preprocessed() const;
@@ -43,6 +42,11 @@ public:
     
     virtual void load(CFile *loader);
     virtual void save(CFile *saver);
+    
+    inline int32_t get_cache_size() const
+    {
+        return cache_size_;
+    }
     
     inline bool has_property(EFeatureProperty p) const
     {

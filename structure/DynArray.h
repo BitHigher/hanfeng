@@ -18,6 +18,8 @@ namespace hanfeng
 template<class T>
 class DynArray
 {
+    friend class CDynamicObjectArray;
+    
 public:
     DynArray(int32_t resize_granularity=128, bool tracable=true)
     {

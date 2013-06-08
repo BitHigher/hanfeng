@@ -104,6 +104,23 @@ public:
     
     void add(CHFObject **param, char *name, const char *description="");
     
+    
+    void add_vector(bool **param, int32_t *length, const char *name, const char *description="");
+    void add_vector(char **param, int32_t *length, const char *name, const char *description="");
+    void add_vector(int8_t **param, int32_t *length, const char *name, const char *description="");
+    void add_vector(int16_t **param, int32_t *length, const char *name, const char *description="");
+    void add_vector(int32_t **param, int32_t *length, const char *name, const char *description="");
+    void add_vector(int64_t **param, int32_t *length, const char *name, const char *description="");
+    void add_vector(uint8_t **param, int32_t *length, const char *name, const char *description="");
+    void add_vector(uint16_t **param, int32_t *length, const char *name, const char *description="");
+    void add_vector(uint32_t **param, int32_t *length, const char *name, const char *description="");
+    void add_vector(uint64_t **param, int32_t *length, const char *name, const char *description="");
+    void add_vector(float32_t **param, int32_t *length, const char *name, const char *description="");
+    void add_vector(float64_t **param, int32_t *length, const char *name, const char *description="");
+    void add_vector(floatmax_t **param, int32_t *length, const char *name, const char *description="");
+    
+    void add_vector(CHFObject ***param, int32_t *length, const char *name, const char *description="");
+    
 protected:
     virtual void add_type(const THFDataType *type, void *param, 
                           const char *name, const char *description);

@@ -174,3 +174,10 @@ void Parameter::add(HFVector<int32_t>* param, char* name,
     THFDataType type(CT_HFVECTOR, ST_NONE, PT_INT32, &param->vlen);
     add_type(&type, param, name, description);
 }
+
+void Parameter::add_vector(CHFObject*** param, int32_t* length, 
+                                const char* name, const char* description)
+{
+    THFDataType type(CT_VECTOR, ST_NONE, PT_HFOBJECT, length);
+    add_type(&type, param, name, description);
+}

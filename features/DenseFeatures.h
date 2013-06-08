@@ -50,6 +50,7 @@ public:
                                         int32_t vec2_len);
     virtual int32_t get_dim_feature_space() const;
     
+    void initialize_cache();
 private:
     void init();
     

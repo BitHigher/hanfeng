@@ -10,6 +10,7 @@
 
 #include "../base/HFObject.h"
 #include "../structure/DynArray.h"
+#include "../base/Parameter.h"
 
 namespace hanfeng
 {
@@ -85,7 +86,20 @@ public:
 private:
     virtual void init()
     {
-        // TODO add parameters
+        HF_ADD_VECTOR(&array_.array_, &array_.current_num_elements_, "array", 
+                        "Memory for dynamic array", MS_NOT_AVAILABLE);
+        
+        HF_ADD(&array_.num_elements_, "num_elements",
+                "Nnumber of ELements", MS_NOT_AVAILABLE);
+        
+        HF_ADD(&array_.resize_granularity_, "resize_granularity",
+                "shrink/grow step size", MS_NOT_AVAILABLE);
+        
+        HF_ADD(&array_.use_hf_mallocs_, "use_hf_mallocs",  
+                "whether HF_MALLOC or malloc should be used", MS_NOT_AVAILABLE);
+        
+        HF_ADD(&array_.free_array_, "free_array",
+                "whether array must be freed", MS_NOT_AVAILABLE);
     }
     
     inline void unref_all()

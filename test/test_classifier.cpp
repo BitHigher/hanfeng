@@ -6,7 +6,7 @@ using namespace hanfeng;
 
 void test_classifier()
 {
-    printf("[test classifer]\n");
+    printf("[test classifier]\n");
     
     // features
     int num_feat = 5;

@@ -51,6 +51,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/features/DenseFeatures.o \
 	${OBJECTDIR}/features/DotFeatures.o \
 	${OBJECTDIR}/features/Features.o \
+	${OBJECTDIR}/io/AsciiFile.o \
 	${OBJECTDIR}/io/File.o \
 	${OBJECTDIR}/io/HFIO.o \
 	${OBJECTDIR}/labels/BinaryLabels.o \
@@ -78,6 +79,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/structure/SubsetStack.o \
 	${OBJECTDIR}/test/test_classifier.o \
 	${OBJECTDIR}/test/test_features.o \
+	${OBJECTDIR}/test/test_file.o \
 	${OBJECTDIR}/test/test_labels.o \
 	${OBJECTDIR}/test/test_matrix.o \
 	${OBJECTDIR}/test/test_vector.o
@@ -186,6 +188,11 @@ ${OBJECTDIR}/features/Features.o: features/Features.cpp
 	${MKDIR} -p ${OBJECTDIR}/features
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/features/Features.o features/Features.cpp
+
+${OBJECTDIR}/io/AsciiFile.o: io/AsciiFile.cpp 
+	${MKDIR} -p ${OBJECTDIR}/io
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/io/AsciiFile.o io/AsciiFile.cpp
 
 ${OBJECTDIR}/io/File.o: io/File.cpp 
 	${MKDIR} -p ${OBJECTDIR}/io
@@ -321,6 +328,11 @@ ${OBJECTDIR}/test/test_features.o: test/test_features.cpp
 	${MKDIR} -p ${OBJECTDIR}/test
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/test/test_features.o test/test_features.cpp
+
+${OBJECTDIR}/test/test_file.o: test/test_file.cpp 
+	${MKDIR} -p ${OBJECTDIR}/test
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/test/test_file.o test/test_file.cpp
 
 ${OBJECTDIR}/test/test_labels.o: test/test_labels.cpp 
 	${MKDIR} -p ${OBJECTDIR}/test

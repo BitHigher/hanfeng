@@ -13,12 +13,12 @@
 using namespace hanfeng;
 
 CFile::CFile()
-: CHFObject(), file_(NULL), filename_(NULL), variable_name_(NULL)
+: file_(NULL), filename_(NULL), variable_name_(NULL)
 {
 }
 
 CFile::CFile(FILE* f, const char *name)
-: CHFObject(), file_(f), filename_(NULL)
+: file_(f), filename_(NULL)
 {    
     variable_name_ = NULL;
     if(name)
@@ -26,7 +26,6 @@ CFile::CFile(FILE* f, const char *name)
 }
 
 CFile::CFile(const char *fname, char rw, const char *name)
-: CHFObject()
 {
     variable_name_ = NULL;
     task_ = rw;

@@ -25,6 +25,7 @@
         <itemPath>features/Features.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="io" projectFiles="true">
+        <itemPath>io/AsciiFile.h</itemPath>
         <itemPath>io/File.h</itemPath>
         <itemPath>io/HFIO.h</itemPath>
       </logicalFolder>
@@ -96,6 +97,7 @@
         <itemPath>features/Features.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f5" displayName="io" projectFiles="true">
+        <itemPath>io/AsciiFile.cpp</itemPath>
         <itemPath>io/File.cpp</itemPath>
         <itemPath>io/HFIO.cpp</itemPath>
       </logicalFolder>
@@ -117,6 +119,10 @@
         <itemPath>math/Math.cpp</itemPath>
         <itemPath>math/lapack.cpp</itemPath>
       </logicalFolder>
+      <logicalFolder name="f10" displayName="regression" projectFiles="true">
+        <itemPath>regression/LeastSquaresRegression.cpp</itemPath>
+        <itemPath>regression/LinearRidgeRegression.cpp</itemPath>
+      </logicalFolder>
       <logicalFolder name="f3" displayName="structure" projectFiles="true">
         <itemPath>structure/HFMatrix.cpp</itemPath>
         <itemPath>structure/HFReferenceData.cpp</itemPath>
@@ -128,6 +134,7 @@
         <itemPath>main.cpp</itemPath>
         <itemPath>test/test_classifier.cpp</itemPath>
         <itemPath>test/test_features.cpp</itemPath>
+        <itemPath>test/test_file.cpp</itemPath>
         <itemPath>test/test_labels.cpp</itemPath>
         <itemPath>test/test_matrix.cpp</itemPath>
         <itemPath>test/test_vector.cpp</itemPath>
@@ -136,8 +143,6 @@
       <itemPath>lib/HFException.cpp</itemPath>
       <itemPath>clustering/KMeans.cpp</itemPath>
       <itemPath>multiclass/KNN.cpp</itemPath>
-      <itemPath>regression/LeastSquaresRegression.cpp</itemPath>
-      <itemPath>regression/LinearRidgeRegression.cpp</itemPath>
       <itemPath>loss/LogLoss.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles" displayName="资源文件" projectFiles="true">
@@ -239,6 +244,10 @@
       </item>
       <item path="features/Features.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="io/AsciiFile.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="io/AsciiFile.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="io/File.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="io/File.h" ex="false" tool="3" flavor2="0">
@@ -367,6 +376,8 @@
       <item path="test/test_classifier.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="test/test_features.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="test/test_file.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="test/test_labels.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -464,6 +475,10 @@
       </item>
       <item path="features/Features.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="io/AsciiFile.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="io/AsciiFile.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="io/File.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="io/File.h" ex="false" tool="3" flavor2="0">
@@ -592,6 +607,8 @@
       <item path="test/test_classifier.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="test/test_features.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="test/test_file.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="test/test_labels.cpp" ex="false" tool="1" flavor2="0">
       </item>

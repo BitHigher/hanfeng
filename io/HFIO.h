@@ -63,6 +63,10 @@ enum EMessageType
         io->message(MSG_GCDEBUG, __FILE__, __LINE__, __VA_ARGS__); \
 }
 
+#define HF_DEBUG(...) { \
+    if(HF_UNLIKELY(io->loglevel_above(MSG_DEBUG))) \
+        io->message(MSG_DEBUG, __FILE__, __LINE__, __VA_ARGS__); \
+}
 
 #define ASSERT(x){      \
     if(HF_UNLIKELY(!(x)))       \

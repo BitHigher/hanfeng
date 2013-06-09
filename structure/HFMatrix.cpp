@@ -414,9 +414,9 @@ void HFMatrix<T>::save(CFile *saver)
 }
 
 template<class T>
-void HFMatrix<T>::display_matrix(const char *name) const
+void HFMatrix<T>::display_matrix(const char *name, const char *prefix) const
 {
-    display_matrix(matrix, num_rows, num_cols, name);
+    display_matrix(matrix, num_rows, num_cols, name, prefix);
 }
 
 template<class T>

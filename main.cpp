@@ -30,18 +30,6 @@ void test_parallel()
     std::cout << "CPUs: " << p.get_num_cpus() << '\n';
 }
 
-void test_file()
-{
-    std::cout << "[test file]\n";
-    
-    size_t len = 0;
-    char *fname = "/Users/zhf/Desktop/test.txt";
-    char *buf = CFile::read_whole_file(fname, len);
-    
-    std::cout << "[length]:" << len << '\n'
-                << "[Content]:\n" << buf << '\n';
-}
-
 void test_object()
 {
     std::cout << "[test object]\n";
@@ -100,6 +88,8 @@ extern void test_matrix();
 extern void test_labels();
 extern void test_features();
 
+extern void test_file();
+
 extern void test_classifier();
 
 int main(int argc, char** argv) 
@@ -116,7 +106,7 @@ int main(int argc, char** argv)
     
     // test_parallel();
     
-    // test_file();
+    test_file();
     
     // test_object();
     
@@ -126,7 +116,7 @@ int main(int argc, char** argv)
     
     // test_features();
     
-    test_classifier();
+    // test_classifier();
     
     std::cout << "\n--------test finished--------\n";
     

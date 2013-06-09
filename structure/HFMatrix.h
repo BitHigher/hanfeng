@@ -86,7 +86,7 @@ public:
             float64_t scale = 1.0);
     
     /* display */
-    void display_matrix(const char *name = "Matrix") const;
+    void display_matrix(const char *name="Matrix", const char *prefix="") const;
     
     static void display_matrix(const T *matrix, int32_t rows, int32_t cols,
                             const char *name="Matrix", const char *prefix="");

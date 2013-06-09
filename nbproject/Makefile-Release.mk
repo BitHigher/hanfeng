@@ -78,6 +78,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/structure/Subset.o \
 	${OBJECTDIR}/structure/SubsetStack.o \
 	${OBJECTDIR}/test/test_classifier.o \
+	${OBJECTDIR}/test/test_clustering.o \
 	${OBJECTDIR}/test/test_features.o \
 	${OBJECTDIR}/test/test_file.o \
 	${OBJECTDIR}/test/test_labels.o \
@@ -323,6 +324,11 @@ ${OBJECTDIR}/test/test_classifier.o: test/test_classifier.cpp
 	${MKDIR} -p ${OBJECTDIR}/test
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/test/test_classifier.o test/test_classifier.cpp
+
+${OBJECTDIR}/test/test_clustering.o: test/test_clustering.cpp 
+	${MKDIR} -p ${OBJECTDIR}/test
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/test/test_clustering.o test/test_clustering.cpp
 
 ${OBJECTDIR}/test/test_features.o: test/test_features.cpp 
 	${MKDIR} -p ${OBJECTDIR}/test

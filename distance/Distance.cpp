@@ -86,3 +86,42 @@ void CDistance::remove_lhs_and_rhs()
     rhs_ = NULL;
     num_rhs_ = 0;
 }
+
+CFeatures* CDistance::replace_rhs(CFeatures* rhs)
+{
+    ASSERT(rhs);
+    
+    ASSERT(lhs_->get_feature_class() == rhs->get_feature_class());
+    ASSERT(lhs_->get_feature_type() == rhs->get_feature_type());
+    
+    CFeatures *tmp = rhs_;
+    rhs_ = rhs;
+    num_rhs_ = rhs->get_num_vectors();
+    
+    HF_FREE(precomputed_matrix_);
+    
+    return tmp;
+}
+
+void CDistance::do_precompute_matrix()
+{
+    int32_t num_left = lhs_->get_num_vectors();
+    int32_t num_right = rhs_->get_num_vectors();
+    
+    ASSERT(num_left == num_right);
+    ASSERT(lhs_ == rhs_);
+    int32_t num = num_left;
+    
+    HF_FREE(precomputed_matrix_);
+    precomputed_matrix_ = HF_MALLOC(float32_t, num*(num+1)/2);
+    
+    for(index_t i = 0; i < num; ++i)
+    {
+        HF_PROGRESS(i*i, 0, num*num);
+        for(index_t j = 0; j <= i; ++j)
+            precomputed_matrix_[i*(i+1)/2+j] = compute(i, j);
+    }
+    
+    HF_PROGRESS(num*num, 0, num*num);
+    HF_DONE();
+}

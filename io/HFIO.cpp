@@ -135,3 +135,20 @@ void HFIO::set_target(FILE *target)
 {
     this->target = target;
 }
+
+void HFIO::progress(float64_t current_val, float64_t min_val, float64_t max_val, 
+                        int32_t decimals, const char *prefix)
+{
+    if(!show_progress)
+        return;
+    
+    // TODO progress
+}
+
+void HFIO::done()
+{
+    if(!show_progress)
+        return;
+    
+    message(MSG_INFO, "", -1, "done.\n");
+}

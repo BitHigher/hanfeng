@@ -268,5 +268,18 @@ CFeatures* CDenseFeatures<T>::create_merged_copy(CFeatures *other)
     // TODO create merged copy
 }
 
+template<class T>
+void CDenseFeatures<T>::copy_feature_matrix(HFMatrix<T> src)
+{
+    if(subset_stack_->has_subsets())
+        HF_ERROR("A subset is set, cannot call copy_feature_matrix\n");
+    
+    free_feature_matrix();
+    feature_matrix_ = src.clone();
+    num_features_ = src.num_rows;
+    num_vectors_ = src.num_cols;
+    initialize_cache();
+}
+
 
 template class CDenseFeatures<float64_t>;

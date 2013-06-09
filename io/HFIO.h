@@ -58,6 +58,16 @@ enum EMessageType
         io->message(MSG_INFO, __FILE__, __LINE__, __VA_ARGS__); \
 }
 
+#define HF_PROGRESS(...) { \
+    if(HF_UNLIKELY(io->get_show_progress())) \
+        io->progress(__VA_ARGS__); \
+}
+
+#define HF_DONE() { \
+    if(HF_UNLIKELY(io->get_show_progress())) \
+        io->done(); \
+}
+
 #define HF_GCDEBUG(...) { \
     if(HF_UNLIKELY(io->loglevel_above(MSG_GCDEBUG))) \
         io->message(MSG_GCDEBUG, __FILE__, __LINE__, __VA_ARGS__); \
@@ -131,6 +141,11 @@ public:
             hf_io->disable_file_and_line();
     }
     
+    inline bool get_show_progress() const
+    {
+        return show_progress;
+    }
+    
     inline FILE* get_target()
     {
         return target;
@@ -169,10 +184,17 @@ public:
         return loglevel <= type;
     }
     
+    void done();
+    
+    void progress(float64_t current_val, float64_t min_val = 0.0,
+                   float64_t max_val = 1.0, int32_t decimals = 1,
+                   const char *prefix="PROGRESS:\t");
+    
 protected:
     const char* get_msg_intro(EMessageType prio) const;
     
     FILE *target;
+    bool show_progress;
     bool show_file_and_line;
     bool syntax_highlight;
     EMessageType loglevel;

@@ -50,6 +50,8 @@ public:
                                         int32_t vec2_len);
     virtual int32_t get_dim_feature_space() const;
     
+    virtual void copy_feature_matrix(HFMatrix<T> src);
+    
     void initialize_cache();
     
     CFeatures* create_merged_copy(CFeatures *other);

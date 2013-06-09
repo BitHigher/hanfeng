@@ -133,6 +133,7 @@
       <logicalFolder name="f9" displayName="test" projectFiles="true">
         <itemPath>main.cpp</itemPath>
         <itemPath>test/test_classifier.cpp</itemPath>
+        <itemPath>test/test_clustering.cpp</itemPath>
         <itemPath>test/test_features.cpp</itemPath>
         <itemPath>test/test_file.cpp</itemPath>
         <itemPath>test/test_labels.cpp</itemPath>
@@ -375,6 +376,8 @@
       </item>
       <item path="test/test_classifier.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="test/test_clustering.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="test/test_features.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="test/test_file.cpp" ex="false" tool="1" flavor2="0">
@@ -605,6 +608,8 @@
       <item path="structure/SubsetStack.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="test/test_classifier.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="test/test_clustering.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="test/test_features.cpp" ex="false" tool="1" flavor2="0">
       </item>

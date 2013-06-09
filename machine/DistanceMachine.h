@@ -22,8 +22,15 @@ public:
     void set_distance(CDistance *d);
     CDistance* get_distance() const;
     
-protected:
     
+    void distances_lhs(float64_t *result, int32_t idx_a1,
+                                int32_t idx_a2, int32_t idx_b);
+    void distances_rhs(float64_t *result, int32_t idx_b1, 
+                                int32_t idx_b2, int32_t idx_a);
+    
+protected:
+    static void* run_distance_thread_lhs(void *p);
+    static void* run_distance_thread_rhs(void *p);
     
 private:
     void init();

@@ -87,10 +87,9 @@ extern void test_vector();
 extern void test_matrix();
 extern void test_labels();
 extern void test_features();
-
 extern void test_file();
-
 extern void test_classifier();
+extern void test_clustering();
 
 int main(int argc, char** argv) 
 {
@@ -106,7 +105,7 @@ int main(int argc, char** argv)
     
     // test_parallel();
     
-    test_file();
+    // test_file();
     
     // test_object();
     
@@ -117,6 +116,8 @@ int main(int argc, char** argv)
     // test_features();
     
     // test_classifier();
+    
+    test_clustering();    
     
     std::cout << "\n--------test finished--------\n";
     

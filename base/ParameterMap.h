@@ -29,6 +29,15 @@ public:
     
     virtual ~HFParamInfo();
     
+    char* to_string() const;
+    
+    bool operator==(const HFParamInfo &that) const;
+    bool operator!=(const HFParamInfo &that) const;
+    bool operator<(const HFParamInfo &that) const;
+    bool operator>(const HFParamInfo &that) const;
+    
+    bool is_empty() const;
+    
 public:
     char *name;
     EContainerType ctype;
@@ -40,6 +49,17 @@ public:
 
 class ParameterMapElement
 {
+public:
+    ParameterMapElement();
+    
+    ParameterMapElement(const HFParamInfo *key, 
+                DynArray<const HFParamInfo*> *values);
+    
+    ~ParameterMapElement();
+    
+public:
+    const HFParamInfo *key;
+    DynArray<const HFParamInfo*> *values;
     
 };
 

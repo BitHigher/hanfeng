@@ -104,8 +104,10 @@ private:
     
     inline void unref_all()
     {
-        // TODO
-        
+        for(index_t i = 0; i < array_.get_num_elements(); ++i)
+        {
+            HF_UNREF(*array_.get_element_ptr(i));
+        }
     }
     
 private:

@@ -35,8 +35,8 @@ public:
     void set_k(int32_t k);
     void set_max_iter(int32_t max_iter);
     
-    virtual void load(CFile *loader);
-    virtual void save(CFile *saver);
+    virtual bool load(CFile *loader);
+    virtual bool save(CFile *saver);
 private:
     void init();
     

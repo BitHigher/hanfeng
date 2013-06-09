@@ -74,7 +74,16 @@ HFVector<float64_t> CDenseLabels::get_labels()
 
 HFVector<float64_t> CDenseLabels::get_labels_copy()
 {
-    // TODO
+    if(!subset_stack_->has_subsets())
+        return labels_.clone();
+    
+    index_t num_labels = get_num_labels();
+    HFVector<float64_t> result(num_labels);
+    
+    for(index_t i = 0; i < num_labels; ++i)
+        result[i] = get_label(i);
+    
+    return result;
 }
 
 void CDenseLabels::ensure_valid(const char* context)

@@ -70,6 +70,11 @@ public:
         return array_[index];
     }
     
+    inline T* get_element_ptr(int32_t index)
+    {
+        return &array_[index];
+    }
+    
     inline bool resize_array(int32_t n, bool exact_resize = false)
     {
         int32_t new_num_elements = n;

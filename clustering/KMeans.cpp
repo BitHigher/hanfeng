@@ -109,14 +109,17 @@ void CKMeans::clustknb(bool use_old_mus, float64_t* mus_start)
     HF_NOTIMPLEMENTED
 }
 
-void CKMeans::load(CFile *loader)
+bool CKMeans::load(CFile *loader)
 {
-    // TODO
-    HF_NOTIMPLEMENTED
+    HF_SET_LOCALE_C;
+    HF_RESET_LOCALE;
+    return false;
 }
 
-void CKMeans::save(CFile *saver)
+bool CKMeans::save(CFile *saver)
 {
-    // TODO
-    HF_NOTIMPLEMENTED
+    HF_SET_LOCALE_C;
+    HF_RESET_LOCALE;
+    
+    return false;
 }

@@ -31,7 +31,7 @@ float64_t CLogLoss::get_update(float64_t prediction, float64_t label,
 {
     
     
-    // TODO
+    // TODO get_update
 }
 
 float64_t CLogLoss::get_square_grad(float64_t prediction, float64_t label)

@@ -89,7 +89,6 @@ HFVector<float64_t> CLinearMachine::apply_get_outputs(CFeatures* data)
     if(!features_)
         return HFVector<float64_t>();
     
-    // TODO
     int32_t num = features_->get_num_vectors();
     ASSERT(num > 0);
     ASSERT(w_.vlen == features_->get_dim_feature_space());

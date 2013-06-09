@@ -10,6 +10,8 @@ void test_file()
     
     char *mfname = "/Users/zhf/Desktop/sgdata/train_data_x.asc";
     char *vfname = "/Users/zhf/Desktop/sgdata/train_data_y.asc";
+    char *wfname = "/Users/zhf/Desktop/sgdata/train_data_y.txt";
+    
     CAsciiFile *af = new CAsciiFile(vfname);
 
     HFMatrix<float64_t> matrix;
@@ -20,5 +22,10 @@ void test_file()
     HFVector<float64_t> vector;
     vector.load(af);
     vector.display_vector();
+    vector[0] = 2.55;
+    printf("vlen: %d\n", vector.vlen);
     
+    
+    CAsciiFile *sf = new CAsciiFile(wfname, 'w');
+    vector.save(sf); 
 }

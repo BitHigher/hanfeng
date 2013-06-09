@@ -135,7 +135,20 @@ GET_MATRIX(get_matrix, atof, floatmax_t)
 void CAsciiFile::funcname(const hf_type *matrix,                               \
                         int32_t num_feat, int32_t num_vec)                     \
 {                                                                              \
+    if(!(file_ && matrix))                                                     \
+        HF_ERROR("File or matrix is invalid.\n");                              \
                                                                                \
+    for(index_t i = 0; i < num_vec; ++i)                                       \
+    {                                                                          \
+        for(index_t j = 0; j < num_feat; ++j)                                  \
+        {                                                                      \
+            hf_type v = matrix[i*num_feat+j];                                  \
+            if(j == num_feat-1)                                                \
+                fprintf(file_, type_str "\n", (fprt_type)v);                   \
+            else                                                               \
+                fprintf(file_, type_str " ", (fprt_type)v);                    \
+        }                                                                      \
+    }                                                                          \
 }
         
 SET_MATRIX(set_matrix, char, char, "%c")

@@ -90,6 +90,7 @@ extern void test_features();
 extern void test_file();
 extern void test_classifier();
 extern void test_clustering();
+extern void test_regression();
 
 int main(int argc, char** argv) 
 {
@@ -117,7 +118,9 @@ int main(int argc, char** argv)
     
     // test_classifier();
     
-    test_clustering();    
+    // test_clustering();    
+    
+    test_regression();
     
     std::cout << "\n--------test finished--------\n";
     

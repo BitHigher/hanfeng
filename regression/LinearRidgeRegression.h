@@ -36,6 +36,10 @@ public:
         return CT_LINEARRIDGEREGRESSION;
     }
     
+    
+    virtual bool load(CFile *loader);
+    virtual bool save(CFile *saver);
+    
 protected:
     virtual bool train_machine(CFeatures *data = NULL);
     

@@ -83,6 +83,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/test/test_file.o \
 	${OBJECTDIR}/test/test_labels.o \
 	${OBJECTDIR}/test/test_matrix.o \
+	${OBJECTDIR}/test/test_regression.o \
 	${OBJECTDIR}/test/test_vector.o
 
 
@@ -349,6 +350,11 @@ ${OBJECTDIR}/test/test_matrix.o: test/test_matrix.cpp
 	${MKDIR} -p ${OBJECTDIR}/test
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/test/test_matrix.o test/test_matrix.cpp
+
+${OBJECTDIR}/test/test_regression.o: test/test_regression.cpp 
+	${MKDIR} -p ${OBJECTDIR}/test
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/test/test_regression.o test/test_regression.cpp
 
 ${OBJECTDIR}/test/test_vector.o: test/test_vector.cpp 
 	${MKDIR} -p ${OBJECTDIR}/test

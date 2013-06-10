@@ -138,6 +138,7 @@
         <itemPath>test/test_file.cpp</itemPath>
         <itemPath>test/test_labels.cpp</itemPath>
         <itemPath>test/test_matrix.cpp</itemPath>
+        <itemPath>test/test_regression.cpp</itemPath>
         <itemPath>test/test_vector.cpp</itemPath>
       </logicalFolder>
       <itemPath>distance/Distance.cpp</itemPath>
@@ -386,6 +387,8 @@
       </item>
       <item path="test/test_matrix.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="test/test_regression.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="test/test_vector.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -618,6 +621,8 @@
       <item path="test/test_labels.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="test/test_matrix.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="test/test_regression.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="test/test_vector.cpp" ex="false" tool="1" flavor2="0">
       </item>

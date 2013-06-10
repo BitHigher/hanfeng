@@ -13,12 +13,21 @@
 namespace hanfeng
 {
     
-class CRegressionLabels : public CDenseLabels{
+class CRegressionLabels : public CDenseLabels
+{
 public:
     CRegressionLabels();
-    CRegressionLabels(const CRegressionLabels& orig);
+    CRegressionLabels(int32_t num_labels);
+    CRegressionLabels(HFVector<float64_t> src);
+    CRegressionLabels(CFile *loader);
+    
     virtual ~CRegressionLabels();
-private:
+    
+    virtual const char* get_name() { return "RegressionLabels"; }
+    
+    virtual ELabelType get_label_type() { return LT_REGRESSION;}
+    
+    static CRegressionLabels* obtain_from_generic(CLabels *base_labels);
 
 };
 

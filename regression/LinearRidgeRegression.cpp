@@ -15,14 +15,12 @@
 using namespace hanfeng;
 
 CLinearRidgeRegression::CLinearRidgeRegression()
-: CLinearMachine()
 {
     init();
 }
 
 CLinearRidgeRegression::CLinearRidgeRegression(float64_t tau, 
                 CDenseFeatures<float64_t>* data, CLabels* lab)
-: CLinearMachine()
 {
     init();
     
@@ -38,8 +36,7 @@ CLinearRidgeRegression::~CLinearRidgeRegression()
 void CLinearRidgeRegression::init()
 {
     tau_ = 1e-6;
-    
-    // TODO add parameters
+    HF_ADD(&tau_, "tau", "Regularization Parameter", MS_AVAILABLE);
 }
 
 bool CLinearRidgeRegression::train_machine(CFeatures *data)
@@ -57,7 +54,7 @@ bool CLinearRidgeRegression::train_machine(CFeatures *data)
     int32_t num_vec = feats->get_num_vectors();
     
     // get kernel matrix
-    HFMatrix<float64_t> kernel_matrix(num_feat, num_vec);
+    HFMatrix<float64_t> kernel_matrix(num_feat, num_feat);
     HFVector<float64_t> y(num_feat);
     
     // init
@@ -65,7 +62,7 @@ bool CLinearRidgeRegression::train_machine(CFeatures *data)
     y.zero();
     
     for(index_t i = 0; i < num_feat; ++i)
-        kernel_matrix.matrix[i*num_feat+i] = tau_;
+        kernel_matrix.matrix[i*num_feat+i] += tau_;
     
     for(index_t i = 0; i < num_vec; ++i)
     {
@@ -88,5 +85,20 @@ bool CLinearRidgeRegression::train_machine(CFeatures *data)
     
     return true;
 }
+
+bool CLinearRidgeRegression::load(CFile* loader)
+{
+    HF_SET_LOCALE_C;
+    HF_RESET_LOCALE;
+    return false;
+}
+
+bool CLinearRidgeRegression::save(CFile* saver)
+{
+    HF_SET_LOCALE_C;
+    HF_RESET_LOCALE;
+    return false;
+}
+
 
 #endif  /* HAVE_LAPACK */

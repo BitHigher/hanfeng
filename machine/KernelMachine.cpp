@@ -7,12 +7,13 @@
 
 #include "KernelMachine.h"
 
-CKernelMachine::CKernelMachine() {
+using namespace hanfeng;
+
+CKernelMachine::CKernelMachine()
+{
 }
 
-CKernelMachine::CKernelMachine(const CKernelMachine &orig) {
-}
-
-CKernelMachine::~CKernelMachine() {
+CKernelMachine::~CKernelMachine()
+{
 }
 

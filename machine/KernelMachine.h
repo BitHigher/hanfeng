@@ -17,7 +17,6 @@ class CKernelMachine : public CMachine
 {
 public:
     CKernelMachine();
-    CKernelMachine(const CKernelMachine& orig);
     virtual ~CKernelMachine();
 private:
 

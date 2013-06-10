@@ -107,6 +107,9 @@
         <itemPath>io/File.cpp</itemPath>
         <itemPath>io/HFIO.cpp</itemPath>
       </logicalFolder>
+      <logicalFolder name="f11" displayName="kernel" projectFiles="true">
+        <itemPath>kernel/Kernel.cpp</itemPath>
+      </logicalFolder>
       <logicalFolder name="f1" displayName="labels" projectFiles="true">
         <itemPath>labels/BinaryLabels.cpp</itemPath>
         <itemPath>labels/DenseLabels.cpp</itemPath>
@@ -152,7 +155,6 @@
       <itemPath>lib/HFException.cpp</itemPath>
       <itemPath>clustering/KMeans.cpp</itemPath>
       <itemPath>multiclass/KNN.cpp</itemPath>
-      <itemPath>kernel/Kernel.cpp</itemPath>
       <itemPath>loss/LogLoss.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles" displayName="资源文件" projectFiles="true">

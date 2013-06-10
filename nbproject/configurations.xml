@@ -29,6 +29,9 @@
         <itemPath>io/File.h</itemPath>
         <itemPath>io/HFIO.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="f11" displayName="kernel" projectFiles="true">
+        <itemPath>kernel/Kernel.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="f2" displayName="labels" projectFiles="true">
         <itemPath>labels/BinaryLabels.h</itemPath>
         <itemPath>labels/DenseLabels.h</itemPath>
@@ -44,6 +47,8 @@
       </logicalFolder>
       <logicalFolder name="f7" displayName="machine" projectFiles="true">
         <itemPath>machine/DistanceMachine.h</itemPath>
+        <itemPath>machine/KernelMachine.cpp</itemPath>
+        <itemPath>machine/KernelMachine.h</itemPath>
         <itemPath>machine/LinearMachine.h</itemPath>
         <itemPath>machine/Machine.h</itemPath>
       </logicalFolder>
@@ -52,6 +57,7 @@
         <itemPath>math/lapack.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f10" displayName="regression" projectFiles="true">
+        <itemPath>regression/LeastAngleRegression.h</itemPath>
         <itemPath>regression/LeastSquaresRegression.h</itemPath>
         <itemPath>regression/LinearRidgeRegression.h</itemPath>
         <itemPath>regression/Regression.h</itemPath>
@@ -120,6 +126,7 @@
         <itemPath>math/lapack.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f10" displayName="regression" projectFiles="true">
+        <itemPath>regression/LeastAngleRegression.cpp</itemPath>
         <itemPath>regression/LeastSquaresRegression.cpp</itemPath>
         <itemPath>regression/LinearRidgeRegression.cpp</itemPath>
       </logicalFolder>
@@ -145,6 +152,7 @@
       <itemPath>lib/HFException.cpp</itemPath>
       <itemPath>clustering/KMeans.cpp</itemPath>
       <itemPath>multiclass/KNN.cpp</itemPath>
+      <itemPath>kernel/Kernel.cpp</itemPath>
       <itemPath>loss/LogLoss.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles" displayName="资源文件" projectFiles="true">
@@ -258,6 +266,10 @@
       </item>
       <item path="io/HFIO.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="kernel/Kernel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="kernel/Kernel.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="labels/BinaryLabels.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="labels/BinaryLabels.h" ex="false" tool="3" flavor2="0">
@@ -302,6 +314,10 @@
       </item>
       <item path="machine/DistanceMachine.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="machine/KernelMachine.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="machine/KernelMachine.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="machine/LinearMachine.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="machine/LinearMachine.h" ex="false" tool="3" flavor2="0">
@@ -325,6 +341,13 @@
       <item path="multiclass/KNN.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="preprocessor/Preprocessor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="regression/LeastAngleRegression.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="regression/LeastAngleRegression.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="regression/LeastSquaresRegression.cpp"
             ex="false"
@@ -493,6 +516,10 @@
       </item>
       <item path="io/HFIO.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="kernel/Kernel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="kernel/Kernel.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="labels/BinaryLabels.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="labels/BinaryLabels.h" ex="false" tool="3" flavor2="0">
@@ -537,6 +564,10 @@
       </item>
       <item path="machine/DistanceMachine.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="machine/KernelMachine.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="machine/KernelMachine.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="machine/LinearMachine.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="machine/LinearMachine.h" ex="false" tool="3" flavor2="0">
@@ -560,6 +591,13 @@
       <item path="multiclass/KNN.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="preprocessor/Preprocessor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="regression/LeastAngleRegression.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="regression/LeastAngleRegression.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="regression/LeastSquaresRegression.cpp"
             ex="false"

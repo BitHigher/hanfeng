@@ -17,7 +17,12 @@
 
 namespace hanfeng
 {
-
+/**
+ * ridget regression.
+ * 
+ * \f$ w = (X^TX + \tau I)^{-1}X^TY \f$
+ * 
+ */
 class CLinearRidgeRegression : public CLinearMachine{
 public:
     MACHINE_PROBLEM_TYPE(PT_REGRESSION);

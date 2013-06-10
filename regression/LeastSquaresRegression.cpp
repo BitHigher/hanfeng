@@ -14,7 +14,6 @@
 using namespace hanfeng;
 
 CLeastSquaresRegression::CLeastSquaresRegression()
-: CLinearRidgeRegression()
 {
     tau_ = 0;
 }

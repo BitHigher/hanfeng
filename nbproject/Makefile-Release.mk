@@ -54,6 +54,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/io/AsciiFile.o \
 	${OBJECTDIR}/io/File.o \
 	${OBJECTDIR}/io/HFIO.o \
+	${OBJECTDIR}/kernel/Kernel.o \
 	${OBJECTDIR}/labels/BinaryLabels.o \
 	${OBJECTDIR}/labels/DenseLabels.o \
 	${OBJECTDIR}/labels/Labels.o \
@@ -64,12 +65,14 @@ OBJECTFILES= \
 	${OBJECTDIR}/lib/HFException.o \
 	${OBJECTDIR}/loss/LogLoss.o \
 	${OBJECTDIR}/machine/DistanceMachine.o \
+	${OBJECTDIR}/machine/KernelMachine.o \
 	${OBJECTDIR}/machine/LinearMachine.o \
 	${OBJECTDIR}/machine/Machine.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/math/Math.o \
 	${OBJECTDIR}/math/lapack.o \
 	${OBJECTDIR}/multiclass/KNN.o \
+	${OBJECTDIR}/regression/LeastAngleRegression.o \
 	${OBJECTDIR}/regression/LeastSquaresRegression.o \
 	${OBJECTDIR}/regression/LinearRidgeRegression.o \
 	${OBJECTDIR}/structure/HFMatrix.o \
@@ -206,6 +209,11 @@ ${OBJECTDIR}/io/HFIO.o: io/HFIO.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/io/HFIO.o io/HFIO.cpp
 
+${OBJECTDIR}/kernel/Kernel.o: kernel/Kernel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/kernel
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/kernel/Kernel.o kernel/Kernel.cpp
+
 ${OBJECTDIR}/labels/BinaryLabels.o: labels/BinaryLabels.cpp 
 	${MKDIR} -p ${OBJECTDIR}/labels
 	${RM} $@.d
@@ -256,6 +264,11 @@ ${OBJECTDIR}/machine/DistanceMachine.o: machine/DistanceMachine.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/machine/DistanceMachine.o machine/DistanceMachine.cpp
 
+${OBJECTDIR}/machine/KernelMachine.o: machine/KernelMachine.cpp 
+	${MKDIR} -p ${OBJECTDIR}/machine
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/machine/KernelMachine.o machine/KernelMachine.cpp
+
 ${OBJECTDIR}/machine/LinearMachine.o: machine/LinearMachine.cpp 
 	${MKDIR} -p ${OBJECTDIR}/machine
 	${RM} $@.d
@@ -285,6 +298,11 @@ ${OBJECTDIR}/multiclass/KNN.o: multiclass/KNN.cpp
 	${MKDIR} -p ${OBJECTDIR}/multiclass
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/multiclass/KNN.o multiclass/KNN.cpp
+
+${OBJECTDIR}/regression/LeastAngleRegression.o: regression/LeastAngleRegression.cpp 
+	${MKDIR} -p ${OBJECTDIR}/regression
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/regression/LeastAngleRegression.o regression/LeastAngleRegression.cpp
 
 ${OBJECTDIR}/regression/LeastSquaresRegression.o: regression/LeastSquaresRegression.cpp 
 	${MKDIR} -p ${OBJECTDIR}/regression

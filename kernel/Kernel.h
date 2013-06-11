@@ -26,7 +26,8 @@ enum EKernelType
     K_UNKNOWN = 0,
     K_LINEAR = 10,
     K_POLY = 20,
-    K_GAUSSIAN = 30
+    K_GAUSSIAN = 30,
+    K_CUSTOM = 160
 };
 
 class CKernel : public CHFObject
@@ -51,6 +52,10 @@ public:
     virtual int32_t get_num_vec_rhs() { return num_rhs_;}
     
     virtual bool init(CFeatures *lhs, CFeatures *rhs);
+    
+    virtual EKernelType get_kernel_type() const = 0;
+    virtual EFeatureType get_feature_type() const = 0;
+    virtual EFeatureClass get_feature_class() const = 0;
     
 private:
     void init();

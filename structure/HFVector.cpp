@@ -322,6 +322,18 @@ float64_t HFVector<T>::dot(const float64_t* v1, const float64_t* v2, int32_t n)
     return r;
 }
 
+template<class T>
+void HFVector<T>::range_fill(T start)
+{
+    range_fill_vector(vector, vlen, start);
+}
+
+template<class T>
+void HFVector<T>::range_fill_vector(T* vec, int32_t len, T start)
+{
+    for(index_t i = 0; i < len; ++i)
+        vec[i] = i+start;
+}
 
 
 template<class T>

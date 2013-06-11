@@ -10,6 +10,7 @@
 
 #include "../machine/Machine.h"
 #include "../kernel/Kernel.h"
+#include "../kernel/CustomKernel.h"
 
 namespace hanfeng
 {
@@ -26,8 +27,18 @@ public:
     
     virtual const char* get_name() const { return "KernelMachine"; }
     
-    void set_kernel(CKernel *k);
-    CKernel* get_kenrel();
+    inline void set_kernel(CKernel *k)
+    {
+        HF_REF(k);
+        HF_UNREF(kernel_);
+        kernel_ = k;
+    }
+    
+    inline CKernel* get_kenrel()
+    {
+        HF_REF(kernel_);
+        return kernel_;
+    }
     
     inline void set_batch_computation_enabled(bool enable)
     {
@@ -71,12 +82,19 @@ public:
     
     inline bool set_alpha(int32_t idx, float64_t val)
     {
-        // TODO set_alpha
+        if(alphas_.vector && idx < alphas_.vlen)
+        {
+            alphas_.vector[idx] = val;
+            return true;
+        }
+        else
+            return false;
     }
     
     inline float64_t get_alpha(int32_t idx) const
     {
-        // TODO get_alpha
+        ASSERT(alphas_.vector && idx < alphas_.vlen);
+        return alphas_.vector[idx];
     }
     
     inline void set_alphas(HFVector<float64_t> alphas)
@@ -84,9 +102,37 @@ public:
         alphas_ = alphas;
     }
     
+    inline HFVector<float64_t> get_alphas()
+    {
+        return alphas_;
+        // FIXME is there bug? no ref !
+    }
+    
+    inline bool set_support_vector(int32_t idx, int32_t val)
+    {
+        if(svs_.vector && idx < svs_.vlen)
+        {
+            svs_.vector[idx] = val;
+            return true;
+        }
+        else
+            return false;
+    }
+    
+    inline int32_t get_support_vector(int32_t idx)
+    {
+        ASSERT(svs_.vector && idx < svs_.vlen);
+        return svs_.vector[idx];
+    }
+    
     inline void set_support_vectors(HFVector<int32_t> svs)
     {
         svs_ = svs;
+    }
+    
+    inline HFVector<int32_t> get_support_vectors()
+    {
+        return svs_;
     }
     
     bool create_new_model(int32_t num);
@@ -105,6 +151,7 @@ private:
     
 protected:
     CKernel *kernel_;
+    CCustomKernel *custom_kernel_;
     CKernel *kernel_backup_;
     bool use_batch_computation_;
     bool use_linadd_;

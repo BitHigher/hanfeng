@@ -69,6 +69,8 @@ public:
     
     virtual void subset_changed_post(){}
     
+    virtual CFeatures* copy_subset(HFVector<int32_t> indices);
+    
 private:
     void init();
     

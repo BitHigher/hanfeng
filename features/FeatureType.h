@@ -22,7 +22,8 @@ enum EFeatureClass
     C_UNKNOWN = 0,
     C_DENSE = 10,
     C_SPARSE = 20,
-    C_STRING = 30
+    C_STRING = 30,
+    C_ANY = 1000
 };
     
 enum EFeatureType
@@ -31,7 +32,8 @@ enum EFeatureType
     F_BOOL = 5,
     F_CHAR = 10,
     F_BYTE = 20,
-    F_DREAL = 100
+    F_DREAL = 100,
+    F_ANY = 1000
 };
 
 };

@@ -96,3 +96,9 @@ void CFeatures::save(CFile *saver)
     HF_NOTIMPLEMENTED;
     HF_RESET_LOCALE;
 }
+
+CFeatures* CFeatures::copy_subset(HFVector<int32_t> indices)
+{
+    HF_ERROR("%s::copy_subset() not implemented\n", get_name());
+    return NULL;
+}

@@ -54,6 +54,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/io/AsciiFile.o \
 	${OBJECTDIR}/io/File.o \
 	${OBJECTDIR}/io/HFIO.o \
+	${OBJECTDIR}/kernel/CustomKernel.o \
 	${OBJECTDIR}/kernel/Kernel.o \
 	${OBJECTDIR}/labels/BinaryLabels.o \
 	${OBJECTDIR}/labels/DenseLabels.o \
@@ -209,6 +210,11 @@ ${OBJECTDIR}/io/HFIO.o: io/HFIO.cpp
 	${MKDIR} -p ${OBJECTDIR}/io
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/io/HFIO.o io/HFIO.cpp
+
+${OBJECTDIR}/kernel/CustomKernel.o: kernel/CustomKernel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/kernel
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/kernel/CustomKernel.o kernel/CustomKernel.cpp
 
 ${OBJECTDIR}/kernel/Kernel.o: kernel/Kernel.cpp 
 	${MKDIR} -p ${OBJECTDIR}/kernel

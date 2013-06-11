@@ -48,21 +48,27 @@ CKernelMachine::CKernelMachine(CKernelMachine* machine)
 {
     init();
     
-    // TODO 
+    HFVector<float64_t> alphas = machine->get_alphas().clone();
+    HFVector<int32_t> svs = machine->get_support_vectors().clone();
+    float64_t bias = machine->get_bias();
+    CKernel *kernel = machine->get_kenrel();
+    
+    int32_t num_sv = svs.vlen;
+    ASSERT(svs.vlen == alphas.vlen);
+    create_new_model(num_sv);
+    set_alphas(alphas);
+    set_support_vectors(svs);
+    set_kernel(kernel);
+    set_bias(bias);
 }
+
+
 
 CKernelMachine::~CKernelMachine()
 {
     HF_UNREF(kernel_);
-    // TODO HF_UNREF(custom_kernel_);
+    HF_UNREF(custom_kernel_);
     HF_UNREF(kernel_backup_);
-}
-
-void CKernelMachine::set_kernel(CKernel* k)
-{
-    HF_REF(k);
-    HF_UNREF(kernel_);
-    kernel_ = k;
 }
 
 bool CKernelMachine::create_new_model(int32_t num)
@@ -86,7 +92,20 @@ void CKernelMachine::store_model_features()
 {
     ASSERT(kernel_);
     
-    // TODO store_model_features
+    CFeatures *lhs = kernel_->get_lhs();
+    CFeatures *rhs = kernel_->get_rhs();
+    
+    REQUIRE(lhs, "kernel lhs is needed to store SV features.\n");
+    
+    CFeatures *sv_features = lhs->copy_subset(svs_);
+    HF_UNREF(lhs);
+    
+    kernel_->init(sv_features, rhs);
+    HF_UNREF(rhs);
+    HF_UNREF(sv_features);
+    
+    /* now sv indices are just the identity */
+    svs_.range_fill();
 }
 
 void CKernelMachine::init()

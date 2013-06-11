@@ -107,6 +107,9 @@ public:
     
     static float64_t dot(const float64_t *v1, const float64_t *v2, int32_t n);
     
+    void range_fill(T start = 0);
+    void range_fill_vector(T *vec, int32_t len, T start = 0);
+    
     void load(CFile *loader);
     void save(CFile *saver);
 public:

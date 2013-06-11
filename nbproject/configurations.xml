@@ -30,6 +30,10 @@
         <itemPath>io/HFIO.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f11" displayName="kernel" projectFiles="true">
+        <logicalFolder name="f1" displayName="normalizer" projectFiles="true">
+          <itemPath>kernel/normalizer/IdentityKernelNormalizer.h</itemPath>
+          <itemPath>kernel/normalizer/KernelNormalizer.h</itemPath>
+        </logicalFolder>
         <itemPath>kernel/Kernel.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="labels" projectFiles="true">
@@ -43,11 +47,11 @@
       </logicalFolder>
       <logicalFolder name="f5" displayName="lib" projectFiles="true">
         <itemPath>lib/HFException.h</itemPath>
+        <itemPath>lib/Signal.h</itemPath>
         <itemPath>lib/config.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f7" displayName="machine" projectFiles="true">
         <itemPath>machine/DistanceMachine.h</itemPath>
-        <itemPath>machine/KernelMachine.cpp</itemPath>
         <itemPath>machine/KernelMachine.h</itemPath>
         <itemPath>machine/LinearMachine.h</itemPath>
         <itemPath>machine/Machine.h</itemPath>
@@ -121,6 +125,7 @@
       </logicalFolder>
       <logicalFolder name="f4" displayName="machine" projectFiles="true">
         <itemPath>machine/DistanceMachine.cpp</itemPath>
+        <itemPath>machine/KernelMachine.cpp</itemPath>
         <itemPath>machine/LinearMachine.cpp</itemPath>
         <itemPath>machine/Machine.cpp</itemPath>
       </logicalFolder>
@@ -156,6 +161,7 @@
       <itemPath>clustering/KMeans.cpp</itemPath>
       <itemPath>multiclass/KNN.cpp</itemPath>
       <itemPath>loss/LogLoss.cpp</itemPath>
+      <itemPath>lib/Signal.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles" displayName="资源文件" projectFiles="true">
     </logicalFolder>
@@ -272,6 +278,16 @@
       </item>
       <item path="kernel/Kernel.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="kernel/normalizer/IdentityKernelNormalizer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="kernel/normalizer/KernelNormalizer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="labels/BinaryLabels.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="labels/BinaryLabels.h" ex="false" tool="3" flavor2="0">
@@ -303,6 +319,10 @@
       <item path="lib/HFException.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="lib/HFException.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="lib/Signal.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="lib/Signal.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="lib/config.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -522,6 +542,16 @@
       </item>
       <item path="kernel/Kernel.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="kernel/normalizer/IdentityKernelNormalizer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="kernel/normalizer/KernelNormalizer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="labels/BinaryLabels.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="labels/BinaryLabels.h" ex="false" tool="3" flavor2="0">
@@ -553,6 +583,10 @@
       <item path="lib/HFException.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="lib/HFException.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="lib/Signal.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="lib/Signal.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="lib/config.h" ex="false" tool="3" flavor2="0">
       </item>

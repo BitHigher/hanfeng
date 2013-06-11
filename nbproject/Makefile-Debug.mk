@@ -63,6 +63,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/labels/RegressionLabels.o \
 	${OBJECTDIR}/labels/StructuredLabels.o \
 	${OBJECTDIR}/lib/HFException.o \
+	${OBJECTDIR}/lib/Signal.o \
 	${OBJECTDIR}/loss/LogLoss.o \
 	${OBJECTDIR}/machine/DistanceMachine.o \
 	${OBJECTDIR}/machine/KernelMachine.o \
@@ -253,6 +254,11 @@ ${OBJECTDIR}/lib/HFException.o: lib/HFException.cpp
 	${MKDIR} -p ${OBJECTDIR}/lib
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/lib/HFException.o lib/HFException.cpp
+
+${OBJECTDIR}/lib/Signal.o: lib/Signal.cpp 
+	${MKDIR} -p ${OBJECTDIR}/lib
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/lib/Signal.o lib/Signal.cpp
 
 ${OBJECTDIR}/loss/LogLoss.o: loss/LogLoss.cpp 
 	${MKDIR} -p ${OBJECTDIR}/loss

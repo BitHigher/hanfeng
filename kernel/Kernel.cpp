@@ -48,3 +48,8 @@ void CKernel::init()
     
     // TODO init
 }
+
+bool CKernel::init(CFeatures* lhs, CFeatures* rhs)
+{
+    // TODO init
+}
